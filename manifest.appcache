@@ -19,6 +19,7 @@ CACHE MANIFEST
 /each-voi-laravel-blade/index.html.334aa7949d1596670563583647e9f20d.json
 /es6/index.html.dec750c93567f29d43f8c0049af36cf4.json
 /facebook-comment-responsive/index.html.053760a914ffe592f76a5e5942cb4435.json
+/feed.xml
 /font/1KxjsBwxNgeMTZe8xoZYBm.eot
 /font/2spksZYYFol3wvkoWHtQ7z.woff
 /font/F9-X8QWiwCgyC5D5dCztW.svg
@@ -247,18 +248,6 @@ CACHE MANIFEST
 /kiem-tien-bang-cach-rut-gon-va-chia-se-link-voi-oni-vn/index.html.7f4fc175073fad5759d1ed0fbbcb20ea.json
 /laragon-cai-dat-laravel-trong-mot-phut/index.html.a6117934124cb2dc0f470f032b00c077.json
 /larask-gist-cai-dat-va-cau-hinh-co-ban/index.html.81560fa67ebffae0cab064aef45f3118.json
-/main.4d25c21be56d5b8dbd79.css
-/main.7a6004f984086ffcb216.css
-/main.957777422bb04b279b5c.css
-/main.a3be9fd3ef645a842008.css
-/main.a86976f57ed00329fc4a.css
-/main.b38e1e115a059cb32155.css
-/main.b8f220a964f72f745ab0.css
-/main.c48e4a57abe58f01e4b4.css
-/main.c61d1845ffb686106de0.css
-/main.d57e88cc1f683fb8c9da.css
-/main.e502de89359da7bb6a79.css
-/main.f0f8fd718ecdb680cdde.css
 /model-va-migration-trong-laravel-5-gist/index.html.b5c7e58d4374950428dcd9164c421029.json
 /omnia3/index.html.6f5d3f495d4e78960b8ed32765f079b7.json
 /paidverts-ptc/index.html.4fb796a79f4e43bd53650c27a612cfc2.json
@@ -273,8 +262,8 @@ CACHE MANIFEST
 /tim-hieu-dinh-dang-mdict/index.html.821a8fe080e52da8a4466503f2f1f218.json
 /tim-hieu-mo-hinh-mvc-la-gi/index.html.06c61b881e3cfa4d7ebd68d4ca22def4.json
 /video-runabove-kich-hoat-remote-desktop/index.html.64ae06d3e2f23bc06493d2dec605de13.json
-/w-2-client.3b334af83459f7c9ffe6.css
-/w-2-client.d4786a74a3f4c82f847b.js
+/w-2-client.308c88de38d9ee2f5ef2.css
+/w-2-client.81b9b0589dfe828d7a3c.js
 /xoa-tat-ca-cac-table-mysql/index.html.1d5c817823da676285785c5e3d227071.json
 /index.html
 
