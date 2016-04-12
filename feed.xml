@@ -1,4 +1,48 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Tue, 12 Apr 2016 05:06:51 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Tìm hiểu định dạng MDict (MDD/MDX)]]></title><description><![CDATA[<p><a href="http://www.octopus-studio.com/index.en.htm">MDict</a> là một phần mềm đọc tự điển cho định dạng MDD và MDX (cũng do MDict tạo ra) với khả năng tra những danh mục từ điển hàng nghìn từ một cách siêu nhanh và đã rất nổi tiếng từ thời Window Mobile 5.0.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Tue, 12 Apr 2016 06:55:19 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, … cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
+<h1 id="local-npm"><a class="markdownIt-Anchor" href="#local-npm">#</a> <a href="https://github.com/nolanlawson/local-npm">local-npm</a></h1>
+<p><a href="https://github.com/nolanlawson/local-npm">local-npm</a> sẽ tạo ra 1 replicate cho toàn bộ database của npm (chỉ hơn 1GB một tí thôi) cũng như là cache các package đã tải về. Vì vậy bạn sẽ không bao giờ tải một file 2 lần.</p>
+<h2 id="Su-dung"><a class="markdownIt-Anchor" href="#Su-dung">#</a> Sử dụng</h2>
+<ul>
+<li>Cài đặt</li>
+</ul>
+<pre><code class="language-console"><span class="hljs-built_in">npm</span> install --<span class="hljs-built_in">global</span> local-<span class="hljs-built_in">npm</span></code></pre>
+<ul>
+<li>Tạo một thư mục để chứa dữ liệu</li>
+</ul>
+<pre><code class="language-console"><span class="hljs-built_in">mkdir</span> ~/local_npm</code></pre>
+<ul>
+<li>Chạy local-npm server</li>
+</ul>
+<pre><code class="language-console"><span class="hljs-built_in">local</span>-npm <span class="hljs-_">-d</span> ~/<span class="hljs-built_in">local</span>_npm</code></pre>
+<ul>
+<li>Lúc này bạn sẽ thấy giao diện chính của chương trình xuất hiện</li>
+</ul>
+<p><img src="./local_npm.png" alt="Giao diện của local-npm"></p>
+<ul>
+<li>Thiết lập cho npm tải dữ liệu từ local-npm</li>
+</ul>
+<pre><code class="language-console">npm <span class="hljs-keyword">set</span> registry <span class="hljs-comment">http:</span>//<span class="hljs-comment">127.0.0.1:5080</span></code></pre>
+<ul>
+<li>Nếu bạn không thích dùng local-npm nữa thì gõ lệnh</li>
+</ul>
+<pre><code class="language-console">npm <span class="hljs-keyword">set</span> registry <span class="hljs-comment">https:</span>//<span class="hljs-comment">registry.npmjs.org</span></code></pre>
+<ul>
+<li>local-npm còn công cấp cho bạn một giao diện kiểu như npm để bạn có thể duyệt các package offline. Nhưng bạn phải đợi cho local-npm replicate hoàn toàn database của npm về máy đã. Bạn có thể truy cập vào <a href="http://localhost:5080/_browse/#/">http://localhost:5080/_browse/#/</a> để sử dụng</li>
+</ul>
+<p><img src="./ui.png" alt="local-npm UI"></p>
+<p>Vậy là xong. local-npm sẽ tự động replicate database của npm về, mỗi khi bạn tải một package nào về thì nó sẽ tự động cache, đảm bảo là bạn không bao giờ phải tải một file nào đó 2 lần.</p>
+<h1 id="Tu-dong-chay-local-npm-khi-khoi-dong-may"><a class="markdownIt-Anchor" href="#Tu-dong-chay-local-npm-khi-khoi-dong-may">#</a> Tự động chạy local-npm khi khởi động máy</h1>
+<p>Ở đây mình hướng dẫn cho Ubuntu 15.04</p>
+<ul>
+<li>Mở dash và tìm kiếm Startup Applications</li>
+</ul>
+<p><img src="./dash.png" alt="dash search"></p>
+<ul>
+<li>Tạo mới một entry để tự khởi động command ở trên mỗi khi mở máy</li>
+</ul>
+<p><img src="./settings.png" alt="startup setup"></p>
+<p>Done. npm is not a jerk anymore. :D</p>
+]]></description><link>https://khoanguyen.me/tang-toc-npm/</link><guid isPermaLink="true">https://khoanguyen.me/tang-toc-npm/</guid><pubDate>Tue, 12 Apr 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[Tìm hiểu định dạng MDict (MDD/MDX)]]></title><description><![CDATA[<p><a href="http://www.octopus-studio.com/index.en.htm">MDict</a> là một phần mềm đọc tự điển cho định dạng MDD và MDX (cũng do MDict tạo ra) với khả năng tra những danh mục từ điển hàng nghìn từ một cách siêu nhanh và đã rất nổi tiếng từ thời Window Mobile 5.0.</p>
 <p>Từ lâu mình thắc mắc tại sao MDict có thể làm điều đó trong một điều kiện bộ nhớ chật hẹp của thiết bị di động. Đáng buồn là tuy phần mềm MDict là freeware nhưng định dạng MDD và MDX lại là close source. Tuy nhiên cộng đồng open source đã reversed engineer nó và cho ra một bản mô tả (có thể coi gần như là đầy đủ) cho 2 định dạng này. Bây giờ note lại ở đây cho dễ tìm kiếm sau này.</p>
 <ul>
 <li>
@@ -1137,31 +1181,4 @@ Các bạn có thể tải về từ trang chủ <a href="http://www.wampserver.
   <span class="hljs-string">'prefix'</span>    =&gt; <span class="hljs-string">''</span>,
 ),</code></pre>
 <p>Xong rồi đó. Chào mừng bạn đến với Laravel.</p>
-]]></description><link>https://khoanguyen.me/cai-dat-laravel/</link><guid isPermaLink="true">https://khoanguyen.me/cai-dat-laravel/</guid><pubDate>Mon, 05 Jan 2015 19:36:03 GMT</pubDate></item><item><title><![CDATA[Cài đặt Node.JS trên Windows]]></title><description><![CDATA[<p>Hôm qua mình có cài lại máy, kéo theo đó là một số chương trình cho việc lập trình trong đó có <a href="http://nodejs.org/">NodeJS</a>.</p>
-<p>Nhưng mà khi cài vào mình phải dùng Node.JS Command Prompt được đi kèm thì mới gọi được lệnh <code>node</code> và <code>npm</code> (Node Packaged Modules).
-Sau một hồi search Google thì mình đã tìm ra được giải phải hiệu quả nhất.</p>
-<ul>
-<li>
-<p>Rất đơn giản, truy cập vào thư mục cài đặt Node.JS, mặc định:</p>
-<ul>
-<li>Nếu bạn cài bản x86 thì đó là <code>C:\Program Files (x86)\nodejs\</code></li>
-<li>Nếu bạn cài bản x86 thì đó là <code>C:\Program Files\nodejs\</code></li>
-</ul>
-</li>
-<li>
-<p>Đè phím <code>SHIFT</code> và nhấn chuột phải &gt; <code>Open command windows here</code></p>
-</li>
-<li>
-<p>Gõ vào các lệnh sau:</p>
-</li>
-</ul>
-<pre><code class="language-shell"><span class="hljs-built_in">set</span> <span class="hljs-built_in">path</span>=<span class="hljs-variable">%PATH%</span>;<span class="hljs-variable">%CD%</span>  
-setx <span class="hljs-built_in">path</span> “<span class="hljs-variable">%PATH%</span>”</code></pre>
-<p>Xong rồi. Thử vào bất cứ thư mục nào gõ các lệnh sau để kiểm tra:</p>
-<pre><code class="language-shell">$ <span class="hljs-keyword">node</span> <span class="hljs-title">-v</span>
-v0.<span class="hljs-number">10.35</span>
-$ npm -v
-<span class="hljs-number">1.48</span>.<span class="hljs-number">28</span></code></pre>
-<p>Nếu bạn chưa cài đặt Node.JS hãy tải từ <a href="http://nodejs.org/download/">trang chủ</a></p>
-<p>Nguồn [<a href="http://www.hacksparrow.com/install-node-js-and-npm-on-windows.html">http://www.hacksparrow.com/install-node-js-and-npm-on-windows.html</a>]</p>
-]]></description><link>https://khoanguyen.me/cai-dat-nodejs-tren-windows/</link><guid isPermaLink="true">https://khoanguyen.me/cai-dat-nodejs-tren-windows/</guid><pubDate>Mon, 05 Jan 2015 04:48:11 GMT</pubDate></item></channel></rss>
+]]></description><link>https://khoanguyen.me/cai-dat-laravel/</link><guid isPermaLink="true">https://khoanguyen.me/cai-dat-laravel/</guid><pubDate>Mon, 05 Jan 2015 19:36:03 GMT</pubDate></item></channel></rss>
