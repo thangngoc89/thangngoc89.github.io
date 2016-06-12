@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 12 Jun 2016 14:09:07 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, … cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 12 Jun 2016 14:36:33 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, … cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
 <h1 id="local-npm"><a class="markdownIt-Anchor" href="#local-npm">#</a> <a href="https://github.com/nolanlawson/local-npm">local-npm</a></h1>
 <p><a href="https://github.com/nolanlawson/local-npm">local-npm</a> sẽ tạo ra 1 replicate cho toàn bộ database của npm (chỉ hơn 1GB một tí thôi) cũng như là cache các package đã tải về. Vì vậy bạn sẽ không bao giờ tải một file 2 lần.</p>
 <h2 id="Su-dung"><a class="markdownIt-Anchor" href="#Su-dung">#</a> Sử dụng</h2>
@@ -348,16 +348,16 @@ hiển thị một thông báo dạng như là <code>Không có kết quả nào
 <span class="hljs-variable">@endif</span></code></pre>
 <p>Cấu trúc trên không có gì sai,
 nhưng mình sẽ giới thiệu một cấu trúc khác, không <strong>rối</strong> như vậy:</p>
-<pre><code class="language-blade">/<span class="hljs-regexp">/ record/list</span>.blade.php
+<pre><code class="language-blade"><span class="hljs-comment">// record/list.blade.php</span>
 &lt;ul&gt;
-    @each(<span class="hljs-string">'record.item'</span>, $records, <span class="hljs-string">'record'</span>, <span class="hljs-string">'record.no-items'</span>)
-&lt;<span class="hljs-regexp">/ul&gt;
+    @each('record.item', <span class="hljs-variable">$records</span>, 'record', 'record.<span class="hljs-keyword">no</span>-items')
+&lt;/ul&gt;
 
-/</span><span class="hljs-regexp">/ record/item</span>.blade.php
-&lt;li&gt;<span class="hljs-template-variable">{{ $record-&gt;title }}</span>&lt;<span class="hljs-regexp">/li&gt;
+<span class="hljs-comment">// record/item.blade.php</span>
+&lt;<span class="hljs-keyword">li</span>&gt;{{ <span class="hljs-variable">$record</span>-&gt;title }}&lt;/<span class="hljs-keyword">li</span>&gt;
 
-/</span><span class="hljs-regexp">/ record/no</span>-items.blade.php
-&lt;li&gt;Không có kết quả nào&lt;<span class="hljs-regexp">/li&gt;</span></code></pre>
+<span class="hljs-comment">// record/no-items.blade.php</span>
+&lt;<span class="hljs-keyword">li</span>&gt;Không có kết <span class="hljs-keyword">qu</span>ả <span class="hljs-keyword">n</span>ào&lt;/<span class="hljs-keyword">li</span>&gt;</code></pre>
 <p>Bạn thấy đấy, từ 1 cấu trúc nested với <code>if .. esle</code> bạn có thể viết lại nó chỉ trong 1 dòng với <code>@each</code></p>
 <p>Nguồn: <a href="https://laravel-news.com/2014/09/laravel-blade/">laravel-news</a></p>
 ]]></description><link>https://khoanguyen.me/each-voi-laravel-blade/</link><guid isPermaLink="true">https://khoanguyen.me/each-voi-laravel-blade/</guid><pubDate>Mon, 16 Mar 2015 10:00:00 GMT</pubDate></item><item><title><![CDATA[Xóa tất cả table trong database MySQL]]></title><description><![CDATA[<p>Nếu bạn đang dùng mysql command line để quản lí database (nhất là khi sử dụng VPS…) thì bạn sẽ biết rằng MySQL không hỗ trợ việc xóa tất cả table. Cách thường được dùng đó là xóa hẳn database và tạo database mới. Việc này khá tốn thời gian và cần dùng đến 3 câu query dài để thực hiện (gồm xóa, tạo database, cấp quyền cho user).</p>
@@ -421,8 +421,8 @@ Chúng ta có thể tạo data bằng tay rồi sau đó import vào database.</
 <pre><code class="language-shell"><span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seed</span> <span class="hljs-selector-tag">gist</span>
 <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seed</span> <span class="hljs-selector-tag">user</span></code></pre>
 <p>Sau khi hoàn thành chúng ta sẽ có 2 file <code>UserTableSeeder.php</code> và <code>GistTableSeeder.php</code> trong <code>app/database/seeds</code>. Mở file <code>DatabaseSeeder.php</code> trong cùng thư mục và thêm vào trong method <code>run()</code> :</p>
-<pre><code class="language-php">$this-&gt;call(UserTableSeeder::class);
-$this-&gt;call(GistTableSeeder::class);</code></pre>
+<pre><code class="language-php"><span class="hljs-keyword">$this</span>-&gt;call(UserTableSeeder::class);
+<span class="hljs-keyword">$this</span>-&gt;call(GistTableSeeder::class);</code></pre>
 <p>File <code>DatabaseSeeder.php</code> của chúng ta lúc này :</p>
 <pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
 
@@ -439,8 +439,8 @@ $this-&gt;call(GistTableSeeder::class);</code></pre>
   </span>{
     Model::unguard();
 
-    $this-&gt;call(UserTableSeeder::class);
-    $this-&gt;call(GistTableSeeder::class);
+    <span class="hljs-keyword">$this</span>-&gt;call(UserTableSeeder::class);
+    <span class="hljs-keyword">$this</span>-&gt;call(GistTableSeeder::class);
   }
 }</code></pre>
 <p>Từ này, mỗi khi chúng ta chạy lệnh <code>php artisan db:seed</code>, method <code>run()</code> trong <code>UserTableSeeder</code> và <code>GistTableSeeder</code> sẽ được gọi theo thứ tự.</p>
@@ -509,8 +509,8 @@ DB::statement(<span class="hljs-string">'TRUNCATE TABLE gists'</span>);</code></
 
   Model::unguard();
 
-  $this-&gt;call(UserTableSeeder::class);
-  $this-&gt;call(GistTableSeeder::class);
+  <span class="hljs-keyword">$this</span>-&gt;call(UserTableSeeder::class);
+  <span class="hljs-keyword">$this</span>-&gt;call(GistTableSeeder::class);
 }</code></pre>
 <h2 id="Tao-user_id-khac-nhau"><a class="markdownIt-Anchor" href="#Tao-user_id-khac-nhau">#</a> Tạo user_id khác nhau</h2>
 <p>Như chúng ta đã biết ở trên thì khi chạy <code>db:seed</code> tất cả <code>user_id</code> trong <code>gists</code> table sẽ giống nhau. Đây không phải là lỗi mà là cơ chế hoạt động của <code>TestDummy</code>. Để khắc phục, thay vì ra lệnh cho <code>TestDummy</code> tạo 100 row thì chúng ta sẽ chạy <code>TestDummy</code> 100 lần, mỗi lần tạo 1 row.</p>
@@ -870,11 +870,11 @@ Toàn bộ source code của bài viết này bạn có thể xem tại đây: <
 <pre><code class="language-shell"><span class="hljs-symbol">composer</span> <span class="hljs-meta">require</span> <span class="hljs-keyword">barryvdh/laravel-ide-helper </span>--dev</code></pre>
 <p>Option --dev để composer hiểu chúng ta chỉ cần package này khi develop.</p>
 <p>Mở file <code>'Gist\Providers\AppServiceProvider'</code> trong method <code>register()</code> chúng ta sẽ thêm vào :</p>
-<pre><code class="language-php"><span class="hljs-keyword">if</span> ($this-&gt;app-&gt;environment() == <span class="hljs-string">'local'</span>) {
-  $this-&gt;app-&gt;register(<span class="hljs-string">'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'</span>);
+<pre><code class="language-php"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;app-&gt;environment() == <span class="hljs-string">'local'</span>) {
+  <span class="hljs-keyword">$this</span>-&gt;app-&gt;register(<span class="hljs-string">'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'</span>);
 }</code></pre>
 <p>Tiếp tục trong Cmder:</p>
-<pre><code class="language-shell"><span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">ide-helper</span><span class="hljs-selector-pseudo">:generate</span></code></pre>
+<pre><code class="language-shell">php artisan ide-helper:<span class="hljs-keyword">generate</span></code></pre>
 <p>Lệnh trên sẽ tạo file _ide_helpers.php trong thư mục gốc giúp các IDE có thể hiểu được Laravel.
 Bạn cần phải chạy lệnh trên mỗi lần cài đặt thêm package mới.
 Nhưng bạn cài đặt package bằng Composer phải không?
@@ -1144,7 +1144,7 @@ Các bạn có thể tải về từ trang chủ <a href="http://www.wampserver.
 <pre><code class="language-shell"><span class="hljs-built_in">cd</span> laravelproject</code></pre>
 <p>Gõ lệnh sau để tạo một key ngâu nhiên trong <code>app/config/app.php</code>
 (giúp mã hóa session và các thông tin khác)</p>
-<pre><code class="language-shell"><span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">key</span><span class="hljs-selector-pseudo">:generate</span></code></pre>
+<pre><code class="language-shell">php artisan key:<span class="hljs-keyword">generate</span></code></pre>
 <p>Mở file <code>app/config/app.php</code>, ở đây có một số mục bạn cần chú ý như :</p>
 <p><code>app.debug</code> bật debug chi tiết giúp bạn dễ dàng kiểm soát lỗi. Nếu giá trị <code>false</code> thì chỉ có một thông báo ngắn với lỗi 500 được xuất ra (Internal Servel Error)</p>
 <pre><code class="language-php"><span class="hljs-string">'timezone'</span> =&gt; <span class="hljs-string">'Asia/Ho_Chi_Minh'</span></code></pre>
