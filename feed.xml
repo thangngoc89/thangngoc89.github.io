@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 27 Jun 2016 12:16:59 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, … cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 11 Sep 2016 09:17:57 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, … cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
 <h1 id="local-npm"><a class="markdownIt-Anchor" href="#local-npm">#</a> <a href="https://github.com/nolanlawson/local-npm">local-npm</a></h1>
 <p><a href="https://github.com/nolanlawson/local-npm">local-npm</a> sẽ tạo ra 1 replicate cho toàn bộ database của npm (chỉ hơn 1GB một tí thôi) cũng như là cache các package đã tải về. Vì vậy bạn sẽ không bao giờ tải một file 2 lần.</p>
 <h2 id="Su-dung"><a class="markdownIt-Anchor" href="#Su-dung">#</a> Sử dụng</h2>
@@ -13,7 +13,7 @@
 <ul>
 <li>Chạy local-npm server</li>
 </ul>
-<pre><code class="language-console"><span class="hljs-built_in">local</span>-npm <span class="hljs-_">-d</span> ~/<span class="hljs-built_in">local</span>_npm</code></pre>
+<pre><code class="language-console"><span class="hljs-built_in">local</span>-npm <span class="hljs-_">-d</span> ~/local_npm</code></pre>
 <ul>
 <li>Lúc này bạn sẽ thấy giao diện chính của chương trình xuất hiện</li>
 </ul>
@@ -319,18 +319,18 @@ không cần đặt dấu phẩy và sau mỗi hàm, và những điều hạn c
 kể trên với cú pháp này không ảnh hướng nhiều đến mình.</p>
 ]]></description><link>https://khoanguyen.me/react-component-voi-react-create-class/</link><guid isPermaLink="true">https://khoanguyen.me/react-component-voi-react-create-class/</guid><pubDate>Fri, 19 Feb 2016 00:39:00 GMT</pubDate></item><item><title><![CDATA[Câu lệnh Bash bạn hay sử dụng]]></title><description><![CDATA[<p>Nếu bạn muốn xem các câu lệnh bash được sử dụng nhiều nhất
 hãy gõ lệnh sau vào Terminal (Linux và MacOSX đều chạy):</p>
-<pre><code class="language-shell">history |<span class="hljs-string"> awk '{print $2}' </span>|<span class="hljs-string"> sort </span>|<span class="hljs-string"> uniq -c </span>|<span class="hljs-string"> sort -rn </span>|<span class="hljs-string"> head</span></code></pre>
+<pre><code class="language-shell">history | <span class="hljs-type">awk</span> '{print $<span class="hljs-number">2</span>}' | <span class="hljs-type">sort</span> | <span class="hljs-type">uniq</span> -c | <span class="hljs-type">sort</span> -rn | <span class="hljs-type">head</span></code></pre>
 <p>Đây là danh sách những câu lệnh được dùng nhiều nhất của mình (Linux Mint)</p>
-<pre><code class="language-shell">213 npm
-196 git
-164 <span class="hljs-keyword">cd</span>
- 84 gitp
- 74 gits
- 54 gitc
- 52 gita
- 33 ll
- 30 nah
- 14 <span class="hljs-keyword">rm</span></code></pre>
+<pre><code class="language-shell"><span class="hljs-number">213</span> npm
+<span class="hljs-number">196</span> git
+<span class="hljs-number">164</span> cd
+ <span class="hljs-number">84</span> gitp
+ <span class="hljs-number">74</span> gits
+ <span class="hljs-number">54</span> gitc
+ <span class="hljs-number">52</span> gita
+ <span class="hljs-number">33</span> ll
+ <span class="hljs-number">30</span> nah
+ <span class="hljs-number">14</span> rm</code></pre>
 <p>Của bạn thì sao ? Hãy gửi dưới phần bình luận nhé</p>
 ]]></description><link>https://khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</link><guid isPermaLink="true">https://khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</guid><pubDate>Tue, 26 Jan 2016 07:00:00 GMT</pubDate></item><item><title><![CDATA[@each với Laravel Blade]]></title><description><![CDATA[<p>Làm việc với Laravel, khi bạn gửi 1 collection ra view thì có 2 trường hợp xảy ra</p>
 <ol>
@@ -793,7 +793,7 @@ Vì vậy, cứ để cho nó null sau này sẽ tính sau.</p>
 <p><code>$table-&gt;softDeletes();</code> dùng để tạo một cột <code>deleted_at</code> (chúng ta sẽ nói về vấn đề này sau).</p>
 <p>Cuối cùng là <code>$table-&gt;foreign('user_id')-&gt;references('id')-&gt;on('users')-&gt;onDelete('SET NULL');</code> để set foreign constraint giữa <code>gists</code> table và <code>users</code> table. Ở đây mình muốn khi user bị xóa ra khỏi database thì gists của họ vẫn còn tồn tại trong hệ thống.</p>
 <p>Okie. So far so good. Mở Cmder lên và gõ lệnh</p>
-<pre><code class="language-shell"><span class="hljs-attribute">php</span> artisan migrate</code></pre>
+<pre><code class="language-shell"><span class="hljs-attribute">php artisan migrate</span></code></pre>
 <p>Vào kiểm tra trong phpmyadmin, mọi cấu trúc đã có ở trong table. Laravel sẽ tự động tạo thêm table <code>migrations</code> để quản lí migrations cho bạn. Bạn không cần quan tâm về table này</p>
 <p>Gõ lệnh</p>
 <pre><code class="language-shell"><span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">migrate</span><span class="hljs-selector-pseudo">:rollback</span></code></pre>
@@ -1134,7 +1134,7 @@ Các bạn có thể tải về từ trang chủ <a href="http://www.wampserver.
 </blockquote>
 <h1 id="2-Cai-dat-Laravel"><a class="markdownIt-Anchor" href="#2-Cai-dat-Laravel">#</a> 2. Cài đặt Laravel</h1>
 <p>Mở <code>CommandPrompt</code> lên tại thư mục gốc của localhost (với WampServer là thư mục <code>www</code>, các server khác có thể là <code>htdocs</code>, <code>public</code>, …). Gõ lệnh sau</p>
-<pre><code class="language-shell">composer <span class="hljs-keyword">create</span>-<span class="hljs-keyword">project</span> laravel/laravel laravelproject <span class="hljs-comment">--prefer-dist</span></code></pre>
+<pre><code class="language-shell"><span class="hljs-string">composer </span><span class="hljs-built_in">create-project</span> <span class="hljs-string">laravel/</span><span class="hljs-string">laravel </span><span class="hljs-string">laravelproject </span><span class="hljs-built_in">--prefer-dist</span></code></pre>
 <p>Composer sẽ tự động tải và cài đặt Laravel kèm với các thành phần đi kèm vào thư mục <code>laravelproject</code> (các bạn có thể đổi tên thư mục này tùy ý)</p>
 <p>Mở trình duyệt lên truy cập vào địa chỉ <a href="http://localhost/laravelproject/public">http://localhost/laravelproject/public</a> . Nếu thấy hình bên dưới là bạn đã cái đặt thành công Laravel. (Để tiện cho việc lập trình, các bạn hãy tạo một Virtual Host với tên miền như <code>laravel.dev</code>)</p>
 <p><img src="/images/2015/01/laravel-welcome.png" alt="laravel-welcome"></p>
