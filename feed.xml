@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 11 Sep 2016 15:47:42 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Tôi đã thiết kế trang web học C++ của Dạy Nhau Học phục vụ hàng chục nghìn lượt truy cập mỗi tháng với $0.0002 thế nào]]></title><description><![CDATA[<p>Nếu bạn là thành viên của <a href="http://daynhauhoc.com">Dạy Nhau Học (DNH)</a> thì các bạn có
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 11 Sep 2016 15:54:14 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Tôi đã thiết kế trang web học C++ của Dạy Nhau Học phục vụ hàng chục nghìn lượt truy cập mỗi tháng với $0.0002 thế nào]]></title><description><![CDATA[<p>Nếu bạn là thành viên của <a href="http://daynhauhoc.com">Dạy Nhau Học (DNH)</a> thì các bạn có
 thể đã biết đến khóa học của <a href="http://daynhauhoc.com/users/ltd/activity">anh Đạt admin (@ltd)</a></p>
 <p>Khóa học này (có phí) gồm các <a href="https://www.udemy.com/c-co-ban-danh-cho-nguoi-moi-hoc-lap-trinh/">video được đăng trên Udemy</a> kèm với
 đó là <a href="http://cpp.daynhauhoc.com">trang web đăng tải các bài học miễn phí</a>.</p>
@@ -75,7 +75,7 @@ học thêm gì. Bắt tay vào code thôi.</li>
 <li><a href="http://daynhauhoc.com/t/tong-hop-khoa-hoc-lap-trinh-c-danh-cho-nguoi-moi-bat-dau/29429">Đây là topic tổng hợp các bài viết của khóa học</a></li>
 <li><a href="https://github.com/thangngoc89/dnh-cpp/blob/4053532715b1e4d678a2fe99483f68fddedb018d/scripts/content/fetch-data.js">Đầu tiên mình sẽ tải file markdown của bài viết tổng hợp ở trên về</a>
 <a href="http://daynhauhoc.com/raw/29429">tại đây</a></li>
-<li><a href="https://github.com/thangngoc89/dnh-cpp/blob/4053532715b1e4d678a2fe99483f68fddedb018d/scripts/content/parse-toc.js">Chuyển cáu trúc trên thành dạng cây</a></li>
+<li><a href="https://github.com/thangngoc89/dnh-cpp/blob/4053532715b1e4d678a2fe99483f68fddedb018d/scripts/content/parse-toc.js">Chuyển cấu trúc trên thành dạng cây</a></li>
 <li><a href="https://github.com/thangngoc89/dnh-cpp/blob/4053532715b1e4d678a2fe99483f68fddedb018d/scripts/content/download-post.js">Cuối cùng là tải từng bài viết về và lưu vào thư mục <code>content</code></a></li>
 </ul>
 <h1 id="Tu-dong-tao-va-dang-tai-website"><a class="markdownIt-Anchor" href="#Tu-dong-tao-va-dang-tai-website">#</a> Tự động tạo và đăng tải website</h1>
@@ -83,7 +83,7 @@ học thêm gì. Bắt tay vào code thôi.</li>
 <li>Mình dùng <a href="https://travis-ci.org">Travis CI</a> để tự động tạo và đăng tải website mỗi khi mình push bất kì chỉnh sửa nào lên Github.</li>
 </ul>
 <blockquote>
-<p><a href="https://phenomic.io/docs/usage/gh-pages/#automatically-with-travis-ci">Hướng dẫn cầu hình Travis CI từ Phenomic</a></p>
+<p><a href="https://phenomic.io/docs/usage/gh-pages/#automatically-with-travis-ci">Hướng dẫn cấu hình Travis CI từ Phenomic</a></p>
 </blockquote>
 <ul>
 <li>Travis CI cũng đảm nhận việc đăng tải website hoàn thành lên Github</li>
