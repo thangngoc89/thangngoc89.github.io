@@ -1,4 +1,119 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 11 Sep 2016 11:14:16 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, … cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Sun, 11 Sep 2016 11:25:30 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Tôi đã thiết kế trang web học C++ của Dạy Nhau Học phục vụ hàng chục nghìn lượt truy cập mỗi tháng với $0.0002 thế nào]]></title><description><![CDATA[<p>Nếu bạn là thành viên của <a href="http://daynhauhoc.com">Dạy Nhau Học (DNH)</a> thì các bạn có
+thể đã biết đến khóa học của <a href="http://daynhauhoc.com/users/ltd/activity">anh Đạt admin (@ltd)</a></p>
+<p>Khóa học này (có phí) gồm các <a href="https://www.udemy.com/c-co-ban-danh-cho-nguoi-moi-hoc-lap-trinh/">video được đăng trên Udemy</a> kèm với
+đó là <a href="http://cpp.daynhauhoc.com">trang web đăng tải các bài học miễn phí</a>.</p>
+<p><a href="http://cpp.daynhauhoc.com"><img src="./1-website-screen-shot.jpg" alt="DNH C++ screenshot"></a></p>
+<p>Trong bài viết này mình sẽ giới thiệu các công nghệ đã sử dụng để tạo ra một
+trang web tương tự mà không tốn chi phí hosting cũng như là thời gian để quản
+lí và nâng cấp.</p>
+<h1 id="Web-tinh-static-website"><a class="markdownIt-Anchor" href="#Web-tinh-static-website">#</a> Web tĩnh (static website)</h1>
+<p>Web tĩnh có nghĩa là máy sẽ gửi trực tiếp các file HTML về cho người dùng mà
+không cần phải phải qua xử lí với PHP, Node.js, Ruby hay bất kì ngôn ngữ nào.</p>
+<p>Ưu điểm của static website:</p>
+<h2 id="An-toan"><a class="markdownIt-Anchor" href="#An-toan">#</a> An toàn</h2>
+<p>Chẳng có bất kì logic để hacker lợi dụng ở đây. Nếu hacker có vào được
+máy chủ của bạn thì thứ mà hắn ta thấy chỉ là các file HTML. Bạn không cần là một
+hacker cũng có thể tải tất cả các file này về với một dòng lệnh</p>
+<pre><code class="language-sh">$ wget \
+     --recursive \
+     --no-clobber \
+     --page-requisites \
+     --convert-links \
+     --restrict-file-names=windows \
+     --domains website.org \
+     --no-parent \
+         www.website.org/tutorials/html/</code></pre>
+<p>(Nguồn: <a href="http://www.linuxjournal.com/content/downloading-entire-web-site-wget">Linux Journal</a>)</p>
+<h2 id="Nhanh"><a class="markdownIt-Anchor" href="#Nhanh">#</a> Nhanh</h2>
+<p>Máy chủ chỉ việc gửi các file HTML có sẵn về nên truy cập web tĩnh
+sẽ siêu nhanh. Có thể đạt tốc độ mili giây mà không cần phải tối ưu hóa gì</p>
+<h2 id="Re"><a class="markdownIt-Anchor" href="#Re">#</a> Rẻ</h2>
+<p>Vì web tĩnh là một xu hướng hiện nay nên có nhiều dịch vụ chuyên về hosting
+cho web tĩnh. Một số dịch vụ còn miễn phí. Ví dụ:</p>
+<ul>
+<li><a href="https://pages.github.com">Github Pages</a> - Miễn phí hoàn toàn. Mình dùng
+Github Pages để host website Học C++</li>
+<li><a href="https://pages.gitlab.com">Gitlab Pages</a> - Miễn phí hoàn toàn</li>
+<li><a href="https://aws.amazon.com">Amazon S3 + Amazon Cloudfront</a> - Trả phí, tính theo
+dung lượng và băng thông</li>
+<li><a href="https://netlify.com">Netlify</a> - Miễn phí kèm các gói nâng cấp từ $9 đến $49/ tháng</li>
+<li><a href="https://surge.sh">Surge.sh</a> - Miễn phí kèm gói nâng cấp $9</li>
+<li><a href="https://www.aerobatic.com/">Aerobatic</a> - Miễn phí kèm với các gói nâng cấp
+từ $10 đến 200$/ tháng</li>
+</ul>
+<blockquote>
+<p>Tham khảo thêm :</p>
+<ul>
+<li><a href="http://nilclass.com/courses/what-is-a-static-website">What is a static website</a></li>
+<li><a href="https://www.datocms.com/why-static/">Why Static? - by DatoCMS</a></li>
+</ul>
+</blockquote>
+<h1 id="Cong-cu-tao-trang-web-tinh-Static-site-generator-SSG"><a class="markdownIt-Anchor" href="#Cong-cu-tao-trang-web-tinh-Static-site-generator-SSG">#</a> Công cụ tạo trang web tĩnh (Static site generator - SSG)</h1>
+<p>Vì sao lại cần một công cụ?</p>
+<p>Vì viết HTML bằng tay rất dễ bị lỗi và bạn phải lập lại nhiều phần ở mỗi trang
+như header, footer, …</p>
+<p>Một vài công cụ nổi tiếng
+<a href="http://jekyllrb.com/">Jekyll</a>,
+<a href="http://gohugo.io/">Hugo</a>,
+<a href="http://www.metalsmith.io/">Metalsmith</a></p>
+<p><a href="https://www.staticgen.com/">Staticgen.com</a> là một danh sách tổng hợp tất cả
+các SSG</p>
+<p>Ở đây mình chọn <a href="https://phenomic.io">Phenomic</a>. Vì một số lí do sau đây:</p>
+<ul>
+<li>Mình đóng góp một số lượng lớn code vào project này (115 commit tính đến thời
+điểm viết bài)</li>
+<li>Nó dựa trên React.js và mình thì thích React.js</li>
+<li>Trang web tạo ra sẽ giống một web app: chuyển trang dùng history.pushState thay
+vì phải load lại trang từ đầu, và Phenomic chỉ cần load data, không cần phải
+load toàn bộ trang web như các công cụ khác</li>
+<li>Dễ tùy biến, nếu bạn quen làm việc với React.js, Webpack thì bạn sẽ chẳng phải
+học thêm gì. Bắt tay vào code thôi.</li>
+</ul>
+<h1 id="Tai-noi-dung"><a class="markdownIt-Anchor" href="#Tai-noi-dung">#</a> Tải nội dung</h1>
+<ul>
+<li>Các bài viết được viết dưới dạng markdown trên diễn đàn DNH.</li>
+<li>Đây là topic tổng hợp các viết của khóa học: [<a href="http://daynhauhoc.com/t/tong-hop-khoa-hoc-lap-trinh-c-danh-cho-nguoi-moi-bat-dau/29429">http://daynhauhoc.com/t/tong-hop-khoa-hoc-lap-trinh-c-danh-cho-nguoi-moi-bat-dau/29429</a>]</li>
+<li><a href="https://github.com/thangngoc89/dnh-cpp/blob/4053532715b1e4d678a2fe99483f68fddedb018d/scripts/content/fetch-data.js">Đầu tiên mình sẽ tải file markdown của bài viết tổng hợp ở trên về</a>
+<a href="http://daynhauhoc.com/raw/29429">tại đây</a></li>
+<li><a href="https://github.com/thangngoc89/dnh-cpp/blob/4053532715b1e4d678a2fe99483f68fddedb018d/scripts/content/parse-toc.js">Chuyển cáu trúc trên thành dạng cây</a></li>
+<li><a href="https://github.com/thangngoc89/dnh-cpp/blob/4053532715b1e4d678a2fe99483f68fddedb018d/scripts/content/download-post.js">Cuối cùng là tải từng bài viết về và lưu vào thư mục <code>content</code></a></li>
+</ul>
+<h1 id="Tu-dong-tao-va-dang-tai-website"><a class="markdownIt-Anchor" href="#Tu-dong-tao-va-dang-tai-website">#</a> Tự động tạo và đăng tải website</h1>
+<ul>
+<li>Mình dùng <a href="https://travis-ci.org">Travis CI</a> để tự động tạo và đăng tải website mỗi khi mình push bất kì chỉnh sửa nào lên Github.</li>
+</ul>
+<blockquote>
+<p><a href="https://phenomic.io/docs/usage/gh-pages/#automatically-with-travis-ci">Hướng dẫn cầu hình Travis CI từ Phenomic</a></p>
+</blockquote>
+<ul>
+<li>Travis CI cũng đảm nhận việc đăng tải website hoàn thành lên Github</li>
+</ul>
+<h1 id="Tu-dong-tao-trang-web-moi-ngay"><a class="markdownIt-Anchor" href="#Tu-dong-tao-trang-web-moi-ngay">#</a> Tự động tạo trang web mỗi ngày</h1>
+<p>Vì Travis CI chỉ chạy mỗi khi mình push lên Github nên mình cần phải thiết lập
+cronjob tự động kích hoạt Travis CI build mỗi ngày 2 lần để cập nhật các nội
+dung mới của khóa học.</p>
+<p>Suy nghĩ đầu tiên là dùng một host/ VPS nào đó để thực hiện việc này.</p>
+<p>VPS rẻ nhất là cỡ $5/tháng, và chạy một VPS 24/7 để chỉ thực hiện một công việc
+mỗi ngày 2 lần là quá phí phạm. (Dù gì thì host toàn bộ trang web chẳng tốn
+bất kì chi phí nào mà).</p>
+<p>Host free với cronjob cũng là một lưa chọn, nhưng:</p>
+<ul>
+<li>Mình không chơi với PHP nữa :D</li>
+<li>Đoạn script để kích hoạt Travis CI cần Github token của mình nên bỏ token đó
+lên shared host không an toàn tí nào.</li>
+</ul>
+<p>Giải pháp của mình là dùng Amazon Lambda kèm với Amazon Cloudwatch để thay thế
+cronjob. Mình chọn <a href="https://serverless.com/">Serverless Framework</a> để tự động
+hóa việc upload, và thiết lập Amazon Lambda cho mình. (Vì Dashboard của AWS
+rất củ chuối).</p>
+<p>Các bạn có thể xem <a href="https://github.com/thangngoc89/dnh-cpp/tree/4053532715b1e4d678a2fe99483f68fddedb018d/cron">toàn bộ Lambda function kèm với cấu hình ở đây</a></p>
+<p>Chi phí cho Amazon Lambda và Cloudwatch là siêu rẻ. Mình ước tính khoảng
+$0.0002/tháng. <a href="https://gist.github.com/thangngoc89/7775c62a93d69800010bdcc0c8889f6c">- xem chi tiết</a></p>
+<h1 id="Ket-luan"><a class="markdownIt-Anchor" href="#Ket-luan">#</a> Kết luận</h1>
+<p>Web tĩnh là một xu hướng hiện nay, dùng đúng công cụ và dịch vụ, các bạn có thể
+tạo ra một trang web hoàn toàn miễn phí sẵn sàng phục vụ cho hàng triệu lượt
+truy cập mỗi tháng.</p>
+]]></description><link>https://khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</link><guid isPermaLink="true">https://khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</guid><pubDate>Sun, 11 Sep 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, … cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
 <h1 id="local-npm"><a class="markdownIt-Anchor" href="#local-npm">#</a> <a href="https://github.com/nolanlawson/local-npm">local-npm</a></h1>
 <p><a href="https://github.com/nolanlawson/local-npm">local-npm</a> sẽ tạo ra 1 replicate cho toàn bộ database của npm (chỉ hơn 1GB một tí thôi) cũng như là cache các package đã tải về. Vì vậy bạn sẽ không bao giờ tải một file 2 lần.</p>
 <h2 id="Su-dung"><a class="markdownIt-Anchor" href="#Su-dung">#</a> Sử dụng</h2>
@@ -1106,79 +1221,4 @@ Facebook sẽ cung cấp cho chúng ta 2 đoạn code riêng biệt.</p>
 <li>Cấu hình cần thiết sau khi cài đặt</li>
 <li>Một số plugin</li>
 </ol>
-]]></description><link>https://khoanguyen.me/gioi-thieu-series-discourse-co-ban/</link><guid isPermaLink="true">https://khoanguyen.me/gioi-thieu-series-discourse-co-ban/</guid><pubDate>Wed, 07 Jan 2015 08:30:20 GMT</pubDate></item><item><title><![CDATA[[Laravel cơ bản] Cài đặt Laravel]]></title><description><![CDATA[<h1 id="Update-11032015"><a class="markdownIt-Anchor" href="#Update-11032015">#</a> Update 11/03/2015</h1>
-<p>Phương pháp cài đặt này không còn được khuyến khích. Các bạn hãy xem cách cài đặt bằng Laragon <a href="/laragon-cai-dat-laravel-trong-mot-phut/">tại đây</a></p>
-<hr>
-<p>Trong bài viết này, mình sẽ hướng dẫn các bạn tạo một project Laravel mới để chuẩn bị cho việc chinh phục Laravel</p>
-<h1 id="1-Chuan-bi"><a class="markdownIt-Anchor" href="#1-Chuan-bi">#</a> 1. Chuẩn bị</h1>
-<ul>
-<li>
-<p>Composer <a href="/quan-li-cac-thu-vien-php-voi-composer/" title="Quản lí các thư viện PHP với Composer">(hướng dẫn)</a>.</p>
-</li>
-<li>
-<p>Một webserver với :</p>
-<ul>
-<li>PHP &gt;= 5.4</li>
-<li>MCrypt PHP Extension</li>
-</ul>
-</li>
-<li>
-<p>Một localhost chạy PHP chắc chắn là không thể thiếu
-đối với các bạn đã biết PHP cơ bản.</p>
-</li>
-</ul>
-<blockquote>
-<p>Nếu các bạn chưa cài, hãy cài vào máy trước khi tiếp tục.
-Cá nhân mình hay sử dụng WampServer.
-Các bạn có thể tải về từ trang chủ <a href="http://www.wampserver.com/en/">trang chủ</a></p>
-</blockquote>
-<h1 id="2-Cai-dat-Laravel"><a class="markdownIt-Anchor" href="#2-Cai-dat-Laravel">#</a> 2. Cài đặt Laravel</h1>
-<p>Mở <code>CommandPrompt</code> lên tại thư mục gốc của localhost (với WampServer là thư mục <code>www</code>, các server khác có thể là <code>htdocs</code>, <code>public</code>, …). Gõ lệnh sau</p>
-<pre><code class="language-shell"><span class="hljs-string">composer </span><span class="hljs-built_in">create-project</span> <span class="hljs-string">laravel/</span><span class="hljs-string">laravel </span><span class="hljs-string">laravelproject </span><span class="hljs-built_in">--prefer-dist</span></code></pre>
-<p>Composer sẽ tự động tải và cài đặt Laravel kèm với các thành phần đi kèm vào thư mục <code>laravelproject</code> (các bạn có thể đổi tên thư mục này tùy ý)</p>
-<p>Mở trình duyệt lên truy cập vào địa chỉ <a href="http://localhost/laravelproject/public">http://localhost/laravelproject/public</a> . Nếu thấy hình bên dưới là bạn đã cái đặt thành công Laravel. (Để tiện cho việc lập trình, các bạn hãy tạo một Virtual Host với tên miền như <code>laravel.dev</code>)</p>
-<p><img src="/images/2015/01/laravel-welcome.png" alt="laravel-welcome"></p>
-<h1 id="3-Cau-hinh"><a class="markdownIt-Anchor" href="#3-Cau-hinh">#</a> 3. Cấu hình</h1>
-<h2 id="Cau-hinh-co-ban"><a class="markdownIt-Anchor" href="#Cau-hinh-co-ban">#</a> Cấu hình cơ bản</h2>
-<p>Chuyển vào thư mục Laravel</p>
-<pre><code class="language-shell"><span class="hljs-built_in">cd</span> laravelproject</code></pre>
-<p>Gõ lệnh sau để tạo một key ngâu nhiên trong <code>app/config/app.php</code>
-(giúp mã hóa session và các thông tin khác)</p>
-<pre><code class="language-shell">php artisan key:<span class="hljs-keyword">generate</span></code></pre>
-<p>Mở file <code>app/config/app.php</code>, ở đây có một số mục bạn cần chú ý như :</p>
-<p><code>app.debug</code> bật debug chi tiết giúp bạn dễ dàng kiểm soát lỗi. Nếu giá trị <code>false</code> thì chỉ có một thông báo ngắn với lỗi 500 được xuất ra (Internal Servel Error)</p>
-<pre><code class="language-php"><span class="hljs-string">'timezone'</span> =&gt; <span class="hljs-string">'Asia/Ho_Chi_Minh'</span></code></pre>
-<p>(Chỉnh thành giờ Việt Nam)</p>
-<h2 id="Pretty-URL-URL-Rewrite"><a class="markdownIt-Anchor" href="#Pretty-URL-URL-Rewrite">#</a> Pretty URL (URL Rewrite)</h2>
-<p>Mặc định thì trong thư mục <code>/public</code> đã có file cấu hình <code>.htaccess</code> dành cho Apache để sử dụng Pretty URL. Nhưng nếu không có thì bạn có thể cấu hình như sau :</p>
-<h3 id="Apache"><a class="markdownIt-Anchor" href="#Apache">#</a> Apache</h3>
-<pre><code class="language-noop"><span class="hljs-attribute"><span class="hljs-nomarkup">Options</span></span> +FollowSymLinks
-<span class="hljs-attribute"><span class="hljs-nomarkup">RewriteEngine</span></span> <span class="hljs-literal">On</span>
-<span class="hljs-attribute"><span class="hljs-nomarkup">RewriteCond</span></span> <span class="hljs-variable">%{REQUEST_FILENAME}</span> !-d
-<span class="hljs-attribute"><span class="hljs-nomarkup">RewriteCond</span></span> <span class="hljs-variable">%{REQUEST_FILENAME}</span> !-f
-<span class="hljs-attribute"><span class="hljs-nomarkup">RewriteRule</span></span> ^ index.php<span class="hljs-meta"> [L]</span></code></pre>
-<p>Lưu ý: <code>mod_rewrite</code> phải được bật trong Apache thì Pretty URL mới có hiệu lực</p>
-<h3 id="Nginx"><a class="markdownIt-Anchor" href="#Nginx">#</a> Nginx</h3>
-<p>Thêm thông tin sau vào file <code>nginx.conf</code> (lưu ý, đây không phải cấu hình hoàn chỉnh dành cho Nginx)</p>
-<pre><code class="language-noop"><span class="hljs-attribute">location</span> / {
-  <span class="hljs-attribute">try_files</span> <span class="hljs-variable">$uri</span> <span class="hljs-variable">$uri</span>/ /index.php?<span class="hljs-variable">$query_string</span>;
-}</code></pre>
-<h2 id="Database"><a class="markdownIt-Anchor" href="#Database">#</a> Database</h2>
-<p>Laravel Eloquent được xây dựng trên PDO nên hỗ trợ nhiều loại database (MySQL, PogresSQL, SQLite)…và bạn có thể kết hợp sử dụng nhiều database cùng lúc trong ứng dụng.</p>
-<p>Để cấu hình, các bạn mở file <code>app/config/database.php</code>. Ở đây bạn chỉ cần quan tâm đến 2 mục đó là <code>app.default</code> và <code>app.mysql</code>.</p>
-<ul>
-<li>Mục <code>app.default</code> có nghĩa là database được Laravel sử dụng mặc định</li>
-<li>Mục <code>app.connections</code> : cấu hình các kết nối. Bạn hãy tạo 1 database mới rồi nhập các thông số phù hợp vào. Ở đây mình chọn <code>mysql</code> là mặc định và cấu hình:</li>
-</ul>
-<pre><code class="language-php"><span class="hljs-string">'mysql'</span> =&gt; <span class="hljs-keyword">array</span>(
-  <span class="hljs-string">'driver'</span>    =&gt; <span class="hljs-string">'mysql'</span>,
-  <span class="hljs-string">'host'</span>      =&gt; <span class="hljs-string">'localhost'</span>,
-  <span class="hljs-string">'database'</span>  =&gt; <span class="hljs-string">'laravel'</span>,
-  <span class="hljs-string">'username'</span>  =&gt; <span class="hljs-string">'root'</span>,
-  <span class="hljs-string">'password'</span>  =&gt; <span class="hljs-string">''</span>,
-  <span class="hljs-string">'charset'</span>   =&gt; <span class="hljs-string">'utf8'</span>,
-  <span class="hljs-string">'collation'</span> =&gt; <span class="hljs-string">'utf8_unicode_ci'</span>,
-  <span class="hljs-string">'prefix'</span>    =&gt; <span class="hljs-string">''</span>,
-),</code></pre>
-<p>Xong rồi đó. Chào mừng bạn đến với Laravel.</p>
-]]></description><link>https://khoanguyen.me/cai-dat-laravel/</link><guid isPermaLink="true">https://khoanguyen.me/cai-dat-laravel/</guid><pubDate>Mon, 05 Jan 2015 19:36:03 GMT</pubDate></item></channel></rss>
+]]></description><link>https://khoanguyen.me/gioi-thieu-series-discourse-co-ban/</link><guid isPermaLink="true">https://khoanguyen.me/gioi-thieu-series-discourse-co-ban/</guid><pubDate>Wed, 07 Jan 2015 08:30:20 GMT</pubDate></item></channel></rss>
