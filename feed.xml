@@ -1,4 +1,13 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[Untitled RSS Feed]]></title><description><![CDATA[Untitled RSS Feed]]></description><link>https://khoanguyen.me/</link><generator>RSS for Node</generator><lastBuildDate>Mon, 12 Sep 2016 12:41:07 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Tôi đã thiết kế trang web học C++ của Dạy Nhau Học phục vụ hàng chục nghìn lượt truy cập mỗi tháng với $0.0002 thế nào]]></title><description><![CDATA[<p>Nếu bạn là thành viên của <a href="http://daynhauhoc.com">Dạy Nhau Học (DNH)</a> thì các bạn có
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[khoa-nguyen-blog]]></title><description><![CDATA[khoa-nguyen-blog]]></description><link>https://phenomic-theme-type.khoanguyen.me</link><generator>RSS for Node</generator><lastBuildDate>Fri, 16 Sep 2016 09:39:57 GMT</lastBuildDate><atom:link href="https://phenomic-theme-type.khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Squash tất cả commit trong một branch nhanh chóng]]></title><description><![CDATA[<p>Bình thường:</p>
+<pre><code class="hljs language-sh">git rebase -i master</code></pre>
+<p>Chọn <code>r</code> (rename) để đặt lại tên cho commit đầu
+Chọn <code>f</code> (fixup) hoặc <code>s</code> (squash) trên từng commit</p>
+<p><img src="rebase.png"></p>
+<p>Nhanh hơn</p>
+<pre><code class="hljs language-sh">git reset --soft master
+git add .
+git commit -am <span class="hljs-string">"Tên cho commit đầu ở đây"</span></code></pre>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/til/squash-tat-ca-commit-trong-mot-branch-nhanh-chong/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/til/squash-tat-ca-commit-trong-mot-branch-nhanh-chong/</guid><pubDate>Fri, 16 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Thiết kế trang web phục vụ hàng chục nghìn truy cập mỗi tháng với $0.0002]]></title><description><![CDATA[<p>Nếu bạn là thành viên của <a href="http://daynhauhoc.com">Dạy Nhau Học (DNH)</a> thì các bạn có
 thể đã biết đến khóa học của <a href="http://daynhauhoc.com/users/ltd/activity">anh Đạt admin (@ltd)</a></p>
 <p>Khóa học này (có phí) gồm các <a href="https://www.udemy.com/c-co-ban-danh-cho-nguoi-moi-hoc-lap-trinh/">video được đăng trên Udemy</a> kèm với
 đó là <a href="http://cpp.daynhauhoc.com">trang web đăng tải các bài học miễn phí</a>.</p>
@@ -6,15 +15,15 @@ thể đã biết đến khóa học của <a href="http://daynhauhoc.com/users/
 <p>Trong bài viết này mình sẽ giới thiệu các công nghệ đã sử dụng để tạo ra một
 trang web tương tự mà không tốn chi phí hosting cũng như là thời gian để quản
 lí và nâng cấp.</p>
-<h1 id="Web-tinh-static-website"><a class="markdownIt-Anchor" href="#Web-tinh-static-website">#</a> Web tĩnh (static website)</h1>
+<h1 id="web-tĩnh-static-website"><a href="#web-t%C4%A9nh-static-website" class="phenomic-HeadingAnchor">#</a>Web tĩnh (static website)</h1>
 <p>Web tĩnh có nghĩa là máy sẽ gửi trực tiếp các file HTML về cho người dùng mà
 không cần phải phải qua xử lí với PHP, Node.js, Ruby hay bất kì ngôn ngữ nào.</p>
 <p>Ưu điểm của static website:</p>
-<h2 id="An-toan"><a class="markdownIt-Anchor" href="#An-toan">#</a> An toàn</h2>
+<h2 id="an-toàn"><a href="#an-to%C3%A0n" class="phenomic-HeadingAnchor">#</a>An toàn</h2>
 <p>Chẳng có bất kì logic để hacker lợi dụng ở đây. Nếu hacker có vào được
 máy chủ của bạn thì thứ mà hắn ta thấy chỉ là các file HTML. Bạn không cần là một
 hacker cũng có thể tải tất cả các file này về với một dòng lệnh</p>
-<pre><code class="language-sh">$ wget \
+<pre><code class="hljs language-sh">$ wget \
      --recursive \
      --no-clobber \
      --page-requisites \
@@ -24,10 +33,10 @@ hacker cũng có thể tải tất cả các file này về với một dòng l�
      --no-parent \
          www.website.org/tutorials/html/</code></pre>
 <p>(Nguồn: <a href="http://www.linuxjournal.com/content/downloading-entire-web-site-wget">Linux Journal</a>)</p>
-<h2 id="Nhanh"><a class="markdownIt-Anchor" href="#Nhanh">#</a> Nhanh</h2>
+<h2 id="nhanh"><a href="#nhanh" class="phenomic-HeadingAnchor">#</a>Nhanh</h2>
 <p>Máy chủ chỉ việc gửi các file HTML có sẵn về nên truy cập web tĩnh
 sẽ siêu nhanh. Có thể đạt tốc độ mili giây mà không cần phải tối ưu hóa gì</p>
-<h2 id="Re"><a class="markdownIt-Anchor" href="#Re">#</a> Rẻ</h2>
+<h2 id="rẻ"><a href="#r%E1%BA%BB" class="phenomic-HeadingAnchor">#</a>Rẻ</h2>
 <p>Vì web tĩnh là một xu hướng hiện nay nên có nhiều dịch vụ chuyên về hosting
 cho web tĩnh. Một số dịch vụ còn miễn phí. Ví dụ:</p>
 <ul>
@@ -48,10 +57,10 @@ từ $10 đến 200$/ tháng</li>
 <li><a href="https://www.datocms.com/why-static/">Why Static? - by DatoCMS</a></li>
 </ul>
 </blockquote>
-<h1 id="Cong-cu-tao-trang-web-tinh-Static-site-generator-SSG"><a class="markdownIt-Anchor" href="#Cong-cu-tao-trang-web-tinh-Static-site-generator-SSG">#</a> Công cụ tạo trang web tĩnh (Static site generator - SSG)</h1>
+<h1 id="công-cụ-tạo-trang-web-tĩnh-static-site-generator---ssg"><a href="#c%C3%B4ng-c%E1%BB%A5-t%E1%BA%A1o-trang-web-t%C4%A9nh-static-site-generator---ssg" class="phenomic-HeadingAnchor">#</a>Công cụ tạo trang web tĩnh (Static site generator - SSG)</h1>
 <p>Vì sao lại cần một công cụ?</p>
 <p>Vì viết HTML bằng tay rất dễ bị lỗi và bạn phải lập lại nhiều phần ở mỗi trang
-như header, footer, …</p>
+như header, footer, ...</p>
 <p>Một vài công cụ nổi tiếng
 <a href="http://jekyllrb.com/">Jekyll</a>,
 <a href="http://gohugo.io/">Hugo</a>,
@@ -69,7 +78,7 @@ load toàn bộ trang web như các công cụ khác</li>
 <li>Dễ tùy biến, nếu bạn quen làm việc với React.js, Webpack thì bạn sẽ chẳng phải
 học thêm gì. Bắt tay vào code thôi.</li>
 </ul>
-<h1 id="Tai-noi-dung"><a class="markdownIt-Anchor" href="#Tai-noi-dung">#</a> Tải nội dung</h1>
+<h1 id="tải-nội-dung"><a href="#t%E1%BA%A3i-n%E1%BB%99i-dung" class="phenomic-HeadingAnchor">#</a>Tải nội dung</h1>
 <ul>
 <li>Các bài viết được viết dưới dạng markdown trên diễn đàn DNH.</li>
 <li><a href="http://daynhauhoc.com/t/tong-hop-khoa-hoc-lap-trinh-c-danh-cho-nguoi-moi-bat-dau/29429">Đây là topic tổng hợp các bài viết của khóa học</a></li>
@@ -78,7 +87,7 @@ học thêm gì. Bắt tay vào code thôi.</li>
 <li><a href="https://github.com/thangngoc89/dnh-cpp/blob/4053532715b1e4d678a2fe99483f68fddedb018d/scripts/content/parse-toc.js">Chuyển cấu trúc trên thành dạng cây</a></li>
 <li><a href="https://github.com/thangngoc89/dnh-cpp/blob/4053532715b1e4d678a2fe99483f68fddedb018d/scripts/content/download-post.js">Cuối cùng là tải từng bài viết về và lưu vào thư mục <code>content</code></a></li>
 </ul>
-<h1 id="Tu-dong-tao-va-dang-tai-website"><a class="markdownIt-Anchor" href="#Tu-dong-tao-va-dang-tai-website">#</a> Tự động tạo và đăng tải website</h1>
+<h1 id="tự-động-tạo-và-đăng-tải-website"><a href="#t%E1%BB%B1-%C4%91%E1%BB%99ng-t%E1%BA%A1o-v%C3%A0-%C4%91%C4%83ng-t%E1%BA%A3i-website" class="phenomic-HeadingAnchor">#</a>Tự động tạo và đăng tải website</h1>
 <ul>
 <li>Mình dùng <a href="https://travis-ci.org">Travis CI</a> để tự động tạo và đăng tải website mỗi khi mình push bất kì chỉnh sửa nào lên Github.</li>
 </ul>
@@ -88,7 +97,7 @@ học thêm gì. Bắt tay vào code thôi.</li>
 <ul>
 <li>Travis CI cũng đảm nhận việc đăng tải website hoàn thành lên Github</li>
 </ul>
-<h1 id="Tu-dong-tao-trang-web-moi-ngay"><a class="markdownIt-Anchor" href="#Tu-dong-tao-trang-web-moi-ngay">#</a> Tự động tạo trang web mỗi ngày</h1>
+<h1 id="tự-động-tạo-trang-web-mỗi-ngày"><a href="#t%E1%BB%B1-%C4%91%E1%BB%99ng-t%E1%BA%A1o-trang-web-m%E1%BB%97i-ng%C3%A0y" class="phenomic-HeadingAnchor">#</a>Tự động tạo trang web mỗi ngày</h1>
 <p>Vì Travis CI chỉ chạy mỗi khi mình push lên Github nên mình cần phải thiết lập
 cronjob tự động kích hoạt Travis CI build mỗi ngày 2 lần để cập nhật các nội
 dung mới của khóa học.</p>
@@ -109,26 +118,40 @@ rất củ chuối).</p>
 <p>Các bạn có thể xem <a href="https://github.com/thangngoc89/dnh-cpp/tree/4053532715b1e4d678a2fe99483f68fddedb018d/cron">toàn bộ Lambda function kèm với cấu hình ở đây</a></p>
 <p>Chi phí cho Amazon Lambda và Cloudwatch là siêu rẻ. Mình ước tính khoảng
 $0.0002/tháng. <a href="https://gist.github.com/thangngoc89/7775c62a93d69800010bdcc0c8889f6c">- xem chi tiết</a></p>
-<h1 id="Ket-luan"><a class="markdownIt-Anchor" href="#Ket-luan">#</a> Kết luận</h1>
+<h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Web tĩnh là một xu hướng hiện nay, dùng đúng công cụ và dịch vụ, các bạn có thể
 tạo ra một trang web hoàn toàn miễn phí sẵn sàng phục vụ cho hàng triệu lượt
 truy cập mỗi tháng.</p>
-]]></description><link>https://khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</link><guid isPermaLink="true">https://khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</guid><pubDate>Sun, 11 Sep 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, … cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
-<h1 id="local-npm"><a class="markdownIt-Anchor" href="#local-npm">#</a> <a href="https://github.com/nolanlawson/local-npm">local-npm</a></h1>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</guid><pubDate>Sun, 11 Sep 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[Cách flush DNS trên Ubuntu]]></title><description><![CDATA[<p>Trên Windows mọi phiên bản thì đơn giản là dòng lệnh thế này:</p>
+<pre><code class="hljs language-sh">ipconfig /flushdns</code></pre>
+<p>Ubuntu 14.04 - 16.10.1</p>
+<pre><code class="hljs language-sh">sudo /etc/init.d/dns-clean restart
+sudo /etc/init.d/networking force-reload</code></pre>
+<p>Ubuntu 12.04 trở xuống</p>
+<pre><code class="hljs language-sh">sudo /etc/init.d/nscd restart
+sudo /etc/init.d/dnsmasq restart</code></pre>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/til/cach-flush-dns-ubuntu/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/til/cach-flush-dns-ubuntu/</guid><pubDate>Sat, 10 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Cài đặt nhanh babel preset với npm]]></title><description><![CDATA[<p>Thay vì phải gõ dài dòng thế này:</p>
+<pre><code>npm install --save-dev babel-preset-es2015 babel-preset-react
+</code></pre>
+<p>bạn có thể thay thế bằng</p>
+<pre><code>npm install -D babel-preset-{es2015,react}
+</code></pre>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/til/cai-dat-nhanh-babel-preset-voi-npm/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/til/cai-dat-nhanh-babel-preset-voi-npm/</guid><pubDate>Tue, 26 Jul 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, ... cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
+<h1 id="local-npm"><a href="#local-npm" class="phenomic-HeadingAnchor">#</a><a href="https://github.com/nolanlawson/local-npm">local-npm</a></h1>
 <p><a href="https://github.com/nolanlawson/local-npm">local-npm</a> sẽ tạo ra 1 replicate cho toàn bộ database của npm (chỉ hơn 1GB một tí thôi) cũng như là cache các package đã tải về. Vì vậy bạn sẽ không bao giờ tải một file 2 lần.</p>
-<h2 id="Su-dung"><a class="markdownIt-Anchor" href="#Su-dung">#</a> Sử dụng</h2>
+<h2 id="sử-dụng"><a href="#s%E1%BB%AD-d%E1%BB%A5ng" class="phenomic-HeadingAnchor">#</a>Sử dụng</h2>
 <ul>
 <li>Cài đặt</li>
 </ul>
-<pre><code class="language-console"><span class="hljs-built_in">npm</span> install --<span class="hljs-built_in">global</span> local-<span class="hljs-built_in">npm</span></code></pre>
+<pre><code class="hljs language-console"><span class="hljs-built_in">npm</span> install --<span class="hljs-built_in">global</span> local-<span class="hljs-built_in">npm</span></code></pre>
 <ul>
 <li>Tạo một thư mục để chứa dữ liệu</li>
 </ul>
-<pre><code class="language-console"><span class="hljs-built_in">mkdir</span> ~/local_npm</code></pre>
+<pre><code class="hljs language-console"><span class="hljs-built_in">mkdir</span> ~/local_npm</code></pre>
 <ul>
 <li>Chạy local-npm server</li>
 </ul>
-<pre><code class="language-console"><span class="hljs-built_in">local</span>-npm <span class="hljs-_">-d</span> ~/local_npm</code></pre>
+<pre><code class="hljs language-console"><span class="hljs-built_in">local</span>-npm <span class="hljs-_">-d</span> ~/local_npm</code></pre>
 <ul>
 <li>Lúc này bạn sẽ thấy giao diện chính của chương trình xuất hiện</li>
 </ul>
@@ -136,17 +159,17 @@ truy cập mỗi tháng.</p>
 <ul>
 <li>Thiết lập cho npm tải dữ liệu từ local-npm</li>
 </ul>
-<pre><code class="language-console">npm <span class="hljs-keyword">set</span> registry <span class="hljs-comment">http:</span>//<span class="hljs-comment">127.0.0.1:5080</span></code></pre>
+<pre><code class="hljs language-console">npm <span class="hljs-keyword">set</span> registry <span class="hljs-comment">http:</span>//<span class="hljs-comment">127.0.0.1:5080</span></code></pre>
 <ul>
 <li>Nếu bạn không thích dùng local-npm nữa thì gõ lệnh</li>
 </ul>
-<pre><code class="language-console">npm <span class="hljs-keyword">set</span> registry <span class="hljs-comment">https:</span>//<span class="hljs-comment">registry.npmjs.org</span></code></pre>
+<pre><code class="hljs language-console">npm <span class="hljs-keyword">set</span> registry <span class="hljs-comment">https:</span>//<span class="hljs-comment">registry.npmjs.org</span></code></pre>
 <ul>
-<li>local-npm còn cung cấp cho bạn một giao diện kiểu như npm để bạn có thể duyệt các package offline. Nhưng bạn phải đợi cho local-npm replicate hoàn toàn database của npm về máy đã. Bạn có thể truy cập vào [<a href="http://localhost:5080/_browse/#/">http://localhost:5080/_browse/#/</a>] để sử dụng</li>
+<li>local-npm còn cung cấp cho bạn một giao diện kiểu như npm để bạn có thể duyệt các package offline. Nhưng bạn phải đợi cho local-npm replicate hoàn toàn database của npm về máy đã. Bạn có thể truy cập vào [http://localhost:5080/_browse/#/] để sử dụng</li>
 </ul>
 <p><img src="./ui.png" alt="local-npm UI"></p>
 <p>Vậy là xong. local-npm sẽ tự động replicate database của npm về, mỗi khi bạn tải một package nào về thì nó sẽ tự động cache, đảm bảo là bạn không bao giờ phải tải một file nào đó 2 lần.</p>
-<h1 id="Tu-dong-chay-local-npm-khi-khoi-dong-may"><a class="markdownIt-Anchor" href="#Tu-dong-chay-local-npm-khi-khoi-dong-may">#</a> Tự động chạy local-npm khi khởi động máy</h1>
+<h1 id="tự-động-chạy-local-npm-khi-khởi-động-máy"><a href="#t%E1%BB%B1-%C4%91%E1%BB%99ng-ch%E1%BA%A1y-local-npm-khi-kh%E1%BB%9Fi-%C4%91%E1%BB%99ng-m%C3%A1y" class="phenomic-HeadingAnchor">#</a>Tự động chạy local-npm khi khởi động máy</h1>
 <p>Ở đây mình hướng dẫn cho Ubuntu 15.04</p>
 <ul>
 <li>Mở dash và tìm kiếm Startup Applications</li>
@@ -157,7 +180,7 @@ truy cập mỗi tháng.</p>
 </ul>
 <p><img src="./settings.png" alt="startup setup"></p>
 <p>Done. npm is not a jerk anymore. :D</p>
-]]></description><link>https://khoanguyen.me/tang-toc-npm/</link><guid isPermaLink="true">https://khoanguyen.me/tang-toc-npm/</guid><pubDate>Tue, 12 Apr 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[Tìm hiểu định dạng MDict (MDD/MDX)]]></title><description><![CDATA[<p><a href="http://www.octopus-studio.com/index.en.htm">MDict</a> là một phần mềm đọc tự điển cho định dạng MDD và MDX (cũng do MDict tạo ra) với khả năng tra những danh mục từ điển hàng nghìn từ một cách siêu nhanh và đã rất nổi tiếng từ thời Window Mobile 5.0.</p>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/tang-toc-npm/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/tang-toc-npm/</guid><pubDate>Tue, 12 Apr 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[Tìm hiểu định dạng .mdd và .mdx của MDict]]></title><description><![CDATA[<p><a href="http://www.octopus-studio.com/index.en.htm">MDict</a> là một phần mềm đọc tự điển cho định dạng MDD và MDX (cũng do MDict tạo ra) với khả năng tra những danh mục từ điển hàng nghìn từ một cách siêu nhanh và đã rất nổi tiếng từ thời Window Mobile 5.0.</p>
 <p>Từ lâu mình thắc mắc tại sao MDict có thể làm điều đó trong một điều kiện bộ nhớ chật hẹp của thiết bị di động. Đáng buồn là tuy phần mềm MDict là freeware nhưng định dạng MDD và MDX lại là close source. Tuy nhiên cộng đồng open source đã reversed engineer nó và cho ra một bản mô tả (có thể coi gần như là đầy đủ) cho 2 định dạng này. Bây giờ note lại ở đây cho dễ tìm kiếm sau này.</p>
 <ul>
 <li>
@@ -178,11 +201,11 @@ truy cập mỗi tháng.</p>
 <p>Bước tiếp theo của mình: Viết một cái app bằng React Native đơn giản có thể đọc định dạng này kèm với bookmark vì mấy phần mềm có sẵn trên Android một là quá lởm, hai là quảng cáo mà lại yêu cầu gửi tiền qua Paypal sẽ nhận được code kích hoạt bản pro (wtf thời nào rồi mà không dùng Google Play Payment)</p>
 <p>Mình không có development environment của React Native cho iOS nên anh em nào có hứng thú mình có thể làm chung.</p>
 <p>P/S: Nếu còn hứng thú thì port nó thành cross-platform desktop app chạy trên Electron (vì mình có thể :)) )</p>
-]]></description><link>https://khoanguyen.me/tim-hieu-dinh-dang-mdict/</link><guid isPermaLink="true">https://khoanguyen.me/tim-hieu-dinh-dang-mdict/</guid><pubDate>Tue, 05 Apr 2016 07:00:00 GMT</pubDate></item><item><title><![CDATA[React how to]]></title><description><![CDATA[<blockquote>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/tim-hieu-dinh-dang-mdict/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/tim-hieu-dinh-dang-mdict/</guid><pubDate>Tue, 05 Apr 2016 07:00:00 GMT</pubDate></item><item><title><![CDATA[React how to]]></title><description><![CDATA[<blockquote>
 <p>From <a href="https://github.com/petehunt/react-howto">react-howto by @petehunt</a></p>
 <p>Vietnamese translated by <a href="https://github.com/petehouston">@petehouston</a></p>
 </blockquote>
-<h1 id="react-howto"><a class="markdownIt-Anchor" href="#react-howto">#</a> react-howto</h1>
+<h1 id="react-howto"><a href="#react-howto" class="phenomic-HeadingAnchor">#</a>react-howto</h1>
 <p>Nếu bạn mới làm quen với React (hoặc phần front-end nói chung) thì bạn sẽ thấy hệ sinh thái tương đối khó hiểu. Có một vài lí do giải thích cho việc đó.</p>
 <ul>
 <li>Trước đây, React mục tiêu hướng tới nhóm đối tượng tiếp cận sớm và các chuyên gia</li>
@@ -190,10 +213,10 @@ truy cập mỗi tháng.</p>
 <li>Có quá nhiều marketing ảo giả tạo dưới dạng các hướng dẫn về React.</li>
 </ul>
 <p>Trong suốt tài liệu này, tôi sẽ giả sử là bạn đã từng có kinh nghiệm xây dựng web với HTML, CSS và Javascript.</p>
-<h2 id="Tai-sao-ban-nen-nghe-theo-toi"><a class="markdownIt-Anchor" href="#Tai-sao-ban-nen-nghe-theo-toi">#</a> Tại sao bạn nên nghe theo tôi?</h2>
+<h2 id="tại-sao-bạn-nên-nghe-theo-tôi"><a href="#t%E1%BA%A1i-sao-b%E1%BA%A1n-n%C3%AAn-nghe-theo-t%C3%B4i" class="phenomic-HeadingAnchor">#</a>Tại sao bạn nên nghe theo tôi?</h2>
 <p>Có hàng tấn lời khuyên mâu thuẫn về React bên ngoài; vậy tại sao phải nghe theo tôi nhỉ?</p>
 <p>Tôi là một trong những thành viên đầu tiên của nhóm Facebook tham gia xây dựng và triển khai mã nguồn mở thư viện React này. Thêm cả, vì tôi không còn làm ở Facebook nữa, nên tôi có được cái nhìn khách quan không phụ thuộc Facebook nữa.</p>
-<h2 id="Lam-the-nao-de-tuong-tac-voi-he-sinh-thai-cua-React"><a class="markdownIt-Anchor" href="#Lam-the-nao-de-tuong-tac-voi-he-sinh-thai-cua-React">#</a> Làm thế nào để tương tác với hệ sinh thái của React</h2>
+<h2 id="làm-thế-nào-để-tương-tác-với-hệ-sinh-thái-của-react"><a href="#l%C3%A0m-th%E1%BA%BF-n%C3%A0o-%C4%91%E1%BB%83-t%C6%B0%C6%A1ng-t%C3%A1c-v%E1%BB%9Bi-h%E1%BB%87-sinh-th%C3%A1i-c%E1%BB%A7a-react" class="phenomic-HeadingAnchor">#</a>Làm thế nào để tương tác với hệ sinh thái của React</h2>
 <p>Tất cả các phần mềm đều được xây dựng dựa trên một tập hợp các nền tảng công nghệ, và bạn cần phải hiểu rõ về chúng đủ để xây dựng ứng dụng. Nguyên nhân khiến cho công cụ trong hệ sinh thái của React trở nên phức tạp là vì luôn bị giải thích sai thứ tự.</p>
 <p>Bạn nền học, theo thứ tự này, <strong>không cần bỏ qua phía trước hoặc học đồng thời</strong>:</p>
 <ul>
@@ -205,73 +228,73 @@ truy cập mỗi tháng.</p>
 <li><a href="#Tim-hieu-ve-Flux">Flux</a></li>
 </ul>
 <p><strong>Bạn không cần phải học tất cả những thứ này để có thể làm việc hiệu quả với React.</strong> Chỉ nên chuyển sang bước tiếp theo nếu như bạn thấy có vấn đề cần được giải quyết.</p>
-<p>Thêm nữa, có vài chủ đề thường được nhắc đến trong cộng đồng React mà khá “nóng hổi”. Những chủ đề dưới đây khá là thú vị nhưng khó để có thể hiểu được và ít phổ biến hơn so với các chủ đề trên và <strong>không cần thiết khi xây dựng ứng dụng</strong>.</p>
+<p>Thêm nữa, có vài chủ đề thường được nhắc đến trong cộng đồng React mà khá "nóng hổi". Những chủ đề dưới đây khá là thú vị nhưng khó để có thể hiểu được và ít phổ biến hơn so với các chủ đề trên và <strong>không cần thiết khi xây dựng ứng dụng</strong>.</p>
 <ul>
 <li><a href="#Tim-hieu-ve-inline-styles">Inline styles</a></li>
 <li><a href="#Tim-hieu-ve-server-rendering">Server rendering</a></li>
 <li><a href="#Tim-hieu-ve-immutablejs">Immutable.js</a></li>
 <li><a href="#Tim-hieu-ve-Relay-Falcor-etc">Relay, Falcor, etc</a></li>
 </ul>
-<h2 id="Tim-hieu-ve-React"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-React">#</a> Tìm hiểu về React</h2>
+<h2 id="tìm-hiểu-về-react"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-react" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về React</h2>
 <p>Có một điều hay bị hiểu nhầm đó là bạn sẽ phí phạm nhiều thời gian trong việc thiết lập công cụ để bắt đầu học React. Trong tài liệu chính thống bạn sẽ thấy <a href="https://facebook.github.io/react/docs/getting-started.html#quick-start-without-npm">copy-paste HTML template</a> là bạn chỉ cần lưu lại một file định dang <code>.html</code> và có thể bắt đầu ngay được. <strong>Không cần bất cứ công cụ nào ở bước này, và đừng bắt đầu học các công cụ bổ sung cho tới khi nào bạn cảm thấy thoải mái với React một cách cơ bản.</strong></p>
 <p>Tôi vẫn nghĩ cách học React đơn giản nhất đó là <a href="https://facebook.github.io/react/docs/tutorial.html">tài liệu chính thống</a>.</p>
-<h2 id="Tim-hieu-ve-npm"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-npm">#</a> Tìm hiểu về <code>npm</code></h2>
+<h2 id="tìm-hiểu-về-npm"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-npm" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về <code>npm</code></h2>
 <p><code>npm</code> là công cụ quản lý package của Node.js và là phương pháp phổ biến nhất để các lập trình viên front-end và các nhà thiết kế chia sẻ mã nguồn Javascript. Nó bao gồm một hệ thống quản lý module gọi là <code>CommonJS</code> và cho phép bạn cài đặt bất cứ công cụ command-line nào được viết bằng Javascript. Hãy đọc <a href="http://0fps.net/2013/01/22/commonjs-why-and-how/">bài này</a> để biết vì sao <code>CommonJS</code> là cần thiết với các trình duyệt, hoặc <a href="http://wiki.commonjs.org/wiki/Introduction">CommonJS Spec Wiki</a> để biết thêm về <code>CommonJS</code> API.</p>
 <p>Hầu hết các components, thư viện và công cụ tái sử dụng trong hệ sinh thái của React đều được triển khai như là thành các module <code>CommonJS</code> và có thể cài đặt thông qua <code>npm</code>.</p>
-<h2 id="Tim-hieu-ve-cac-cong-cu-dong-goi-Javascript"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-cac-cong-cu-dong-goi-Javascript">#</a> Tìm hiểu về các công cụ đóng gói Javascript</h2>
-<p>Vì một vài lí do kĩ thuật mà module <code>CommonJS</code> (ví dụ, các thư viện trên <code>npm</code>) không thể sử dụng native trên trình duyệt. Bạn cần có một “công cụ đóng gói” Javascript để “đóng gói” các modules này thành các files <code>.js</code> mà có thể include được trên trang web qua thẻ <code>&lt;script&gt;</code>.</p>
+<h2 id="tìm-hiểu-về-các-công-cụ-đóng-gói-javascript"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-c%C3%A1c-c%C3%B4ng-c%E1%BB%A5-%C4%91%C3%B3ng-g%C3%B3i-javascript" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về các công cụ đóng gói Javascript</h2>
+<p>Vì một vài lí do kĩ thuật mà module <code>CommonJS</code> (ví dụ, các thư viện trên <code>npm</code>) không thể sử dụng native trên trình duyệt. Bạn cần có một "công cụ đóng gói" Javascript để "đóng gói" các modules này thành các files <code>.js</code> mà có thể include được trên trang web qua thẻ <code>&#x3C;script></code>.</p>
 <p>Một số ví dụ về công cụ đóng gói Javascript bao gồm <code>webpack</code> và <code>browserify</code>. Cả hai đều là sự lựa chọn tốt, nhưng tôi thích <code>webpack</code> hơn vì nó có nhiều tính năng hỗ trợ tốt cho việc xây dựng lớn một cách dễ dàng hơn. Vì tài liệu của nó khá khó hiểu, tôi có tạo ra <a href="https://github.com/petehunt/react-webpack-template">template để bắt đầu ngay</a> và tôi có viết <a href="https://github.com/petehunt/webpack-howto">hướng dẫn về webpack</a> với các use cases phức tạp hơn.</p>
 <p>Một điều nên nhớ là <code>CommonJS</code> sử dụng hàm <code>require()</code> để nhập liên kết các modules, vì thế nhiều người trỏ nên thắc mắc và nghĩ nó có liên quan gì đó tới một project khác có tên là <code>require.js</code>. Vì nhiều lý do kĩ thuật, tôi khuyên bạn nên tránh sử dụng <code>require.js</code>. Nó cũng không được sử dụng phổ biến trong môi trường của React.</p>
-<h2 id="Tim-hieu-ve-ES6"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-ES6">#</a> Tìm hiểu về ES6</h2>
+<h2 id="tìm-hiểu-về-es6"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-es6" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về ES6</h2>
 <p>Ngoài JSX (mà bạn học trong các hướng dẫn về React), bạn sẽ thấy nhiều cú pháp thú vị trong các ví dụ. Chúng được gọi là ES6, và đó là phiên bản mới nhất của Javascript mà bạn chưa học tới. Vì còn quá mới nên chưa được hỗ trợ trên các trình duyệt, nhưng các công cụ đóng gói sẽ thực hiện phiên dịch với cấu hình đúng cho bạn để có thể sử dụng được trên trình duyệt.</p>
 <p>Nếu bạn muốn hoàn thiện nhanh với React, <strong>bạn có thể bỏ qua việc học ES6</strong>, hoặc có thể lựa chọn khi đang làm giữa chừng.</p>
 <p>Bạn có thể thấy nhiều hội thảo về lớp trong ES6 là cách tốt nhất để tạo các React components. Điều này là không đúng. Hầu hết mọi người (bao gồm cả Facebook) đang sử dụng <code>React.createClass()</code>.</p>
-<h2 id="Tim-hieu-ve-routing"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-routing">#</a> Tìm hiểu về routing</h2>
-<p>“Các ứng dụng single-page” trở nên khá rầm rộ ngày nay. Đây là những trang web mà chỉ thực hiện khởi tạo một lần, và khi người dùng ấn vào một đường dẫn hay nút ấn thì Javascript trên trang web sẽ thực thi mà trang web không cần phải reload lại. Việc quản lý địa chỉ trên thanh địa chỉ được thực hiện bở <strong>router</strong>.</p>
+<h2 id="tìm-hiểu-về-routing"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-routing" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về routing</h2>
+<p>"Các ứng dụng single-page" trở nên khá rầm rộ ngày nay. Đây là những trang web mà chỉ thực hiện khởi tạo một lần, và khi người dùng ấn vào một đường dẫn hay nút ấn thì Javascript trên trang web sẽ thực thi mà trang web không cần phải reload lại. Việc quản lý địa chỉ trên thanh địa chỉ được thực hiện bở <strong>router</strong>.</p>
 <p>Router được sử dụng phổ biến nhất trong hệ sinh thái React là <a href="https://github.com/rackt/react-router">react-router</a>. Nếu như bạn đang xây dựng một ứng dụng single-page, hãy sử dụng nó trừ khi bạn có lý do mà không thể sử dụng.</p>
 <p><strong>Đừng nên sử dụng router nếu như bạn không xây dựng ứng dụng single-page</strong>. Hầu hết các dự án đều bắt đầu từ một component nhỏ bên trong của một ứng dụng lớn.</p>
-<h2 id="Tim-hieu-ve-Flux"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-Flux">#</a> Tìm hiểu về Flux</h2>
+<h2 id="tìm-hiểu-về-flux"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-flux" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về Flux</h2>
 <p>Chắc hẳn bạn đã từng nghe về Flux. Có <strong>quá nhiều</strong> thông tin không đúng về Flux.</p>
 <p>Nhiều người cùng tập hợp lại để xây dựng một ứng dụng và muốn định nghĩa cấu trúc dữ liệu và họ nghĩ sẽ cần sử dụng tới Flux để làm được việc đó. <strong>Tiếp cận Flux như thế là sai. Flux chỉ nên được thêm khi mà các components đã được xây dựng rồi.</strong></p>
 <p>Các components trong React được sắp xếp phân bậc. Phần lớn thời gian, cấu trúc dữ liệu cũng đi theo một cấp. Trong những tình huống này thì Flux không thể giúp được gì nhiều. Tuy nhiên, đôi lúc cấu trúc dữ liệu của bạn lại không theo tầng nào cả. Khi các React components bắt đầu nhận <code>props</code> mà có vẻ không liên quan, hoặc bạn có một số lượng nhỏ các components bắt đầu trở nên phức tạp, thì bạn có thể muốn thử với Flux.</p>
 <p><strong>Bạn sẽ biết khi nào bạn cần Flux. Nếu bạn không chắc chắn là bạn cần, thì bạn không cần.</strong></p>
 <p>Một khi bạn đã quyết định sử dụng Flux, sử dụng thư viện phổ biến và đầy đủ tài liệu nhất là <a href="http://redux.js.org/">Redux</a>. Có <strong>rất nhiều</strong> sự lựa chọn khác, và bạn sẽ bị cám dỗ vào việc đi đánh giá so sánh chúng, nhưng lời khuyên của tôi dành cho bạn là chỉ nên chọn với thư viện dược dùng phổ biến nhất.</p>
-<h2 id="Tim-hieu-ve-inline-styles"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-inline-styles">#</a> Tìm hiểu về inline styles</h2>
+<h2 id="tìm-hiểu-về-inline-styles"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-inline-styles" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về inline styles</h2>
 <p>Trước React, nhiều người tái sử dụng CSS với các định dạng văn bản phức tạp xây dựng qua các tiền xử lý CSS như SASS. Nhưng sau đó React hỗ trợ để tạo các compoents có thể tái sử dụng một cách đơn giản, các định dạng CSS cũng trỏ nên đỡ phức tạp. Đa phần trong cộng đồng (bao gồm cả tôi) cũng đang thí nghiệm với việc loại bỏ các định dạng đó.</p>
 <p>Đây có thể là một ý tưởng điên rồ vì mấy lí do. Nó làm cho media queries trở nên khó hơn, và có thể sinh ra hạn chế về hiệu năng khi sử dụng kĩ thuật này. <strong>Khi bắt đầu với React, chỉ cần style như bình thường</strong>.</p>
 <p>Một khi bạn hiểu được React hoạt động thế nào, bạn có thể thử qua các phương pháp khác. Một phương pháp phổ biến đó là <a href="https://en.bem.info/">BEM</a>. Tôi khuyên các bạn bỏ các tiền xử lý CSS, vì React hỗ trợ bạn một cách tái sử dụng styles tốt hơn và công cụ đóng gói Javascript có thể sinh ra các stylesheets tối ưu hơn (tôi có <a href="https://www.youtube.com/watch?v=VkTCL6Nqm6Y">chia sẻ này tại OSCON</a>). React, như bất cứ một thư viện Javascript nào khác, vẫn hoạt động bình thường với các tiền xử lý CSS.</p>
-<h2 id="Tim-hieu-ve-server-rendering"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-server-rendering">#</a> Tìm hiểu về server rendering</h2>
-<p>Server rendering thường được gọi là “toàn bộ” hay “đồng bộ” JS. Điều đó có nghĩa là bạn có thể lấy bất cứ React components nào và render chúng thành HTML tĩnh trên server. Điều này cải thiện được tốc độ ban đầu vì người dùng không cần phải chờ JS thực hiện download để có thể thấy được UI ban đầu, và React có thể tái sử dụng HTML đã được render phía server, vì vậy mà không cần xử lý ở phía client.</p>
+<h2 id="tìm-hiểu-về-server-rendering"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-server-rendering" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về server rendering</h2>
+<p>Server rendering thường được gọi là "toàn bộ" hay "đồng bộ" JS. Điều đó có nghĩa là bạn có thể lấy bất cứ React components nào và render chúng thành HTML tĩnh trên server. Điều này cải thiện được tốc độ ban đầu vì người dùng không cần phải chờ JS thực hiện download để có thể thấy được UI ban đầu, và React có thể tái sử dụng HTML đã được render phía server, vì vậy mà không cần xử lý ở phía client.</p>
 <p>Bạn cần sử dụng server rendering khi mà bạn thấy việc render ban đầu trở nên quá chậm hoặc bạn muốn cải thiện thứ hạng tìm kiếm. Mặc dù Google bây giờ đã thực hiện index các nội dung render phía client, nhưng tại thời điểm tháng một 2016, mỗi khi được lấy ra đo lường thì thấy rõ thứ hạng bị ảnh hướng đi xuống, có khả năng là do vi phạm về tốc độ render phía client.</p>
 <p>Việc render phía server vẫn cần nhiều công cụ để làm cho nó trở nên chính xác. Vì việc này mặc định được hỗ trợ trong các React components mà không cần quan tâm tới việc render phía server, bạn nên xây dựng ứng dụng trước và quan tâm tới việc render phía server sau. Bạn sẽ không cần thiết phải viết lại tất cả các components để xử lý việc dó.</p>
-<h2 id="Tim-hieu-ve-Immutablejs"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-Immutablejs">#</a> Tìm hiểu về Immutable.js</h2>
+<h2 id="tìm-hiểu-về-immutablejs"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-immutablejs" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về Immutable.js</h2>
 <p><a href="https://facebook.github.io/immutable-js/">Immutable.js</a> cung cấp một tập hợp cấu trúc dữ liệu có thể hỗ trợ giải quyết các vấn đề về tối ưu hoá khi xây dựng ứng dụng React. Đấy là một thư viện tuyệt vời, và bạn chắc hẳn sẽ sử dụng khá nhiều khi xây dựng ứng dụng về sau. Tuy nhiên thì nó lại không cần thiết cho tới khi bạn quan tâm tới tối ưu hoá.</p>
-<h2 id="Tim-hieu-ve-Relay-Falcor-etc"><a class="markdownIt-Anchor" href="#Tim-hieu-ve-Relay-Falcor-etc">#</a> Tìm hiểu về Relay, Falcor etc</h2>
+<h2 id="tìm-hiểu-về-relay-falcor-etc"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-relay-falcor-etc" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về Relay, Falcor etc</h2>
 <p>Đây là những công nghệ giúp bạn giảm số lượng AJAX requests. Những kĩ thuật này vẫn còn khá là mới mẻ, vì vậy, nếu bạn không có vấn đề với quá nhiều AJAX requests thì bạn không cần tới Relay hay Falcor.</p>
-]]></description><link>https://khoanguyen.me/react-howto/</link><guid isPermaLink="true">https://khoanguyen.me/react-howto/</guid><pubDate>Sat, 20 Feb 2016 10:00:00 GMT</pubDate></item><item><title><![CDATA[json ⊄ js]]></title><description><![CDATA[<p>Mọi người thường nói rằng JSON là một phần nhỏ (subset) của Javascript.</p>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/react-howto/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/react-howto/</guid><pubDate>Sat, 20 Feb 2016 10:00:00 GMT</pubDate></item><item><title><![CDATA[json ⊄ js]]></title><description><![CDATA[<p>Mọi người thường nói rằng JSON là một phần nhỏ (subset) của Javascript.</p>
 <p>Vấn đề là nó không phải như vậy.</p>
-<p>Dựa vào <a href="http://www.json.org/">spec</a> của JSON, một chuỗi có thể chứa bất cứ kí tự unicode nào ngoại trừ <code>&quot;</code> hoặc <code>/</code> hoặc kí tự điều khiển.</p>
+<p>Dựa vào <a href="http://www.json.org/">spec</a> của JSON, một chuỗi có thể chứa bất cứ kí tự unicode nào ngoại trừ <code>"</code> hoặc <code>/</code> hoặc kí tự điều khiển.</p>
 <p>Điều là có nghĩa là chuỗi dưới đây hoàn toàn hợp lệ với JSON:</p>
 <script src="https://gist.github.com/thangngoc89/b136d0aabdbff3d8afa4.js"></script>
 <p>Hãy thử copy chuỗi trên và dán vào console, gán cho nó 1 biến bất kì. Thử đi, mình sẽ chờ.</p>
 <p>Yup. <code>“SyntaxError: Unexpected token ILLEGAL”.</code></p>
 <p>Vấn đề nằm ở 2 kí tự unicode được được Javascript định nghĩa là kí tự kết thúc dòng: kí tự kết thúc dòng <code>\u2028</code> và kí tự phân cách đoạn văn <code>u2029</code>. Chuỗi trên nếu được escape thì sẽ như thế này <code>own\u2028ed</code>.</p>
-<h1 id="Van-de-nam-o-dau"><a class="markdownIt-Anchor" href="#Van-de-nam-o-dau">#</a> Vấn đề nằm ở đâu ?</h1>
+<h1 id="vấn-đề-nằm-ở-đâu-"><a href="#v%E1%BA%A5n-%C4%91%E1%BB%81-n%E1%BA%B1m-%E1%BB%9F-%C4%91%C3%A2u-" class="phenomic-HeadingAnchor">#</a>Vấn đề nằm ở đâu ?</h1>
 <p>JSON hiện tại được dùng như là một cách thuận tiện định dạng dữ liệu và hầu hết trường hợp không dùng JSON dựa trên <strong>JSON là một phần nhỏ của JS</strong>. Tuy nhiên, có vài trường hợp nó sẽ gây ra vấn đề.</p>
 <p>Trong <a href="http://en.wikipedia.org/wiki/JSONP">JSONP</a> (JSON with padding), server gửi dữ liệu kèm với một callback sẽ được chạy ở trang yêu cầu dữ liệu:</p>
-<pre><code class="language-js">handleResponse({<span class="hljs-string">"status"</span>: <span class="hljs-string">"ok"</span>, <span class="hljs-string">"id"</span>: <span class="hljs-number">123456</span>});</code></pre>
+<pre><code class="hljs language-js">handleResponse({<span class="hljs-string">"status"</span>: <span class="hljs-string">"ok"</span>, <span class="hljs-string">"id"</span>: <span class="hljs-number">123456</span>});</code></pre>
 <p>Vài thư viện javascript sử dụng một phương thức không an toàn, nhưng nhanh, parse JSON sử dụng <code>eval</code> để hỗ trợ các trình duyệt cũ:</p>
-<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unsafeParse</span>(<span class="hljs-params">json</span>) </span>{
+<pre><code class="hljs language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">unsafeParse</span>(<span class="hljs-params">json</span>) </span>{
  <span class="hljs-keyword">return</span> <span class="hljs-built_in">eval</span>(<span class="hljs-string">"("</span> + json + <span class="hljs-string">")"</span>);
 }</code></pre>
 <p>Và trường hợp thông dụng nhất là chèn các dữ liệu từ được tạo ra từ server để tránh phải gửi thêm request mới.</p>
-<pre><code class="language-js"><span class="hljs-keyword">var</span> GLOBALS = {
+<pre><code class="hljs language-js"><span class="hljs-keyword">var</span> GLOBALS = {
  <span class="hljs-string">"userid"</span>: <span class="hljs-number">123456</span>,
  <span class="hljs-string">"twitterName"</span>: <span class="hljs-string">"dpup"</span>,
  <span class="hljs-string">"role"</span>: <span class="hljs-string">"editor"</span>
 };</code></pre>
 <p>Trong tất cả trường hợp trên, một kí tự kết thúc dòng sẽ gây lỗi phiên mã, và gần như là sẽ làm cho trang web của bạn không hoạt động.</p>
-<h1 id="Xu-li-the-nao"><a class="markdownIt-Anchor" href="#Xu-li-the-nao">#</a> Xử lí thế nào ?</h1>
+<h1 id="xử-lí-thế-nào-"><a href="#x%E1%BB%AD-l%C3%AD-th%E1%BA%BF-n%C3%A0o-" class="phenomic-HeadingAnchor">#</a>Xử lí thế nào ?</h1>
 <blockquote>
 <p>JSON is done. JSON will not be revised.</p>
 <p><em>Douglas Crockford</em>, <a href="https://mail.mozilla.org/pipermail/es-discuss/2009-June/009451.html">2009</a></p>
@@ -280,12 +303,12 @@ truy cập mỗi tháng.</p>
 <p>Vì vậy, chúng ta cần một cách để xử lí.</p>
 <p>Một phương án là sẽ esape tất cả kí tự không phải là kí tự ASCII. Ví dụ như với <a href="https://github.com/google/closure-library/blob/master/closure/goog/string/string.js#L1003">hàm escapeString của Closure</a></p>
 <p>Hoặc chúng ta có thể coi 2 kí tự trên là vấn đề, và dùng một hàm tương tự như bạn dưới để xử lí:</p>
-<pre><code class="language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsStringify</span>(<span class="hljs-params">obj</span>) </span>{
+<pre><code class="hljs language-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">jsStringify</span>(<span class="hljs-params">obj</span>) </span>{
  <span class="hljs-keyword">return</span> <span class="hljs-built_in">JSON</span>.stringify(obj)
  .replace(<span class="hljs-regexp">/\u2028/g</span>, <span class="hljs-string">'\\u2028'</span>)
  .replace(<span class="hljs-regexp">/\u2029/g</span>, <span class="hljs-string">'\\u2029'</span>);
 }</code></pre>
-]]></description><link>https://khoanguyen.me/json-js/</link><guid isPermaLink="true">https://khoanguyen.me/json-js/</guid><pubDate>Fri, 19 Feb 2016 23:22:00 GMT</pubDate></item><item><title><![CDATA[React.Component với React.createClass]]></title><description><![CDATA[<h1 id="Gioi-thieu"><a class="markdownIt-Anchor" href="#Gioi-thieu">#</a> Giới thiệu</h1>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/json-js/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/json-js/</guid><pubDate>Fri, 19 Feb 2016 23:22:00 GMT</pubDate></item><item><title><![CDATA[React.Component với React.createClass]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
 <p>React hỗ trợ 2 cách để tạo Component.
 Bạn có thể kế thừa từ class <code>React.Component</code> hoặc là
 dùng cú pháp cũ <code>React.createClass</code> đã có từ khi React ra đời.
@@ -314,11 +337,11 @@ code của bạn rõ ràng hơn, đây chính là một điều không thể bà
 Nhưng mình khuyên là đừng làm như vậy, hãy bỏ ngay ý tưởng dùng
 ES6 class chỉ để thực hiện một chuỗi thừa kế dài, hãy dùng
 <code>React.createClass</code> và kèm với mixin.</p>
-<h1 id="Li-do-de-dung-ReactcreateClass"><a class="markdownIt-Anchor" href="#Li-do-de-dung-ReactcreateClass">#</a> Lí do để dùng <code>React.createClass</code></h1>
-<h2 id="Toi-thich-ham-auto-binding"><a class="markdownIt-Anchor" href="#Toi-thich-ham-auto-binding">#</a> “Tôi thích hàm auto-binding”</h2>
+<h1 id="lí-do-để-dùng-reactcreateclass"><a href="#l%C3%AD-do-%C4%91%E1%BB%83-d%C3%B9ng-reactcreateclass" class="phenomic-HeadingAnchor">#</a>Lí do để dùng <code>React.createClass</code></h1>
+<h2 id="tôi-thích-hàm-auto-binding"><a href="#t%C3%B4i-th%C3%ADch-h%C3%A0m-auto-binding" class="phenomic-HeadingAnchor">#</a>"Tôi thích hàm auto-binding"</h2>
 <p>Đây là một lí do chính đáng, tuy nhiên bạn có thể autobind với ES6 class
 <a href="https://facebook.github.io/react/blog/2015/01/27/react-v0.13.0-beta-1.html#autobinding">(bài viết từ React)</a></p>
-<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<pre><code class="hljs language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   <span class="hljs-keyword">constructor</span> () {
     <span class="hljs-keyword">super</span>();
     <span class="hljs-keyword">this</span>.tick = <span class="hljs-keyword">this</span>.tick.bind(<span class="hljs-keyword">this</span>);
@@ -329,8 +352,8 @@ ES6 class chỉ để thực hiện một chuỗi thừa kế dài, hãy dùng
   ...
 }</code></pre>
 <p>Sử dụng Babel <code>stage: 0</code> bạn có thể viết class như thế này:</p>
-<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
-  tick = () =&gt; {
+<pre><code class="hljs language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+  tick = () => {
     ...
   }
   ...
@@ -340,7 +363,7 @@ Ví dụ như là dùng
 <a href="https://github.com/andreypopp/autobind-decorator">autobind decorator</a></p>
 <p>Decorator cũng là <code>stage: 0</code> nhưng bạn thực sự không cần stage 0
 dể dùng <code>autobind decorator</code></p>
-<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<pre><code class="hljs language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   tick () {
     ...
   }
@@ -348,15 +371,15 @@ dể dùng <code>autobind decorator</code></p>
 }
 
 <span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> autobind(Counter)</code></pre>
-<h2 id="Toi-thich-mixins"><a class="markdownIt-Anchor" href="#Toi-thich-mixins">#</a> “Tôi thích mixins”</h2>
+<h2 id="tôi-thích-mixins"><a href="#t%C3%B4i-th%C3%ADch-mixins" class="phenomic-HeadingAnchor">#</a>"Tôi thích mixins"</h2>
 <p>Đây gần như là lí do chính mọi người vẫn sử dụng <code>React.createClass</code>.
 Có rất nhiều code React vẫn còn dựa trên mixins. Tuy nhiên, bạn có thể dùng
 <a href="https://www.npmjs.com/package/react-mixin">React-mixin</a>
 để có mixin với ES6 class</p>
-<h2 id="thisisMounted"><a class="markdownIt-Anchor" href="#thisisMounted">#</a> <code>this.isMounted</code></h2>
+<h2 id="thisismounted"><a href="#thisismounted" class="phenomic-HeadingAnchor">#</a><code>this.isMounted</code></h2>
 <p>Bạn chẳng bao giờ sử dụng <code>this.isMounted</code> cả, và khi bạn cần, nó
 cũng rất dễ để thêm vào.</p>
-<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<pre><code class="hljs language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Counter</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   componentDidMount () {
     <span class="hljs-keyword">this</span>.isMounted = <span class="hljs-literal">true</span>
   }
@@ -366,17 +389,17 @@ cũng rất dễ để thêm vào.</p>
   ...
 }</code></pre>
 <p>Bản thân mình chẳng bao giờ sử dụng tính năng này.</p>
-<h1 id="Li-do-de-chuyen-sang-dung-cu-phap-ES6"><a class="markdownIt-Anchor" href="#Li-do-de-chuyen-sang-dung-cu-phap-ES6">#</a> Lí do để chuyển sang dùng cú pháp ES6</h1>
-<h2 id="Autobinding"><a class="markdownIt-Anchor" href="#Autobinding">#</a> Autobinding?</h2>
+<h1 id="lí-do-để-chuyển-sang-dùng-cú-pháp-es6"><a href="#l%C3%AD-do-%C4%91%E1%BB%83-chuy%E1%BB%83n-sang-d%C3%B9ng-c%C3%BA-ph%C3%A1p-es6" class="phenomic-HeadingAnchor">#</a>Lí do để chuyển sang dùng cú pháp ES6</h1>
+<h2 id="autobinding"><a href="#autobinding" class="phenomic-HeadingAnchor">#</a>Autobinding?</h2>
 <p>Vấn đề về <code>context</code> trong Javascript khá là nhức nhối. Việc
 tự động <code>autobinding</code> được <code>React.createClass</code> thực hiện đôi
 khi gây khó hiểu cho những bạn mới làm quên, và sự rắc rối của
 binding có thể làm bạn khó hiểu trong nhiều tháng liền.
 Với ES6 class, bạn phải tự thực hiện binding. Điều này giúp
-code của bạn rõ ràng hơn, ít “thần kì” hơn. Và sẽ giúp cho các
-lập trình viên mới tiếp xúc với React biết thực “chuyện gì đang xảy ra”. Bằng sự trợ giúp của Babel với các tính năng của
+code của bạn rõ ràng hơn, ít "thần kì" hơn. Và sẽ giúp cho các
+lập trình viên mới tiếp xúc với React biết thực "chuyện gì đang xảy ra". Bằng sự trợ giúp của Babel với các tính năng của
 ES6/7, binding thủ công không còn là một vấn đề lớn.</p>
-<h2 id="Bo-qua-Mixins-hay-dung-Higher-Order-Components"><a class="markdownIt-Anchor" href="#Bo-qua-Mixins-hay-dung-Higher-Order-Components">#</a> Bỏ qua Mixins, hãy dùng Higher-Order-Components</h2>
+<h2 id="bỏ-qua-mixins-hãy-dùng-higher-order-components"><a href="#b%E1%BB%8F-qua-mixins-h%C3%A3y-d%C3%B9ng-higher-order-components" class="phenomic-HeadingAnchor">#</a>Bỏ qua Mixins, hãy dùng Higher-Order-Components</h2>
 <p>Nếu bạn có xem qua bất cứ thảo luận nào về ES6 class, bạn sẽ
 thấy mọi người nói bạn dùng <strong>kết hợp</strong> (composition) thay cho <strong>thừa kế</strong>.
 Bạn có thể đã thấy meme này</p>
@@ -391,12 +414,12 @@ hai cách tạo Component và cả pure functions.</p>
 <p>Đọc thêm
 <a href="https://medium.com/@dan_abramov/mixins-are-dead-long-live-higher-order-components-94a0d2f9e750#.ki6u85yvc">Mixins are dead long live higher oder components</a></p>
 </blockquote>
-<h2 id="Khong-con-code-thua-No-Cruft"><a class="markdownIt-Anchor" href="#Khong-con-code-thua-No-Cruft">#</a> Không còn code thừa (No Cruft)</h2>
+<h2 id="không-còn-code-thừa-no-cruft"><a href="#kh%C3%B4ng-c%C3%B2n-code-th%E1%BB%ABa-no-cruft" class="phenomic-HeadingAnchor">#</a>Không còn code thừa (No Cruft)</h2>
 <p>Loại bỏ những tính năng hiếm khi sử dụng như <code>this.isMounted</code>
 sẽ giúp React nhẹ hơn và linh hoạt hơn. Theo thời gian, điều
 này sẽ giúp React nhanh hơn. Mình biết là tất cả chúng ta đều
 yêu React, nhưng chúng ta cũng muốn có tốc độ phải không nào ?</p>
-<h2 id="FlowTypes"><a class="markdownIt-Anchor" href="#FlowTypes">#</a> FlowTypes</h2>
+<h2 id="flowtypes"><a href="#flowtypes" class="phenomic-HeadingAnchor">#</a>FlowTypes</h2>
 <p>Đây là điều mà mình thích nhất. Trong một thời gian dài, mình
 đã cố tình bỏ qua Typescript và Flow, nhưng sau khi mất nguyên
 một ngày vì gõ sai tên <code>sự kiện</code> (event), mình bắt đầu dùng
@@ -408,14 +431,14 @@ tồn tại.</p>
 Flowtype và Typescript sẽ dễ dàng hơn nếu bạn đang dùng ES6 class.</p>
 <p>Đây là một ví dụ:</p>
 <p>ES6 class</p>
-<pre><code class="language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">X</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
+<pre><code class="hljs language-js"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">X</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">React</span>.<span class="hljs-title">Component</span> </span>{
   someProp: string | number;
   state: SomeType;
   props: SomeType;
   ...
 }</code></pre>
 <p>React.createClass</p>
-<pre><code class="language-js">React.createClass({
+<pre><code class="hljs language-js">React.createClass({
   someProp: (<span class="hljs-number">0</span>: string | number),
   ...
 })</code></pre>
@@ -424,7 +447,7 @@ flow khi dùng React.createClass. Thay và đó, Flow phụ thuộc
 vào hàng tá code để có thể xác định kiểu bằng việc đọc <code>propTypes</code>.
 Thực tế thì nó chưa bao giờ làm tốt như vậy. Và đừng có nghĩ đến việc
 kiểm tra kiểu (type checking) với state. Nó đơn giản là không thể.</p>
-<h1 id="Ket-luan"><a class="markdownIt-Anchor" href="#Ket-luan">#</a> Kết luận</h1>
+<h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Cả 2 kiểu tạo component như trên đều sẽ không biến mất trong
 tương lại gần. Nếu ES6 class trở thành cách mà mọi người chọn
 thay vì <code>createClass</code>, Javascript cần nhiều hơn là một <code>sugar syntax</code>
@@ -432,11 +455,11 @@ thay vì <code>createClass</code>, Javascript cần nhiều hơn là một <code
 Mình chọn viết component bằng ES6 class vì nó nhìn gọn hơn,
 không cần đặt dấu phẩy và sau mỗi hàm, và những điều hạn chế
 kể trên với cú pháp này không ảnh hướng nhiều đến mình.</p>
-]]></description><link>https://khoanguyen.me/react-component-voi-react-create-class/</link><guid isPermaLink="true">https://khoanguyen.me/react-component-voi-react-create-class/</guid><pubDate>Fri, 19 Feb 2016 00:39:00 GMT</pubDate></item><item><title><![CDATA[Câu lệnh Bash bạn hay sử dụng]]></title><description><![CDATA[<p>Nếu bạn muốn xem các câu lệnh bash được sử dụng nhiều nhất
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/react-component-voi-react-create-class/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/react-component-voi-react-create-class/</guid><pubDate>Fri, 19 Feb 2016 00:39:00 GMT</pubDate></item><item><title><![CDATA[Câu lệnh Bash bạn hay sử dụng]]></title><description><![CDATA[<p>Nếu bạn muốn xem các câu lệnh bash được sử dụng nhiều nhất
 hãy gõ lệnh sau vào Terminal (Linux và MacOSX đều chạy):</p>
-<pre><code class="language-shell">history | <span class="hljs-type">awk</span> '{print $<span class="hljs-number">2</span>}' | <span class="hljs-type">sort</span> | <span class="hljs-type">uniq</span> -c | <span class="hljs-type">sort</span> -rn | <span class="hljs-type">head</span></code></pre>
+<pre><code class="hljs language-shell">history | <span class="hljs-type">awk</span> '{print $<span class="hljs-number">2</span>}' | <span class="hljs-type">sort</span> | <span class="hljs-type">uniq</span> -c | <span class="hljs-type">sort</span> -rn | <span class="hljs-type">head</span></code></pre>
 <p>Đây là danh sách những câu lệnh được dùng nhiều nhất của mình (Linux Mint)</p>
-<pre><code class="language-shell"><span class="hljs-number">213</span> npm
+<pre><code class="hljs language-shell"><span class="hljs-number">213</span> npm
 <span class="hljs-number">196</span> git
 <span class="hljs-number">164</span> cd
  <span class="hljs-number">84</span> gitp
@@ -447,14 +470,14 @@ hãy gõ lệnh sau vào Terminal (Linux và MacOSX đều chạy):</p>
  <span class="hljs-number">30</span> nah
  <span class="hljs-number">14</span> rm</code></pre>
 <p>Của bạn thì sao ? Hãy gửi dưới phần bình luận nhé</p>
-]]></description><link>https://khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</link><guid isPermaLink="true">https://khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</guid><pubDate>Tue, 26 Jan 2016 07:00:00 GMT</pubDate></item><item><title><![CDATA[@each với Laravel Blade]]></title><description><![CDATA[<p>Làm việc với Laravel, khi bạn gửi 1 collection ra view thì có 2 trường hợp xảy ra</p>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</guid><pubDate>Tue, 26 Jan 2016 07:00:00 GMT</pubDate></item><item><title><![CDATA[@each với Laravel Blade]]></title><description><![CDATA[<p>Làm việc với Laravel, khi bạn gửi 1 collection ra view thì có 2 trường hợp xảy ra</p>
 <ol>
 <li>Loop qua collection và hiển thị kết quả</li>
 <li>Nếu collection trả về kết quả là <code>null</code> thì
-hiển thị một thông báo dạng như là <code>Không có kết quả nào</code> …</li>
+hiển thị một thông báo dạng như là <code>Không có kết quả nào</code> ....</li>
 </ol>
 <p>Đây chắc hẳn là cấu trúc mọi người thường dùng :</p>
-<pre><code class="language-blade"><span class="hljs-variable">@if</span> (count($records))
+<pre><code class="hljs language-blade"><span class="hljs-variable">@if</span> (count($records))
     <span class="hljs-variable">@foreach</span> ($records as $record)
         <span class="hljs-variable">@include</span>(<span class="hljs-string">'record.item'</span>, $record)
     <span class="hljs-variable">@endforeach</span>
@@ -463,21 +486,21 @@ hiển thị một thông báo dạng như là <code>Không có kết quả nào
 <span class="hljs-variable">@endif</span></code></pre>
 <p>Cấu trúc trên không có gì sai,
 nhưng mình sẽ giới thiệu một cấu trúc khác, không <strong>rối</strong> như vậy:</p>
-<pre><code class="language-blade"><span class="hljs-comment">// record/list.blade.php</span>
-&lt;ul&gt;
+<pre><code class="hljs language-blade"><span class="hljs-comment">// record/list.blade.php</span>
+&#x3C;ul>
     @each('record.item', <span class="hljs-variable">$records</span>, 'record', 'record.<span class="hljs-keyword">no</span>-items')
-&lt;/ul&gt;
+&#x3C;/ul>
 
 <span class="hljs-comment">// record/item.blade.php</span>
-&lt;<span class="hljs-keyword">li</span>&gt;{{ <span class="hljs-variable">$record</span>-&gt;title }}&lt;/<span class="hljs-keyword">li</span>&gt;
+&#x3C;<span class="hljs-keyword">li</span>>{{ <span class="hljs-variable">$record</span>->title }}&#x3C;/<span class="hljs-keyword">li</span>>
 
 <span class="hljs-comment">// record/no-items.blade.php</span>
-&lt;<span class="hljs-keyword">li</span>&gt;Không có kết <span class="hljs-keyword">qu</span>ả <span class="hljs-keyword">n</span>ào&lt;/<span class="hljs-keyword">li</span>&gt;</code></pre>
+&#x3C;<span class="hljs-keyword">li</span>>Không có kết <span class="hljs-keyword">qu</span>ả <span class="hljs-keyword">n</span>ào&#x3C;/<span class="hljs-keyword">li</span>></code></pre>
 <p>Bạn thấy đấy, từ 1 cấu trúc nested với <code>if .. esle</code> bạn có thể viết lại nó chỉ trong 1 dòng với <code>@each</code></p>
 <p>Nguồn: <a href="https://laravel-news.com/2014/09/laravel-blade/">laravel-news</a></p>
-]]></description><link>https://khoanguyen.me/each-voi-laravel-blade/</link><guid isPermaLink="true">https://khoanguyen.me/each-voi-laravel-blade/</guid><pubDate>Mon, 16 Mar 2015 10:00:00 GMT</pubDate></item><item><title><![CDATA[Xóa tất cả table trong database MySQL]]></title><description><![CDATA[<p>Nếu bạn đang dùng mysql command line để quản lí database (nhất là khi sử dụng VPS…) thì bạn sẽ biết rằng MySQL không hỗ trợ việc xóa tất cả table. Cách thường được dùng đó là xóa hẳn database và tạo database mới. Việc này khá tốn thời gian và cần dùng đến 3 câu query dài để thực hiện (gồm xóa, tạo database, cấp quyền cho user).</p>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/each-voi-laravel-blade/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/each-voi-laravel-blade/</guid><pubDate>Mon, 16 Mar 2015 10:00:00 GMT</pubDate></item><item><title><![CDATA[Xóa tất cả table trong database MySQL]]></title><description><![CDATA[<p>Nếu bạn đang dùng mysql command line để quản lí database (nhất là khi sử dụng VPS...) thì bạn sẽ biết rằng MySQL không hỗ trợ việc xóa tất cả table. Cách thường được dùng đó là xóa hẳn database và tạo database mới. Việc này khá tốn thời gian và cần dùng đến 3 câu query dài để thực hiện (gồm xóa, tạo database, cấp quyền cho user).</p>
 <p>Mình có tìm được đoạn code ngắn này mời các bạn tham khảo:</p>
-<pre><code class="language-mysql">DELIMITER $$
+<pre><code class="hljs language-mysql">DELIMITER $$
 
 <span class="hljs-keyword">DROP</span> <span class="hljs-keyword">PROCEDURE</span> <span class="hljs-keyword">IF</span> <span class="hljs-keyword">EXISTS</span> <span class="hljs-string">`drop_all_tables_from`</span> $$
 
@@ -506,19 +529,19 @@ nhưng mình sẽ giới thiệu một cấu trúc khác, không <strong>rối</
 
 DELIMITER ;</code></pre>
 <p>Sử dụng đơn giản bằng các gọi lệnh sau, thay database_name bằng tên phù hợp</p>
-<pre><code class="language-mysql"><span class="hljs-keyword">CALL</span> drop_all_tables_from(<span class="hljs-string">"database_name"</span>);</code></pre>
+<pre><code class="hljs language-mysql"><span class="hljs-keyword">CALL</span> drop_all_tables_from(<span class="hljs-string">"database_name"</span>);</code></pre>
 <p><strong>Lưu ý:</strong> Lệnh trên sẽ xóa mọi table trong database mà không hề có bất cứ cảnh báo hay xác nhận nào. Sử dụng cẩn thận.</p>
 <p>Nguồn: <a href="http://dor.ky/mysql-procedure-drop-all-tables-in-database/">dor.ky</a></p>
-]]></description><link>https://khoanguyen.me/xoa-tat-ca-cac-table-mysql/</link><guid isPermaLink="true">https://khoanguyen.me/xoa-tat-ca-cac-table-mysql/</guid><pubDate>Sun, 15 Mar 2015 08:00:00 GMT</pubDate></item><item><title><![CDATA[Blog mình thường đọc]]></title><description><![CDATA[<p>Không có gì đặc biệt ở đây. Chỉ là 1 list những blog của dev mình hay đọc thôi. Để lên đây để chia sẽ cùng với mọi người.</p>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/xoa-tat-ca-cac-table-mysql/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/xoa-tat-ca-cac-table-mysql/</guid><pubDate>Sun, 15 Mar 2015 08:00:00 GMT</pubDate></item><item><title><![CDATA[Blog mình thường đọc]]></title><description><![CDATA[<p>Không có gì đặc biệt ở đây. Chỉ là 1 list những blog của dev mình hay đọc thôi. Để lên đây để chia sẽ cùng với mọi người.</p>
 <ol>
 <li><a href="http://dor.ky/">Dor.ky - Scott Wilcox</a> : Laravel, PHP, Js</li>
 <li><a href="http://culttt.com/">Culttt.com - Philip Brown</a>: Laravel, Inspiration design (không thích đọc mục này lắm)</li>
 </ol>
 <p>Mọi người thích đọc blog nào? Cùng chia sẽ với mình nhé :D</p>
-]]></description><link>https://khoanguyen.me/blog-minh-thuong-doc/</link><guid isPermaLink="true">https://khoanguyen.me/blog-minh-thuong-doc/</guid><pubDate>Sun, 15 Mar 2015 06:00:00 GMT</pubDate></item><item><title><![CDATA[Database Seeder - Tạo dummy data - Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết thứ 4 trong series <a href="/gioi-thieu-series-larask-gist/">Laravel Gist</a> .</p>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/blog-minh-thuong-doc/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/blog-minh-thuong-doc/</guid><pubDate>Sun, 15 Mar 2015 06:00:00 GMT</pubDate></item><item><title><![CDATA[Database Seeder - Tạo dummy data - Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết thứ 4 trong series <a href="/gioi-thieu-series-larask-gist/">Laravel Gist</a> .</p>
 <p>Các bạn có thể xem code của project tại <a href="http://github.com/larask/gist">Github</a>.</p>
 <hr>
-<h1 id="Gioi-thieu"><a class="markdownIt-Anchor" href="#Gioi-thieu">#</a> Giới thiệu</h1>
+<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
 <p>Chúng ta đã tạo migration, model và cả sử dụng Uuid trong model
 nhưng chúng ta vẫn chưa có bất cứ dữ liệu nào để sử dụng.</p>
 <p>Làm sao để biết ứng dụng của chúng ta chạy đúng theo mong muốn?</p>
@@ -526,20 +549,20 @@ nhưng chúng ta vẫn chưa có bất cứ dữ liệu nào để sử dụng.<
 Chúng ta có thể tạo data bằng tay rồi sau đó import vào database.</p>
 <p>Đó là một công việc hết sức nhàm chán và tốn thời gian.
 Để mình chỉ cho các bạn các nhanh hơn.</p>
-<h1 id="Truoc-khi-bat-dau"><a class="markdownIt-Anchor" href="#Truoc-khi-bat-dau">#</a> Trước khi bắt đầu</h1>
+<h1 id="trước-khi-bắt-đầu"><a href="#tr%C6%B0%E1%BB%9Bc-khi-b%E1%BA%AFt-%C4%91%E1%BA%A7u" class="phenomic-HeadingAnchor">#</a>Trước khi bắt đầu</h1>
 <p>Hãy chạy lệnh <code>php artisan migrate:refresh</code> để áp dụng schema mà chúng ta đã thay đổi trong bài trước. Lệnh <code>migrate:refresh</code> thực tế là chạy 2 lệnh sau lần lượt: <code>migrate:rollback</code> và <code>migrate</code>. Không có gì mới ở đây cả.</p>
-<h1 id="Database-Seeder"><a class="markdownIt-Anchor" href="#Database-Seeder">#</a> Database Seeder</h1>
+<h1 id="database-seeder"><a href="#database-seeder" class="phenomic-HeadingAnchor">#</a>Database Seeder</h1>
 <p>Các bạn có thể hiểu database seeder là class chứa code để tạo ra dummy data. Khi chạy lệnh <code>php artisan db:seed</code>, Laravel sẽ gọi method <code>run()</code> trong file <code>database/seeds/DatabaseSeeder.php</code> .  Tuy nhiên, để tiện quản lí, chúng ta sẽ tạo riêng cho mỗi table 1 file và gọi các file này từ <code>DatabaseSeeder</code>.</p>
-<h1 id="Tao-seeder"><a class="markdownIt-Anchor" href="#Tao-seeder">#</a> Tạo seeder</h1>
+<h1 id="tạo-seeder"><a href="#t%E1%BA%A1o-seeder" class="phenomic-HeadingAnchor">#</a>Tạo seeder</h1>
 <p>Ở <a href="/model-va-migration-trong-laravel-5-gist/">bài trước</a> chúng ta có lệnh <code>php artisan make:model</code> để tạo nhanh model và migration cho model. Laravel đi kèm với 1 danh sách các lệnh để tạo nhanh các file. Các bạn có thể xem toàn bộ lệnh của <code>artisan</code> bằng cách chạy lệnh <code>php artisan</code>. Nhưng rất tiếc, không có lệnh tạo database seeder. Chúng ta sẽ cài đặt package <a href="https://github.com/laracasts/Laravel-5-Generators-Extended">Laravel 5 Generators Extended</a> để có được lệnh này. Về phần cài đặt, các bạn có thể xem readme để cài đặt.</p>
 <p>Sau khi cài đặt xong. Chúng ta đã có thể sử dụng <code>php artisan make:seed</code>. Ở đây, mình sẽ chạy 2 lệnh sau để tạo seeder cho User và Gist.</p>
-<pre><code class="language-shell"><span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seed</span> <span class="hljs-selector-tag">gist</span>
+<pre><code class="hljs language-shell"><span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seed</span> <span class="hljs-selector-tag">gist</span>
 <span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">make</span><span class="hljs-selector-pseudo">:seed</span> <span class="hljs-selector-tag">user</span></code></pre>
 <p>Sau khi hoàn thành chúng ta sẽ có 2 file <code>UserTableSeeder.php</code> và <code>GistTableSeeder.php</code> trong <code>app/database/seeds</code>. Mở file <code>DatabaseSeeder.php</code> trong cùng thư mục và thêm vào trong method <code>run()</code> :</p>
-<pre><code class="language-php"><span class="hljs-keyword">$this</span>-&gt;call(UserTableSeeder::class);
-<span class="hljs-keyword">$this</span>-&gt;call(GistTableSeeder::class);</code></pre>
+<pre><code class="hljs language-php"><span class="hljs-keyword">$this</span>->call(UserTableSeeder::class);
+<span class="hljs-keyword">$this</span>->call(GistTableSeeder::class);</code></pre>
 <p>File <code>DatabaseSeeder.php</code> của chúng ta lúc này :</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs language-php"><span class="hljs-meta">&#x3C;?php</span>
 
 <span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Seeder</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Eloquent</span>\<span class="hljs-title">Model</span>;
@@ -554,33 +577,33 @@ Chúng ta có thể tạo data bằng tay rồi sau đó import vào database.</
   </span>{
     Model::unguard();
 
-    <span class="hljs-keyword">$this</span>-&gt;call(UserTableSeeder::class);
-    <span class="hljs-keyword">$this</span>-&gt;call(GistTableSeeder::class);
+    <span class="hljs-keyword">$this</span>->call(UserTableSeeder::class);
+    <span class="hljs-keyword">$this</span>->call(GistTableSeeder::class);
   }
 }</code></pre>
 <p>Từ này, mỗi khi chúng ta chạy lệnh <code>php artisan db:seed</code>, method <code>run()</code> trong <code>UserTableSeeder</code> và <code>GistTableSeeder</code> sẽ được gọi theo thứ tự.</p>
-<h1 id="Dummy-Data"><a class="markdownIt-Anchor" href="#Dummy-Data">#</a> Dummy Data</h1>
+<h1 id="dummy-data"><a href="#dummy-data" class="phenomic-HeadingAnchor">#</a>Dummy Data</h1>
 <p>Bây giờ là phần quan trọng nhất, dummy data. Và để thuận tiện, chung1ta tiếp tục sử dụng 1 package khác của Laracasts : <a href="https://github.com/laracasts/TestDummy">Test Dummy</a>.</p>
 <p>Sau khi cài đặt, các bạn mở class <code>UserTableSeeder</code> và thêm vào method <code>run()</code> đoạn :</p>
-<pre><code class="language-php">TestDummy::times(<span class="hljs-number">100</span>)-&gt;create(<span class="hljs-string">'Gist\User'</span>);`</code></pre>
+<pre><code class="hljs language-php">TestDummy::times(<span class="hljs-number">100</span>)->create(<span class="hljs-string">'Gist\User'</span>);`</code></pre>
 <p>Nhớ import class TestDummy vào:</p>
-<pre><code class="language-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Laracasts</span>\<span class="hljs-title">TestDummy</span>\<span class="hljs-title">Factory</span> <span class="hljs-title">as</span> <span class="hljs-title">TestDummy</span>;</code></pre>
+<pre><code class="hljs language-php"><span class="hljs-keyword">use</span> <span class="hljs-title">Laracasts</span>\<span class="hljs-title">TestDummy</span>\<span class="hljs-title">Factory</span> <span class="hljs-title">as</span> <span class="hljs-title">TestDummy</span>;</code></pre>
 <p>Mục đích của đoạn code trên là sẽ tạo 100 record cho <code>Gist\User</code> của chúng ta. Tuy nhiên, <code>TestDummy</code> không thần kì tới mức có thể xác định được loại data nào cần sử dụng mà chúng ta cần phải định nghĩa chúng.</p>
-<h2 id="TestDummy-Factories"><a class="markdownIt-Anchor" href="#TestDummy-Factories">#</a> TestDummy Factories</h2>
+<h2 id="testdummy-factories"><a href="#testdummy-factories" class="phenomic-HeadingAnchor">#</a>TestDummy Factories</h2>
 <p>Tạo file <code>tests/factories/factories.php</code>. Trong class <code>UserTableSeeder</code> chúng ta cần <code>Gist\User</code> factory. Vì vậy trong file <code>factories.php</code> chúng ta sẽ định nghĩa factory này như sau:</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs language-php"><span class="hljs-meta">&#x3C;?php</span>
 
 $factory(<span class="hljs-string">'Gist\User'</span>, [
-  <span class="hljs-string">'name'</span> =&gt; $faker-&gt;sentence,
-  <span class="hljs-string">'username'</span> =&gt; $faker-&gt;unique()-&gt;userName,
-  <span class="hljs-string">'email'</span> =&gt; $faker-&gt;unique()-&gt;email,
-  <span class="hljs-string">'password'</span> =&gt; $faker-&gt;words, <span class="hljs-comment">// $faker-&gt;password doesn't work</span>
+  <span class="hljs-string">'name'</span> => $faker->sentence,
+  <span class="hljs-string">'username'</span> => $faker->unique()->userName,
+  <span class="hljs-string">'email'</span> => $faker->unique()->email,
+  <span class="hljs-string">'password'</span> => $faker->words, <span class="hljs-comment">// $faker->password doesn't work</span>
 ]);</code></pre>
 <p><em>Lưu ý: Tên factory chính là namespace của model</em></p>
 <p>Các bạn đang thắc mắc <code>$faker</code> là gì? Đó là 1 instance của package <a href="https://github.com/fzaninotto/Faker">fzaninotto/Faker</a> dùng để tạo các thông tin ngẫu nhiên như là <code>lorem ipsum</code> . Các bạn có thể xem đầy đủ các loại thông tin mà Faker hỗ trợ trong file readme.</p>
 <p>OK. Thử chạy <code>php artisan db:seed</code>, nếu ko có lỗi gì xảy ra chúng ta sẽ thấy 100 row trong table users. Thật là dễ dàng phải không nào?</p>
 <p>Chúng ta tiếp tục thực hiện tương tự đối với <code>Gist</code> Model.</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs language-php"><span class="hljs-meta">&#x3C;?php</span>
 <span class="hljs-comment">// app/database/seeders/GistTableSeeder.php</span>
 
 <span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Seeder</span>;
@@ -588,15 +611,15 @@ $factory(<span class="hljs-string">'Gist\User'</span>, [
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GistTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span> </span>{
   <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
-      TestDummy::times(<span class="hljs-number">100</span>)-&gt;create(<span class="hljs-string">'Gist\Gist'</span>);
+      TestDummy::times(<span class="hljs-number">100</span>)->create(<span class="hljs-string">'Gist\Gist'</span>);
   }
 }</code></pre>
 <p>Trong file <code>tests/factories/factories.php</code> thêm vào :</p>
-<pre><code class="language-php">$factory(<span class="hljs-string">'Gist\Gist'</span>, [
-  <span class="hljs-string">'title'</span> =&gt; $faker-&gt;sentence,
-  <span class="hljs-string">'content'</span> =&gt; $faker-&gt;paragraph,
-  <span class="hljs-string">'public'</span> =&gt; $faker-&gt;boolean,
-  <span class="hljs-string">'user_id'</span> =&gt; <span class="hljs-string">'factory:Gist\User'</span>,
+<pre><code class="hljs language-php">$factory(<span class="hljs-string">'Gist\Gist'</span>, [
+  <span class="hljs-string">'title'</span> => $faker->sentence,
+  <span class="hljs-string">'content'</span> => $faker->paragraph,
+  <span class="hljs-string">'public'</span> => $faker->boolean,
+  <span class="hljs-string">'user_id'</span> => <span class="hljs-string">'factory:Gist\User'</span>,
 ]);</code></pre>
 <p>Mục cần chúng ta cần chú ý đó chính là <code>user_id</code> . <code>factory:Gist\User</code> sẽ chỉ <code>TestDummy</code> lấy 1 id của <code>Gist\User</code> factory chèn vào đó. Như vậy chúng ta đã có <code>Gist\Gist</code> factory.</p>
 <p>Chạy thử: <code>php artisan db:seed</code> và 100 row sẽ xuất hiện trong <code>gists</code> table. Nhưng có 2 vấn đề xảy ra:</p>
@@ -605,15 +628,15 @@ $factory(<span class="hljs-string">'Gist\User'</span>, [
 <li>Tất cả  <code>user_id</code> đều giống nhau trong <code>gists</code> table.</li>
 </ol>
 <p>Chúng ta sẽ lần lượt giải quyết chúng trong các phần tiếp theo.</p>
-<h2 id="Truncate-Table"><a class="markdownIt-Anchor" href="#Truncate-Table">#</a> Truncate Table</h2>
+<h2 id="truncate-table"><a href="#truncate-table" class="phenomic-HeadingAnchor">#</a>Truncate Table</h2>
 <p>Để tránh việc có thêm 100 dòng mỗi khi chạy <code>db:seed</code> chúng ta sẽ chạy lệnh <code>TRUNCATE TABLE table-name</code> trước khi seed.</p>
 <p>Mở class <code>DatabaseSeeder</code> và thêm vào đầu method <code>run()</code></p>
-<pre><code class="language-php">DB::statement(<span class="hljs-string">'TRUNCATE TABLE users'</span>);
+<pre><code class="hljs language-php">DB::statement(<span class="hljs-string">'TRUNCATE TABLE users'</span>);
 DB::statement(<span class="hljs-string">'TRUNCATE TABLE gists'</span>);</code></pre>
 <p>Thử chạy và lỗi <code>constraint</code> sẽ xuất hiện do foreign constrain giữa <code>users</code> table và <code>gists</code> table.</p>
 <p>Chúng ta có để đổi vị trí của 2 dòng code cho nhau để khắc phục lỗi constraint. Tuy nhiên đó không phải giải pháp lâu dài, vì khi ứng dụng phát triển, các table có quan hệ chặt chẽ với nhau và chúng ta không thể nào xác định được table nào <code>truncate</code> trước sẽ không bị lỗi. Giải pháp của chúng ta là sẽ tắt kiểm tra <code>foreign key</code> trước khi <code>truncate</code> và bật lại nó sau khi đã hoàn thành.</p>
 <p>Đây là method <code>run()</code> hoàn chỉnh sau khi đã tích hợp lệnh :</p>
-<pre><code class="language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span>
+<pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span>
 </span>{
   DB::statement(<span class="hljs-string">'SET FOREIGN_KEY_CHECKS=0'</span>);
 
@@ -624,12 +647,12 @@ DB::statement(<span class="hljs-string">'TRUNCATE TABLE gists'</span>);</code></
 
   Model::unguard();
 
-  <span class="hljs-keyword">$this</span>-&gt;call(UserTableSeeder::class);
-  <span class="hljs-keyword">$this</span>-&gt;call(GistTableSeeder::class);
+  <span class="hljs-keyword">$this</span>->call(UserTableSeeder::class);
+  <span class="hljs-keyword">$this</span>->call(GistTableSeeder::class);
 }</code></pre>
-<h2 id="Tao-user_id-khac-nhau"><a class="markdownIt-Anchor" href="#Tao-user_id-khac-nhau">#</a> Tạo user_id khác nhau</h2>
+<h2 id="tạo-user_id-khác-nhau"><a href="#t%E1%BA%A1o-user_id-kh%C3%A1c-nhau" class="phenomic-HeadingAnchor">#</a>Tạo user_id khác nhau</h2>
 <p>Như chúng ta đã biết ở trên thì khi chạy <code>db:seed</code> tất cả <code>user_id</code> trong <code>gists</code> table sẽ giống nhau. Đây không phải là lỗi mà là cơ chế hoạt động của <code>TestDummy</code>. Để khắc phục, thay vì ra lệnh cho <code>TestDummy</code> tạo 100 row thì chúng ta sẽ chạy <code>TestDummy</code> 100 lần, mỗi lần tạo 1 row.</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs language-php"><span class="hljs-meta">&#x3C;?php</span>
 
 <span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Seeder</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Laracasts</span>\<span class="hljs-title">TestDummy</span>\<span class="hljs-title">Factory</span> <span class="hljs-title">as</span> <span class="hljs-title">TestDummy</span>;
@@ -637,12 +660,12 @@ DB::statement(<span class="hljs-string">'TRUNCATE TABLE gists'</span>);</code></
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GistTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span> </span>{
   <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">foreach</span>(range(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>) <span class="hljs-keyword">as</span> $index) {
-        TestDummy::times(<span class="hljs-number">1</span>)-&gt;create(<span class="hljs-string">'Gist\Gist'</span>);
+        TestDummy::times(<span class="hljs-number">1</span>)->create(<span class="hljs-string">'Gist\Gist'</span>);
     }
   }
 }</code></pre>
 <p>Tuy nhiên, đoạn code trên vẫn chưa tối ưu lắm vì 1 user chỉ có 1 Gist. (có thể <code>TestDummy</code> sẽ chọn lại 1 user_id bị trùng nhưng xác suất là rất thấp). Để tạo ra 1 database ngẫu nhiên hơn nữa. Chúng ta sẽ dùng function <code>rand()</code>.</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs language-php"><span class="hljs-meta">&#x3C;?php</span>
 
 <span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Seeder</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Laracasts</span>\<span class="hljs-title">TestDummy</span>\<span class="hljs-title">Factory</span> <span class="hljs-title">as</span> <span class="hljs-title">TestDummy</span>;
@@ -650,20 +673,20 @@ DB::statement(<span class="hljs-string">'TRUNCATE TABLE gists'</span>);</code></
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">GistTableSeeder</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Seeder</span> </span>{
   <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">run</span><span class="hljs-params">()</span> </span>{
     <span class="hljs-keyword">foreach</span>(range(<span class="hljs-number">0</span>,<span class="hljs-number">100</span>) <span class="hljs-keyword">as</span> $index) {
-      TestDummy::times(rand(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>))-&gt;create(<span class="hljs-string">'Gist\Gist'</span>);
+      TestDummy::times(rand(<span class="hljs-number">1</span>,<span class="hljs-number">5</span>))->create(<span class="hljs-string">'Gist\Gist'</span>);
     }
   }
 }</code></pre>
 <p>Như vậy, chúng ta sẽ chạy <code>TestDummy</code> 100 lần, mỗi lần <code>TestDummy</code> sẽ thêm vào ngẫu nhiên 1-5 records. Các bạn có thể muốn giảm 100 xuống 1 con số thấp hơn để khỏi mất công chờ.</p>
-<h1 id="Ket-luan"><a class="markdownIt-Anchor" href="#Ket-luan">#</a> Kết luận</h1>
+<h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Qua bài này, các bạn đã biết được cách dùng <code>TestDummy</code> kết hợp với <code>Faker</code> để tạo dummy data phục vụ cho việc develop và testing.</p>
 <p>Mình và anh <a href="http://blog.luuhoangnam.com/">Nam</a> đã push vài commit để hiển thị các database này ra ngoài dưới dạng json. Các bạn có thể clone về, cài đặt như bình thường (xem file readme) và truy cập vào route <code>/trending</code> để xem thử.</p>
-]]></description><link>https://khoanguyen.me/database-seeder-larask-gist/</link><guid isPermaLink="true">https://khoanguyen.me/database-seeder-larask-gist/</guid><pubDate>Fri, 13 Mar 2015 17:00:00 GMT</pubDate></item><item><title><![CDATA[Detour - Giới thiệu và sử dụng UUID]]></title><description><![CDATA[<blockquote>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/database-seeder-larask-gist/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/database-seeder-larask-gist/</guid><pubDate>Fri, 13 Mar 2015 17:00:00 GMT</pubDate></item><item><title><![CDATA[Detour - Giới thiệu và sử dụng UUID]]></title><description><![CDATA[<blockquote>
 <p>Đây là bài viết thứ 3 trong series <a href="/gioi-thieu-series-larask-gist/">Laravel Gist</a>.
 Các bạn có thể xem code của project tại <a href="http://github.com/larask/gist">Github</a>.</p>
 </blockquote>
 <hr>
-<h1 id="Gioi-thieu"><a class="markdownIt-Anchor" href="#Gioi-thieu">#</a> Giới thiệu</h1>
+<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
 <p>Trong bài trước chúng ta đã tạo và chỉnh sửa migration file nhằm tạo 3 table</p>
 <ul>
 <li>users</li>
@@ -675,45 +698,45 @@ Các bạn có thể xem code của project tại <a href="http://github.com/lar
 <p>Một lợi ích khác của cách này đó là người khác không thể biết tổng số record có trong table của bạn. Một dạng địa chỉ thường thấy của các blog home-growth (tự phát triển) có dạng <code>http://example.com/my-blog-slug-here/id</code>. Và <code>id</code> thường là auto-increment key (mà 99% là vậy). Nếu bạn là một công ty kinh doanh, đối thủ của bạn có thể dễ dàng tìm ra được tổng số record bằng cách tăng dần id lên tới khi có lỗi 404. :smile:</p>
 <p><em>Nhiều bạn sẽ nói đa số các blog đều không có phần <code>id</code> ở cuối tuy nhiên theo kinh nghiệm cá nhân, route như vậy là tối ưu nhất để tránh phiền phức về sau liên quan giữa <code>slug</code> và <code>title</code></em></p>
 <p>Hay đơn giản là nhìn vào ứng dụng Gist của chúng ta. 1 Gist có thể có trạng thái public/private. Nhưng nếu chúng ta dùng auto-increment <code>id</code> thì private gist của dễ dàng tìm ra (giả sử chúng ta không check username).</p>
-<h1 id="UUID"><a class="markdownIt-Anchor" href="#UUID">#</a> UUID</h1>
+<h1 id="uuid"><a href="#uuid" class="phenomic-HeadingAnchor">#</a>UUID</h1>
 <p>Dài dòng thế là đủ rồi. Bây giờ quay lại chủ đề chính. UUID là gì ? Là một chuẩn chung nhằm tạo ra các random-hash không trùng nhau (xác xuất gần bằng 0).  Nếu các bạn quan tâm, các bạn có thể tìm hiểu về chuẩn UUID <a href="http://tools.ietf.org/html/rfc4122">tại đây</a>.</p>
 <p>Một chuỗi UUID cơ bản có dạng như sau: <code>6ba7b810-9dad-11d1-80b4-00c04fd430c8</code> gồm 36 kí tự. 32 kí tự thỏa mãn<code>[a-z0-9]</code> và chia thành 4 nhóm bởi 4 dấu - (hyphen). Vì 1 UUID khá dài nên chúng ta chỉ lấy 7 kí tự đầu tiên và hiển thị ra ngoài (vẫn lưu đầy đủ UUID trong database).</p>
-<h1 id="Migrations"><a class="markdownIt-Anchor" href="#Migrations">#</a> Migrations</h1>
+<h1 id="migrations"><a href="#migrations" class="phenomic-HeadingAnchor">#</a>Migrations</h1>
 <p>Chúng ta đã biết được cấu trúc của UUID một ID, hãy chỉnh sửa lại migration để áp dụng UUID vào Gist.</p>
 <p><em>Lưu ý: Chúng ta còn đang trong giai đoạn ban đầu, việc sửa đổi trực tiếp các file migration là chấp nhận được. Nếu như các bạn đang làm project đã được deploy (và có dữ liệu thực). Hãy tạo thêm 1 file migration mới và áp dụng các sửa đổi trong file này</em></p>
 <p>Việc sửa đổi file migration rất đơn giản, những chỗ nào kiểu dữ liệu là <code>INT(10)</code> mình sẽ chuyển thành <code>VARCHAR(36)</code>. Ở đây mình đã sửa đổi sẵn các file migration, các bạn có thể tham khảo thêm:</p>
-<pre><code class="language-php"><span class="hljs-comment">// yyyy_mm_dd_xxxxxxx_create_users_table.php</span>
+<pre><code class="hljs language-php"><span class="hljs-comment">// yyyy_mm_dd_xxxxxxx_create_users_table.php</span>
 <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span> </span>{
   Schema::create(<span class="hljs-string">'users'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(Blueprint $table)</span> </span>{
-    $table-&gt;string(<span class="hljs-string">'id'</span>,<span class="hljs-number">36</span>)-&gt;index()-&gt;unique();
-    $table-&gt;primary(<span class="hljs-string">'id'</span>);
-    $table-&gt;string(<span class="hljs-string">'name'</span>);
-    $table-&gt;string(<span class="hljs-string">'username'</span>, <span class="hljs-number">20</span>)-&gt;nullable()-&gt;default(<span class="hljs-keyword">null</span>)-&gt;unique();
-    $table-&gt;string(<span class="hljs-string">'email'</span>)-&gt;nullable()-&gt;default(<span class="hljs-keyword">null</span>)-&gt;unique();
-    $table-&gt;string(<span class="hljs-string">'password'</span>, <span class="hljs-number">60</span>);
-    $table-&gt;rememberToken();
-    $table-&gt;timestamps();
+    $table->string(<span class="hljs-string">'id'</span>,<span class="hljs-number">36</span>)->index()->unique();
+    $table->primary(<span class="hljs-string">'id'</span>);
+    $table->string(<span class="hljs-string">'name'</span>);
+    $table->string(<span class="hljs-string">'username'</span>, <span class="hljs-number">20</span>)->nullable()->default(<span class="hljs-keyword">null</span>)->unique();
+    $table->string(<span class="hljs-string">'email'</span>)->nullable()->default(<span class="hljs-keyword">null</span>)->unique();
+    $table->string(<span class="hljs-string">'password'</span>, <span class="hljs-number">60</span>);
+    $table->rememberToken();
+    $table->timestamps();
   });
 }</code></pre>
-<pre><code class="language-php"><span class="hljs-comment">// yyyy_mm_dd_xxxxxxx_create_gists_table.php</span>
+<pre><code class="hljs language-php"><span class="hljs-comment">// yyyy_mm_dd_xxxxxxx_create_gists_table.php</span>
 <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span> </span>{
   Schema::create(<span class="hljs-string">'gists'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(Blueprint $table)</span> </span>{
-    $table-&gt;string(<span class="hljs-string">'id'</span>,<span class="hljs-number">36</span>)-&gt;index()-&gt;unique();
-    $table-&gt;primary(<span class="hljs-string">'id'</span>);
-    $table-&gt;string(<span class="hljs-string">'user_id'</span>,<span class="hljs-number">36</span>)-&gt;nullable()-&gt;index();
-    $table-&gt;string(<span class="hljs-string">'title'</span>);
-    $table-&gt;binary(<span class="hljs-string">'content'</span>);
-    $table-&gt;boolean(<span class="hljs-string">'public'</span>);
-    $table-&gt;timestamps();
-    $table-&gt;softDeletes();
-    $table-&gt;foreign(<span class="hljs-string">'user_id'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'users'</span>)-&gt;onDelete(<span class="hljs-string">'SET NULL'</span>);
+    $table->string(<span class="hljs-string">'id'</span>,<span class="hljs-number">36</span>)->index()->unique();
+    $table->primary(<span class="hljs-string">'id'</span>);
+    $table->string(<span class="hljs-string">'user_id'</span>,<span class="hljs-number">36</span>)->nullable()->index();
+    $table->string(<span class="hljs-string">'title'</span>);
+    $table->binary(<span class="hljs-string">'content'</span>);
+    $table->boolean(<span class="hljs-string">'public'</span>);
+    $table->timestamps();
+    $table->softDeletes();
+    $table->foreign(<span class="hljs-string">'user_id'</span>)->references(<span class="hljs-string">'id'</span>)->on(<span class="hljs-string">'users'</span>)->onDelete(<span class="hljs-string">'SET NULL'</span>);
   });
 }</code></pre>
 <p>Xem 2 file đầy đủ tại <a href="https://github.com/Larask/gist/commit/e24d7b64ba6ad2da1b1787fb2c98fceb90e01476">gist#e24d7b64ba</a></p>
-<h1 id="Model"><a class="markdownIt-Anchor" href="#Model">#</a> Model</h1>
+<h1 id="model"><a href="#model" class="phenomic-HeadingAnchor">#</a>Model</h1>
 <p>Mặc định, Eloquent model sẽ dùng cột <code>id</code> auto-increment để làm khóa chính (primary key) của model. Chúng ta cần áp dụng thay đổi nhỏ để Eloquent có thể hiểu được chúng ta đang dùng UUID thay cho auto-increment value.</p>
 <p>Trong file <code>app/Gist.php</code> thêm vào :</p>
-<pre><code class="language-php"><span class="hljs-keyword">public</span> $incrementing = <span class="hljs-keyword">false</span>;
+<pre><code class="hljs language-php"><span class="hljs-keyword">public</span> $incrementing = <span class="hljs-keyword">false</span>;
 
 <span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
     </span>{
@@ -721,7 +744,7 @@ Các bạn có thể xem code của project tại <a href="http://github.com/lar
 
         <span class="hljs-keyword">static</span>::creating(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($model)</span> </span>{
 
-            $model-&gt;{$model-&gt;getKeyName()} = Uuid::generate(<span class="hljs-number">4</span>);
+            $model->{$model->getKeyName()} = Uuid::generate(<span class="hljs-number">4</span>);
 
         });
     }</code></pre>
@@ -733,23 +756,23 @@ Các bạn có thể xem code của project tại <a href="http://github.com/lar
 <p>Và trong <code>app/Gist.php</code> nhớ import Class <code>Uuid</code> :</p>
 <p><code>use Webpatser\Uuid\Uuid;</code></p>
 <p>Ở đây có 2 chỗ chúng ta cần quan tâm, đó là</p>
-<pre><code class="language-php"><span class="hljs-keyword">public</span> $incrementing = <span class="hljs-keyword">false</span>;</code></pre>
+<pre><code class="hljs language-php"><span class="hljs-keyword">public</span> $incrementing = <span class="hljs-keyword">false</span>;</code></pre>
 <p>Tức là báo cho Eloquent biết sẽ không có giá trị <code>auto-increment</code> <a href="https://github.com/illuminate/database/blob/master/Eloquent/Model.php#L58-L63">(chi tiết)</a>.</p>
 <p>Tiếp theo là</p>
-<pre><code class="language-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
+<pre><code class="hljs language-php"><span class="hljs-keyword">public</span> <span class="hljs-keyword">static</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">boot</span><span class="hljs-params">()</span>
     </span>{
       <span class="hljs-keyword">parent</span>::boot();
 
         <span class="hljs-keyword">static</span>::creating(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($model)</span> </span>{
 
-            $model-&gt;{$model-&gt;getKeyName()} = Uuid::generate(<span class="hljs-number">4</span>);
+            $model->{$model->getKeyName()} = Uuid::generate(<span class="hljs-number">4</span>);
 
         });
     }</code></pre>
-<p>Đây được gọi là Model-events các bạn có thể <a href="http://laravel.com/docs/5.0/eloquent#model-events">xem docs của Laravel 5.0</a> để hiểu rõ hơn. Model event xứng đáng một bài viết riêng. Mình chỉ giải thích ngắn gọn là trước khi một model được tạo (tức là 1 row trong table - xem lại bài trước về Active Record Pattern). Đoạn code chúng ta thêm vào sẽ tạo một Uuid và gắn vào primary key (lấy primary key bằng <code>$model-&gt;getKeyName()</code>).</p>
-<h1 id="Refactor"><a class="markdownIt-Anchor" href="#Refactor">#</a> Refactor</h1>
+<p>Đây được gọi là Model-events các bạn có thể <a href="http://laravel.com/docs/5.0/eloquent#model-events">xem docs của Laravel 5.0</a> để hiểu rõ hơn. Model event xứng đáng một bài viết riêng. Mình chỉ giải thích ngắn gọn là trước khi một model được tạo (tức là 1 row trong table - xem lại bài trước về Active Record Pattern). Đoạn code chúng ta thêm vào sẽ tạo một Uuid và gắn vào primary key (lấy primary key bằng <code>$model->getKeyName()</code>).</p>
+<h1 id="refactor"><a href="#refactor" class="phenomic-HeadingAnchor">#</a>Refactor</h1>
 <p>Như vậy là chúng ta đã hoàn thành việc sự dụng Uuid trong Gist Model. Nhưng theo như file migration ở trên, chúng ta muốn sử dụng cho cả User Model. Giải pháp? Copy-paste phần code chúng ta sử ở Gist Model qua User Model. 100% là sẽ hoạt động. Nhưng giải sử chúng ta muốn thêm chức năng comment? Copy-paste tiếp à :D . Mình sẽ chỉ các bạn cách đơn giản hơn. Đầu tiên tạo file <code>app/UuidModel.php</code> với nội dung:</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs language-php"><span class="hljs-meta">&#x3C;?php</span>
 <span class="hljs-keyword">namespace</span> <span class="hljs-title">Gist</span>;
 
 <span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Eloquent</span>\<span class="hljs-title">Model</span>;
@@ -763,18 +786,18 @@ Các bạn có thể xem code của project tại <a href="http://github.com/lar
 
         <span class="hljs-keyword">static</span>::creating(<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-params">($model)</span> </span>{
 
-            $model-&gt;{$model-&gt;getKeyName()} = Uuid::generate(<span class="hljs-number">4</span>);
+            $model->{$model->getKeyName()} = Uuid::generate(<span class="hljs-number">4</span>);
 
         });
     }
 
 }</code></pre>
 <p>Sau đó trong Gist Model thay vì ban đầu là</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs language-php"><span class="hljs-meta">&#x3C;?php</span>
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Gist</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">Model</span></span>{}</code></pre>
 <p>Chúng ta sửa lại :</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs language-php"><span class="hljs-meta">&#x3C;?php</span>
 
 <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Gist</span> <span class="hljs-keyword">extends</span> <span class="hljs-title">UuidModel</span>
 </span>{
@@ -782,48 +805,48 @@ Các bạn có thể xem code của project tại <a href="http://github.com/lar
 }</code></pre>
 <p>Làm tương tự với User Model. Như vậy từ nay, khi muốn sử dụng Uuid cho bất cứ Model nào, chúng ta chỉ đơn giản làm như vậy.</p>
 <p><em>Lưu ý: <code>public $incrementing = false;</code> có thể đặt tại <code>app/UuidModel.php</code> nhưng vì li do nào đó mà nó làm fail PHPUnit nên mình tạm thời đặt nó ở đây. Sẽ refactor tiếp khi cần thiết</em></p>
-<h1 id="Ket-luan"><a class="markdownIt-Anchor" href="#Ket-luan">#</a> Kết luận</h1>
-<p>Qua bài này, chúng ta đã biết được cách sử dụng Uuid với Eloquent Model. Chúng ta đã sửa và thêm vào không quá 20 dòng code. Tất cả đều nhờ vào sự “thần kì” của Laravel.</p>
-]]></description><link>https://khoanguyen.me/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/</link><guid isPermaLink="true">https://khoanguyen.me/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/</guid><pubDate>Fri, 13 Mar 2015 10:00:00 GMT</pubDate></item><item><title><![CDATA[Migration và Model trong Laravel 5 - Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết thứ hai trong series <a href="/gioi-thieu-series-larask-gist/">Larask Gist</a> .</p>
+<h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
+<p>Qua bài này, chúng ta đã biết được cách sử dụng Uuid với Eloquent Model. Chúng ta đã sửa và thêm vào không quá 20 dòng code. Tất cả đều nhờ vào sự "thần kì" của Laravel.</p>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/</guid><pubDate>Fri, 13 Mar 2015 10:00:00 GMT</pubDate></item><item><title><![CDATA[Migration và Model trong Laravel 5 - Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết thứ hai trong series <a href="/gioi-thieu-series-larask-gist/">Larask Gist</a> .</p>
 <p>Các bạn có thể xem code của toàn bộ bài viết tại <a href="https://github.com/Larask/gist/tree/d3e5e96139fce98e028834035bb41759fd49b62e">github</a></p>
-<h1 id="Model"><a class="markdownIt-Anchor" href="#Model">#</a> Model</h1>
+<h1 id="model"><a href="#model" class="phenomic-HeadingAnchor">#</a>Model</h1>
 <p>Trong <a href="/tim-hieu-mo-hinh-mvc-la-gi/">mô hình MVC</a> thì Model đóng vai trò giao tiếp với database. Laravel đi kèm với Eloquent, một <a href="http://yhoc.co/orm-eloquent">ORM</a>  với Active Record Pattern. <a href="http://yhoc.co/active-record-data-mapper">(xem chi tiết về các pattern ORM)</a> . Trong Active Record Pattern thì mỗi object sẽ đại diện cho một dòng trong table. Điều này làm cho việc tương tác với database dễ hơn bao giờ hết.</p>
 <p>Laravel 5 đi kèm với model User mặc định <code>app/User.php</code> và class này sẽ đại diện cho User trong toàn bộ ứng dụng của bạn.</p>
-<h1 id="Migration"><a class="markdownIt-Anchor" href="#Migration">#</a> Migration</h1>
+<h1 id="migration"><a href="#migration" class="phenomic-HeadingAnchor">#</a>Migration</h1>
 <p>Bạn quản lí code bằng git như database, một thành phần quan trọng không kém là database thì không được như vậy. Vì vậy migration được tạo ra để quản lí sự thay đổi cấu trúc dữ liệu. Việc sử dụng migration sẽ giúp bạn giảm nhẹ công việc khi deploy ứng dụng.</p>
 <p>Lấy ví dụ như một ngày đẹp trời, bạn muốn thêm vào database table <code>dogs</code>. Ở localhost, bạn vào phpmyadmin (hay bất cứ công cụ quản lí nào bạn sử dụng, kể cả cli) chạy query tạo ra table <code>dogs</code>. Sau khi thêm vào code để sử dụng table mới này.
-Bạn muốn up code lên host/vps. Okie. Push code lên github, pull code trên vps(hoặc dùng webhooks để tự động hóa luôn). Còn database thì sao? Ừm lên phpmyadmin của vps chạy query tiếp. Nhưng … query chính xác là gì :disappointed: ?</p>
+Bạn muốn up code lên host/vps. Okie. Push code lên github, pull code trên vps(hoặc dùng webhooks để tự động hóa luôn). Còn database thì sao? Ừm lên phpmyadmin của vps chạy query tiếp. Nhưng ... query chính xác là gì :disappointed: ?</p>
 <p>Nếu bạn sử dụng migration ngay từ đầu thì việc duy nhất bạn cần làm trên cả local và host/vps là chạy lên <code>php artisan migrate</code> để thực hiện việc cập nhật database.</p>
-<h1 id="Tao-migration-va-model"><a class="markdownIt-Anchor" href="#Tao-migration-va-model">#</a> Tạo migration và model</h1>
+<h1 id="tạo-migration-và-model"><a href="#t%E1%BA%A1o-migration-v%C3%A0-model" class="phenomic-HeadingAnchor">#</a>Tạo migration và model</h1>
 <p>Bây giờ chúng ta suy nghĩ về cấu trúc của ứng dụng. Ứng dụng của chúng ta tập trung về Gist nên chúng ta sẽ đặt tên table sẽ là <code>gists</code> và model sẽ là <code>Gist</code>. Như vậy chúng ta cần làm 2 việc :</p>
 <ul>
 <li>Tạo model <code>Gist</code></li>
 <li>Dùng migration để tạo ra table <code>gists</code></li>
 </ul>
 <p>Laravel 5 cung cấp cho chúng ta công cụ tiện dụng để làm việc này. Mở Cmder :</p>
-<pre><code class="language-shell">php artisan make:<span class="hljs-keyword">model</span> Gist
+<pre><code class="hljs language-shell">php artisan make:<span class="hljs-keyword">model</span> Gist
 
 <span class="hljs-keyword">Model</span> created successfully.
 Created Migration: yyyy_mm_dd_xxxxxx_create_gists_table</code></pre>
 <p>Các bạn sẽ thấy xuất hiện 2 file mới là <code>app/Gist.php</code> và <code>database/migrations/yyyy_mm_dd_xxxxxx_create_gists_table.php</code> với <code>yyyy_mm_dd_xxxxxx</code> là thời điểm migration này được tạo ra.</p>
-<h1 id="Thiet-lap-cau-truc-du-lieu"><a class="markdownIt-Anchor" href="#Thiet-lap-cau-truc-du-lieu">#</a> Thiết lập cấu trúc dữ liệu</h1>
-<h2 id="Users-table"><a class="markdownIt-Anchor" href="#Users-table">#</a> Users table</h2>
+<h1 id="thiết-lập-cấu-trúc-dữ-liệu"><a href="#thi%E1%BA%BFt-l%E1%BA%ADp-c%E1%BA%A5u-tr%C3%BAc-d%E1%BB%AF-li%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Thiết lập cấu trúc dữ liệu</h1>
+<h2 id="users-table"><a href="#users-table" class="phenomic-HeadingAnchor">#</a>Users table</h2>
 <ul>
 <li>Trước hết chúng ta hãy xem qua cấu trúc của file <code>database/migrations/2014_10_12_100000_create_user_table.php</code></li>
 </ul>
-<pre><code class="language-php"><span class="hljs-comment">/**
+<pre><code class="hljs language-php"><span class="hljs-comment">/**
   * Run the migrations.
   *
   * <span class="hljs-doctag">@return</span> void
   */</span>
   <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span> <span class="hljs-params">()</span> </span>{
     Schema::create(<span class="hljs-string">'users'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(Blueprint $table)</span> </span>{
-      $table-&gt;increments(<span class="hljs-string">'id'</span>);
-      $table-&gt;string(<span class="hljs-string">'name'</span>);
-      $table-&gt;string(<span class="hljs-string">'email'</span>)-&gt;unique();
-      $table-&gt;string(<span class="hljs-string">'password'</span>, <span class="hljs-number">60</span>);
-      $table-&gt;rememberToken();
-      $table-&gt;timestamps();
+      $table->increments(<span class="hljs-string">'id'</span>);
+      $table->string(<span class="hljs-string">'name'</span>);
+      $table->string(<span class="hljs-string">'email'</span>)->unique();
+      $table->string(<span class="hljs-string">'password'</span>, <span class="hljs-number">60</span>);
+      $table->rememberToken();
+      $table->timestamps();
     });
   }
 
@@ -847,31 +870,31 @@ còn function <code>down()</code> sẽ được gọi khi bạn chạy lệnh <c
 <li>Index và unsigned cột <code>id</code></li>
 </ul>
 <p>Và mình có function <code>up()</code> hoàn chỉnh:</p>
-<pre><code class="language-php"><span class="hljs-comment">/**
+<pre><code class="hljs language-php"><span class="hljs-comment">/**
   * Run the migrations.
   *
   * <span class="hljs-doctag">@return</span> void
   */</span>
   <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span> </span>{
     Schema::create(<span class="hljs-string">'users'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(Blueprint $table)</span> </span>{
-      $table-&gt;increments(<span class="hljs-string">'id'</span>)-&gt;index();
-      $table-&gt;string(<span class="hljs-string">'name'</span>);
-      $table-&gt;string(<span class="hljs-string">'username'</span>, <span class="hljs-number">20</span>)-&gt;nullable()-&gt;default(<span class="hljs-keyword">null</span>)-&gt;unique();
-      $table-&gt;string(<span class="hljs-string">'email'</span>)-&gt;nullable()-&gt;default(<span class="hljs-keyword">null</span>)-&gt;unique();
-      $table-&gt;string(<span class="hljs-string">'password'</span>, <span class="hljs-number">60</span>);
-      $table-&gt;rememberToken();
-      $table-&gt;timestamps();
+      $table->increments(<span class="hljs-string">'id'</span>)->index();
+      $table->string(<span class="hljs-string">'name'</span>);
+      $table->string(<span class="hljs-string">'username'</span>, <span class="hljs-number">20</span>)->nullable()->default(<span class="hljs-keyword">null</span>)->unique();
+      $table->string(<span class="hljs-string">'email'</span>)->nullable()->default(<span class="hljs-keyword">null</span>)->unique();
+      $table->string(<span class="hljs-string">'password'</span>, <span class="hljs-number">60</span>);
+      $table->rememberToken();
+      $table->timestamps();
     });
   }</code></pre>
 <p>Nguyên nhân mình cho 2 cột <code>email</code> và <code>username</code> nullable là sau này,
-nếu bạn muốn tích hợp chức năng login với Facebook/Google+/Twitter …
+nếu bạn muốn tích hợp chức năng login với Facebook/Google+/Twitter ...
 thì nhiều khi các dịch vụ này sẽ không cung cấp email hay username (nhất là Facebook).
 Vì vậy, cứ để cho nó null sau này sẽ tính sau.</p>
 <p>Các bạn có thể xem các lệnh khác nhau của
 <a href="http://laravel.com/docs/5.0/schema">class Schema tại đây</a></p>
-<h2 id="Gists-table"><a class="markdownIt-Anchor" href="#Gists-table">#</a> Gists table</h2>
+<h2 id="gists-table"><a href="#gists-table" class="phenomic-HeadingAnchor">#</a>Gists table</h2>
 <p>Chúng ta sẽ đi nhanh qua phần này, ở đây mình có sẵn file migration cho gists table</p>
-<pre><code class="language-php"><span class="hljs-meta">&lt;?php</span>
+<pre><code class="hljs language-php"><span class="hljs-meta">&#x3C;?php</span>
 
 <span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Schema</span>\<span class="hljs-title">Blueprint</span>;
 <span class="hljs-keyword">use</span> <span class="hljs-title">Illuminate</span>\<span class="hljs-title">Database</span>\<span class="hljs-title">Migrations</span>\<span class="hljs-title">Migration</span>;
@@ -884,14 +907,14 @@ Vì vậy, cứ để cho nó null sau này sẽ tính sau.</p>
    */</span>
   <span class="hljs-keyword">public</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">up</span><span class="hljs-params">()</span> </span>{
     Schema::create(<span class="hljs-string">'gists'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span><span class="hljs-params">(Blueprint $table)</span> </span>{
-      $table-&gt;increments(<span class="hljs-string">'id'</span>)-&gt;index();
-      $table-&gt;unsignedInteger(<span class="hljs-string">'user_id'</span>)-&gt;nullable()-&gt;index();
-      $table-&gt;string(<span class="hljs-string">'title'</span>);
-      $table-&gt;longText(<span class="hljs-string">'content'</span>);
-      $table-&gt;boolean(<span class="hljs-string">'public'</span>);
-      $table-&gt;timestamps();
-      $table-&gt;softDeletes();
-      $table-&gt;foreign(<span class="hljs-string">'user_id'</span>)-&gt;references(<span class="hljs-string">'id'</span>)-&gt;on(<span class="hljs-string">'users'</span>)-&gt;onDelete(<span class="hljs-string">'SET NULL'</span>);
+      $table->increments(<span class="hljs-string">'id'</span>)->index();
+      $table->unsignedInteger(<span class="hljs-string">'user_id'</span>)->nullable()->index();
+      $table->string(<span class="hljs-string">'title'</span>);
+      $table->longText(<span class="hljs-string">'content'</span>);
+      $table->boolean(<span class="hljs-string">'public'</span>);
+      $table->timestamps();
+      $table->softDeletes();
+      $table->foreign(<span class="hljs-string">'user_id'</span>)->references(<span class="hljs-string">'id'</span>)->on(<span class="hljs-string">'users'</span>)->onDelete(<span class="hljs-string">'SET NULL'</span>);
     });
   }
 
@@ -905,45 +928,45 @@ Vì vậy, cứ để cho nó null sau này sẽ tính sau.</p>
   }
 }</code></pre>
 <p>Ở đây chúng ta có cột <code>public</code> với kiểu boolean để chứa trạng thái public/private của gists.</p>
-<p><code>$table-&gt;softDeletes();</code> dùng để tạo một cột <code>deleted_at</code> (chúng ta sẽ nói về vấn đề này sau).</p>
-<p>Cuối cùng là <code>$table-&gt;foreign('user_id')-&gt;references('id')-&gt;on('users')-&gt;onDelete('SET NULL');</code> để set foreign constraint giữa <code>gists</code> table và <code>users</code> table. Ở đây mình muốn khi user bị xóa ra khỏi database thì gists của họ vẫn còn tồn tại trong hệ thống.</p>
+<p><code>$table->softDeletes();</code> dùng để tạo một cột <code>deleted_at</code> (chúng ta sẽ nói về vấn đề này sau).</p>
+<p>Cuối cùng là <code>$table->foreign('user_id')->references('id')->on('users')->onDelete('SET NULL');</code> để set foreign constraint giữa <code>gists</code> table và <code>users</code> table. Ở đây mình muốn khi user bị xóa ra khỏi database thì gists của họ vẫn còn tồn tại trong hệ thống.</p>
 <p>Okie. So far so good. Mở Cmder lên và gõ lệnh</p>
-<pre><code class="language-shell"><span class="hljs-attribute">php artisan migrate</span></code></pre>
+<pre><code class="hljs language-shell"><span class="hljs-attribute">php artisan migrate</span></code></pre>
 <p>Vào kiểm tra trong phpmyadmin, mọi cấu trúc đã có ở trong table. Laravel sẽ tự động tạo thêm table <code>migrations</code> để quản lí migrations cho bạn. Bạn không cần quan tâm về table này</p>
 <p>Gõ lệnh</p>
-<pre><code class="language-shell"><span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">migrate</span><span class="hljs-selector-pseudo">:rollback</span></code></pre>
+<pre><code class="hljs language-shell"><span class="hljs-selector-tag">php</span> <span class="hljs-selector-tag">artisan</span> <span class="hljs-selector-tag">migrate</span><span class="hljs-selector-pseudo">:rollback</span></code></pre>
 <p>Kiểm tra lại trong database. Toàn bộ cấu trúc đã biến mất (trừ table <code>migrations</code> ). Yay me.</p>
-<h1 id="Ket-luan"><a class="markdownIt-Anchor" href="#Ket-luan">#</a> Kết luận</h1>
+<h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Bằng việc sử dụng, kết hợp model và migration trong Laravel, việc lập trình của bạn sẽ dễ dàng hơn bao giờ hết. Nếu bạn làm việc theo team. Mọi thay đổi về cấu trúc database của được cập nhật đến mọi thành viên của nhóm một cách nhanh chóng.</p>
-]]></description><link>https://khoanguyen.me/model-va-migration-trong-laravel-5-gist/</link><guid isPermaLink="true">https://khoanguyen.me/model-va-migration-trong-laravel-5-gist/</guid><pubDate>Thu, 12 Mar 2015 19:00:00 GMT</pubDate></item><item><title><![CDATA[Cài đặt và thiết lập cơ bản cho Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết trong <a href="/gioi-thieu-series-larask-gist/">series Larask Gist</a>.
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/model-va-migration-trong-laravel-5-gist/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/model-va-migration-trong-laravel-5-gist/</guid><pubDate>Thu, 12 Mar 2015 19:00:00 GMT</pubDate></item><item><title><![CDATA[Cài đặt và thiết lập cơ bản cho Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết trong <a href="/gioi-thieu-series-larask-gist/">series Larask Gist</a>.
 Toàn bộ source code của bài viết này bạn có thể xem tại đây: <a href="https://github.com/Larask/gist/">Larask Gist</a></p>
-<h1 id="Cai-dat"><a class="markdownIt-Anchor" href="#Cai-dat">#</a> Cài đặt</h1>
+<h1 id="cài-đặt"><a href="#c%C3%A0i-%C4%91%E1%BA%B7t" class="phenomic-HeadingAnchor">#</a>Cài đặt</h1>
 <p>Trong series này mình sẽ dùng Laragon để hướng dẫn. Vì vậy nếu bạn nào chưa cài đặt Laragon hãy <a href="/laragon-cai-dat-laravel-trong-mot-phut/">cài đặt ngay theo hướng dẫn</a>. (nếu máy bạn đủ khả năng ảo hóa, hãy sử dụng Homestead thay thế)</p>
 <p>Dùng Laragon tạo một project mới tên là <code>gist</code>. Chờ để Laragon (thực tế là composer) tải và cài đặt Laravel. Mở trình duyệt và truy cập vào <code>gist.dev</code>. Nếu xuất hiện màn hinh chào mừng của Laravel là bạn đã thành công.</p>
 <p><img src="/images/2015-12-03-larask-gist-cai-dat-va-cau-hinh-co-ban/welcome-laravel.jpg" alt="Welcome to Laravel"></p>
-<h1 id="Cau-hinh-co-ban"><a class="markdownIt-Anchor" href="#Cau-hinh-co-ban">#</a> Cấu hình cơ bản</h1>
-<h2 id="Doi-ten-app-namespace"><a class="markdownIt-Anchor" href="#Doi-ten-app-namespace">#</a> Đổi tên app (namespace)</h2>
+<h1 id="cấu-hình-cơ-bản"><a href="#c%E1%BA%A5u-h%C3%ACnh-c%C6%A1-b%E1%BA%A3n" class="phenomic-HeadingAnchor">#</a>Cấu hình cơ bản</h1>
+<h2 id="Đổi-tên-app-namespace"><a href="#%C4%90%E1%BB%95i-t%C3%AAn-app-namespace" class="phenomic-HeadingAnchor">#</a>Đổi tên app (namespace)</h2>
 <p>Việc đầu tiên cần làm sau khi cài ứng dụng là đổi tên. Thay vì sử dụng tên mặc định là <code>App</code> chúng ta sẽ đổi nó thành <code>Gist</code></p>
-<pre><code class="language-shell">php artisan app:<span class="hljs-built_in">name</span> Gist</code></pre>
-<pre><code class="language-shell">Application <span class="hljs-built_in">name</span> <span class="hljs-keyword">set</span>!</code></pre>
+<pre><code class="hljs language-shell">php artisan app:<span class="hljs-built_in">name</span> Gist</code></pre>
+<pre><code class="hljs language-shell">Application <span class="hljs-built_in">name</span> <span class="hljs-keyword">set</span>!</code></pre>
 <p>Từ bây giờ, toàn bộ ứng dụng của chúng ta sẽ có namespace là <code>Gist</code></p>
-<h3 id="Cau-hinh-cac-thong-so"><a class="markdownIt-Anchor" href="#Cau-hinh-cac-thong-so">#</a> Cấu hình các thông số</h3>
+<h3 id="cấu-hình-các-thông-số"><a href="#c%E1%BA%A5u-h%C3%ACnh-c%C3%A1c-th%C3%B4ng-s%E1%BB%91" class="phenomic-HeadingAnchor">#</a>Cấu hình các thông số</h3>
 <p>Ngày nay, git là version control thông dụng. Và bạn sẽ không muốn các thông tin như cấu hình database, mật khẩu, API key được công khai (ví dụ trên Github hay Bitbucket khi push code). Và bạn cũng không muốn phải sửa các thông số này thường xuyên khi deploy ứng dụng do sự khác nhau giữa các môi trường làm việc (ví dụ local và production).</p>
 <p>Laravel tích hợp sẵn <code>.dotenv</code> để giúp bạn làm thực hiện việc này dễ dàng nhất. Mỗi mỗi trường sẽ có 1 file <code>.env</code> ở thư mục gốc lưu các thông tin quan trọng.</p>
 <p>Cách hoạt động của file <code>.env</code> rất đơn giản. Hãy mở file <code>/config/database.php</code> các bạn sẽ thấy dòng này :</p>
-<pre><code class="language-php"><span class="hljs-string">'mysql'</span> =&gt; [
-  <span class="hljs-string">'driver'</span>    =&gt; <span class="hljs-string">'mysql'</span>,
-  <span class="hljs-string">'host'</span>      =&gt; env(<span class="hljs-string">'DB_HOST'</span>, <span class="hljs-string">'localhost'</span>),
-  <span class="hljs-string">'database'</span>  =&gt; env(<span class="hljs-string">'DB_DATABASE'</span>, <span class="hljs-string">'forge'</span>),
-  <span class="hljs-string">'username'</span>  =&gt; env(<span class="hljs-string">'DB_USERNAME'</span>, <span class="hljs-string">'forge'</span>),
-  <span class="hljs-string">'password'</span>  =&gt; env(<span class="hljs-string">'DB_PASSWORD'</span>, <span class="hljs-string">''</span>),
-  <span class="hljs-string">'charset'</span>   =&gt; <span class="hljs-string">'utf8'</span>,
-  <span class="hljs-string">'collation'</span> =&gt; <span class="hljs-string">'utf8_unicode_ci'</span>,
-  <span class="hljs-string">'prefix'</span>    =&gt; <span class="hljs-string">''</span>,
-  <span class="hljs-string">'strict'</span>    =&gt; <span class="hljs-keyword">false</span>,
+<pre><code class="hljs language-php"><span class="hljs-string">'mysql'</span> => [
+  <span class="hljs-string">'driver'</span>    => <span class="hljs-string">'mysql'</span>,
+  <span class="hljs-string">'host'</span>      => env(<span class="hljs-string">'DB_HOST'</span>, <span class="hljs-string">'localhost'</span>),
+  <span class="hljs-string">'database'</span>  => env(<span class="hljs-string">'DB_DATABASE'</span>, <span class="hljs-string">'forge'</span>),
+  <span class="hljs-string">'username'</span>  => env(<span class="hljs-string">'DB_USERNAME'</span>, <span class="hljs-string">'forge'</span>),
+  <span class="hljs-string">'password'</span>  => env(<span class="hljs-string">'DB_PASSWORD'</span>, <span class="hljs-string">''</span>),
+  <span class="hljs-string">'charset'</span>   => <span class="hljs-string">'utf8'</span>,
+  <span class="hljs-string">'collation'</span> => <span class="hljs-string">'utf8_unicode_ci'</span>,
+  <span class="hljs-string">'prefix'</span>    => <span class="hljs-string">''</span>,
+  <span class="hljs-string">'strict'</span>    => <span class="hljs-keyword">false</span>,
 ],</code></pre>
 <p>File <code>.env</code> đi kèm sau khi cài Laravel thành công sẽ có nội dung như sau:</p>
-<pre><code class="language-shell"><span class="hljs-attr">APP_ENV</span>=local
+<pre><code class="hljs language-shell"><span class="hljs-attr">APP_ENV</span>=local
 <span class="hljs-attr">APP_DEBUG</span>=<span class="hljs-literal">true</span>
 <span class="hljs-attr">APP_KEY</span>=rTPeTeKYrhiu61RyvFeyGkbZF2KS2Fe2
 
@@ -956,7 +979,7 @@ Toàn bộ source code của bài viết này bạn có thể xem tại đây: <
 <span class="hljs-attr">SESSION_DRIVER</span>=file</code></pre>
 <p><em>Lưu ý: Luôn luôn giữ bí mật APP_KEY của bạn</em></p>
 <p>Laravel dùng hàm <code>env('DB_HOST', 'localhost')</code> để lấy giá trị <code>DB_HOST</code> trong file <code>.env</code>. Nếu không có giá trị này,  giá trị mặc định là <code>localhost</code> sẽ được dùng. Các bạn có thể bỏ trống biến thứ 2 của hàm <code>env</code> và khi đó giá trị mặc định trả về sẽ là <code>null</code></p>
-<pre><code class="language-php"><span class="hljs-comment">/**
+<pre><code class="hljs language-php"><span class="hljs-comment">/**
  * Gets the value of an environment variable. Supports boolean, empty and null.
  *
  * <span class="hljs-doctag">@param</span>  string  $key
@@ -967,51 +990,51 @@ Toàn bộ source code của bài viết này bạn có thể xem tại đây: <
   <span class="hljs-comment">// some thing here</span>
 }</code></pre>
 <p>Trong file <code>.env</code> chúng ta sẽ cấu hình các mục</p>
-<pre><code class="language-shell"><span class="hljs-attr">DB_HOST</span>=localhost
+<pre><code class="hljs language-shell"><span class="hljs-attr">DB_HOST</span>=localhost
 <span class="hljs-attr">DB_DATABASE</span>=gist
 <span class="hljs-attr">DB_USERNAME</span>=root
 <span class="hljs-attr">DB_PASSWORD</span>=</code></pre>
-<p>Phù hợp với cấu hình mysql của bạn. (nếu bạn sử dụng PostgreSQL, SQLite,…) Hãy thay đổi <code>default</code> cho phù hợp trong <code>config/database.php</code></p>
+<p>Phù hợp với cấu hình mysql của bạn. (nếu bạn sử dụng PostgreSQL, SQLite,...) Hãy thay đổi <code>default</code> cho phù hợp trong <code>config/database.php</code></p>
 <p>Kiểm tra kết nối database thành công bằng cách chạy lệnh sau vào Cmder</p>
-<pre><code class="language-shell">php artisan tinker
-<span class="hljs-meta">&gt;&gt;</span>&gt; DB::Statement(<span class="hljs-string">"SHOW TABLES"</span>)
+<pre><code class="hljs language-shell">php artisan tinker
+<span class="hljs-meta">>></span>> DB::Statement(<span class="hljs-string">"SHOW TABLES"</span>)
 <span class="hljs-literal">true</span></code></pre>
 <p><em>Lưu ý: <code>SHOW TABLES</code> là câu lệnh của MySQL để hiển thị tất cả table trong database hiện tại (gist), nếu các bạn sử dụng các loại database khác. Câu lệnh này phải được thay đổi cho phù hợp</em></p>
-<pre><code class="language-php">DB::Statement($command)</code></pre>
+<pre><code class="hljs language-php">DB::Statement($command)</code></pre>
 <p>Dùng để chạy một câu query.</p>
-<h3 id="Cai-ide-helper-package"><a class="markdownIt-Anchor" href="#Cai-ide-helper-package">#</a> Cài ide-helper package</h3>
-<p>Để các IDE có thể “hiểu” được những gì chúng ta đang code và có các type hint thì chúng ta cần cài package hỗ trợ. Ở đây mình sẽ dùng <a href="https://github.com/barryvdh/laravel-ide-helper">barryvdh/laravel-ide-helper</a> .</p>
+<h3 id="cài-ide-helper-package"><a href="#c%C3%A0i-ide-helper-package" class="phenomic-HeadingAnchor">#</a>Cài ide-helper package</h3>
+<p>Để các IDE có thể "hiểu" được những gì chúng ta đang code và có các type hint thì chúng ta cần cài package hỗ trợ. Ở đây mình sẽ dùng <a href="https://github.com/barryvdh/laravel-ide-helper">barryvdh/laravel-ide-helper</a> .</p>
 <p>Trong Cmder:</p>
-<pre><code class="language-shell"><span class="hljs-symbol">composer</span> <span class="hljs-meta">require</span> <span class="hljs-keyword">barryvdh/laravel-ide-helper </span>--dev</code></pre>
+<pre><code class="hljs language-shell"><span class="hljs-symbol">composer</span> <span class="hljs-meta">require</span> <span class="hljs-keyword">barryvdh/laravel-ide-helper </span>--dev</code></pre>
 <p>Option --dev để composer hiểu chúng ta chỉ cần package này khi develop.</p>
 <p>Mở file <code>'Gist\Providers\AppServiceProvider'</code> trong method <code>register()</code> chúng ta sẽ thêm vào :</p>
-<pre><code class="language-php"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>-&gt;app-&gt;environment() == <span class="hljs-string">'local'</span>) {
-  <span class="hljs-keyword">$this</span>-&gt;app-&gt;register(<span class="hljs-string">'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'</span>);
+<pre><code class="hljs language-php"><span class="hljs-keyword">if</span> (<span class="hljs-keyword">$this</span>->app->environment() == <span class="hljs-string">'local'</span>) {
+  <span class="hljs-keyword">$this</span>->app->register(<span class="hljs-string">'Barryvdh\LaravelIdeHelper\IdeHelperServiceProvider'</span>);
 }</code></pre>
 <p>Tiếp tục trong Cmder:</p>
-<pre><code class="language-shell">php artisan ide-helper:<span class="hljs-keyword">generate</span></code></pre>
+<pre><code class="hljs language-shell">php artisan ide-helper:<span class="hljs-keyword">generate</span></code></pre>
 <p>Lệnh trên sẽ tạo file _ide_helpers.php trong thư mục gốc giúp các IDE có thể hiểu được Laravel.
 Bạn cần phải chạy lệnh trên mỗi lần cài đặt thêm package mới.
 Nhưng bạn cài đặt package bằng Composer phải không?
 Hãy để Composer làm điểu đó cho bạn.</p>
 <p>Mở file <code>composer.json</code> và sửa <code>post-update-cmd</code> giống như bạn dưới (chính xác thứ tự các dòng nhé)</p>
-<pre><code class="language-javascript"><span class="hljs-string">"post-update-cmd"</span>:[
+<pre><code class="hljs language-javascript"><span class="hljs-string">"post-update-cmd"</span>:[
   <span class="hljs-string">"php artisan clear-compiled"</span>,
   <span class="hljs-string">"php artisan ide-helper:generate"</span>,
   <span class="hljs-string">"php artisan optimize"</span>
 ]</code></pre>
 <p>Cuối cùng là add file <code>_ide_helper.php</code> vào cuối file <code>.gitignore</code>  để cho git không theo dõi file này, tránh các rắc rối về commit/merge về sau.</p>
-<h1 id="Ket-luan"><a class="markdownIt-Anchor" href="#Ket-luan">#</a> Kết luận</h1>
+<h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Nếu bạn đọc được đến đây thì bạn đã sẵn sàng để chinh phục Laravel rồi đấy.</p>
-]]></description><link>https://khoanguyen.me/larask-gist-cai-dat-va-cau-hinh-co-ban/</link><guid isPermaLink="true">https://khoanguyen.me/larask-gist-cai-dat-va-cau-hinh-co-ban/</guid><pubDate>Thu, 12 Mar 2015 18:00:00 GMT</pubDate></item><item><title><![CDATA[Giới thiệu series Larask Gist]]></title><description><![CDATA[<h1 id="Gioi-thieu"><a class="markdownIt-Anchor" href="#Gioi-thieu">#</a> Giới thiệu</h1>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/larask-gist-cai-dat-va-cau-hinh-co-ban/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/larask-gist-cai-dat-va-cau-hinh-co-ban/</guid><pubDate>Thu, 12 Mar 2015 18:00:00 GMT</pubDate></item><item><title><![CDATA[Giới thiệu series Larask Gist]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
 <p>Học lập trình/framework thì không gì tốt hơn là học trực tiếp qua code. Ứng dụng vào một ứng dụng thực tế.</p>
 <p>Hôm nay mình xin được giới thiệu với các bạn series Larask Gist.
 Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng Laravel 5.</p>
-<h1 id="Muc-tieu"><a class="markdownIt-Anchor" href="#Muc-tieu">#</a> Mục tiêu</h1>
-<p>Series này sẽ tập trung về các vấn đề Laravel 5, nên sẽ có nhiều chỗ front-end, mình sẽ cung cấp code sẵn cho các bạn copy-paste. Mình hy vọng sẽ có 1 series front-end trong tương lai. Qua series này, các bạn sẽ hiểu được các khái niệm cơ bản của Laravel 5 như route, model, controller, migration, seeder, … và hiểu rõ hơn về cách hoạt động của <a href="/tim-hieu-mo-hinh-mvc-la-gi">mô hình MVC</a></p>
-<h1 id="Yeu-cau"><a class="markdownIt-Anchor" href="#Yeu-cau">#</a> Yêu cầu</h1>
+<h1 id="mục-tiêu"><a href="#m%E1%BB%A5c-ti%C3%AAu" class="phenomic-HeadingAnchor">#</a>Mục tiêu</h1>
+<p>Series này sẽ tập trung về các vấn đề Laravel 5, nên sẽ có nhiều chỗ front-end, mình sẽ cung cấp code sẵn cho các bạn copy-paste. Mình hy vọng sẽ có 1 series front-end trong tương lai. Qua series này, các bạn sẽ hiểu được các khái niệm cơ bản của Laravel 5 như route, model, controller, migration, seeder, ... và hiểu rõ hơn về cách hoạt động của <a href="/tim-hieu-mo-hinh-mvc-la-gi">mô hình MVC</a></p>
+<h1 id="yêu-cầu"><a href="#y%C3%AAu-c%E1%BA%A7u" class="phenomic-HeadingAnchor">#</a>Yêu cầu</h1>
 <p>Các bạn cần nắm vững các kiến thức PHP căn bản trước khi bắt đầu. Trong quá trình viết, mình sẽ cung cấp thêm các tài liệu bổ ích để các bạn nghiên cứu từng phần</p>
-<h1 id="Github-Gist"><a class="markdownIt-Anchor" href="#Github-Gist">#</a> Github Gist</h1>
+<h1 id="github-gist"><a href="#github-gist" class="phenomic-HeadingAnchor">#</a>Github Gist</h1>
 <p><a href="https://gist.github.com/" title="Github Gist">Github Gist</a> là một dịch vụ của Github nhằm giúp cho các coder có thể share những đoạn code một cách nhanh chóng.  Cách hoạt động cơ bản của Github Gist như sau:</p>
 <ul>
 <li>Thành viên/ Anonymous có thể truy cập trang chủ và paste bất cứ thứ gì vào khung soạn thảo để tạo Gist.</li>
@@ -1021,28 +1044,28 @@ Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng
 <li>Trong phạm vi series này, tính năng Fork và version control sẽ không được nhắc đến.</li>
 </ul>
 <p>Đây là link tới 1 Gist của bài viết : <a href="https://gist.github.com/thangngoc89/db6493759aa0e9bdb59d">https://gist.github.com/thangngoc89/db6493759aa0e9bdb59d</a></p>
-<h1 id="Larask-Gist"><a class="markdownIt-Anchor" href="#Larask-Gist">#</a> Larask Gist</h1>
+<h1 id="larask-gist"><a href="#larask-gist" class="phenomic-HeadingAnchor">#</a>Larask Gist</h1>
 <p>Toàn bộ code của series này sẽ được public tại <a href="https://github.com/Larask/gist">https://github.com/Larask/gist</a> dưới giấy phép GNU 2.0 <a href="https://github.com/Larask/gist/blob/master/LICENSE.md">(chi tiết)</a></p>
-<h2 id="Screenshot"><a class="markdownIt-Anchor" href="#Screenshot">#</a> Screenshot</h2>
+<h2 id="screenshot"><a href="#screenshot" class="phenomic-HeadingAnchor">#</a>Screenshot</h2>
 <p><img src="https://cloud.githubusercontent.com/assets/3049054/6648112/7e0bd15a-ca08-11e4-8292-274225758948.png" alt="larask-home-page"></p>
 <p>Larask: Là một nhóm chat của các lập trình viên Laravel Việt Nam. Các bạn có thể đăng kí tham gia nhóm tại <a href="http://www.larask.com/register">link này</a>.</p>
-<h1 id="Cac-bai-viet-trong-series"><a class="markdownIt-Anchor" href="#Cac-bai-viet-trong-series">#</a> Các bài viết trong series</h1>
+<h1 id="các-bài-viết-trong-series"><a href="#c%C3%A1c-b%C3%A0i-vi%E1%BA%BFt-trong-series" class="phenomic-HeadingAnchor">#</a>Các bài viết trong series</h1>
 <ol>
 <li><a href="/larask-gist-cai-dat-va-cau-hinh-co-ban">Installation and Configuration</a></li>
 <li><a href="/model-va-migration-trong-laravel-5-gist/">Model and Migration</a></li>
-<li><a href="/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/">Detour - Let’s talk about UUID</a></li>
+<li><a href="/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/">Detour - Let's talk about UUID</a></li>
 <li><a href="/database-seeder-larask-gist/">Database Seeder</a></li>
 <li>Model Relationship</li>
 <li>Routing - Controller</li>
 <li>View</li>
 </ol>
-]]></description><link>https://khoanguyen.me/gioi-thieu-series-larask-gist/</link><guid isPermaLink="true">https://khoanguyen.me/gioi-thieu-series-larask-gist/</guid><pubDate>Thu, 12 Mar 2015 13:00:00 GMT</pubDate></item><item><title><![CDATA[Laragon - Cài đặt Laravel trong 1 phút]]></title><description><![CDATA[<h1 id="Gioi-thieu"><a class="markdownIt-Anchor" href="#Gioi-thieu">#</a> Giới thiệu</h1>
-<p>Laravel là một framework mạnh mẽ, giúp cho việc viết code trở nên “thú vị” hơn cũng như ít code hơn. Nhưng đối với các bạn mới bắt đầu tìm hiểu về Laravel từ nền tảng PHP cơ bản hay từ các framework khác chuyển qua thì việc cài đặt Laravel là cả 1 vấn đề. Bao gồm 1 webserver PHP cơ bản (từ PHP 5.4.0 thì PHP có built-in webserver tích hợp nên bước này có thể bỏ qua), Composer, Mcrypt, thiết lập Virtual host,…</p>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/gioi-thieu-series-larask-gist/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/gioi-thieu-series-larask-gist/</guid><pubDate>Thu, 12 Mar 2015 13:00:00 GMT</pubDate></item><item><title><![CDATA[Laragon - Cài đặt Laravel trong 1 phút]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
+<p>Laravel là một framework mạnh mẽ, giúp cho việc viết code trở nên "thú vị" hơn cũng như ít code hơn. Nhưng đối với các bạn mới bắt đầu tìm hiểu về Laravel từ nền tảng PHP cơ bản hay từ các framework khác chuyển qua thì việc cài đặt Laravel là cả 1 vấn đề. Bao gồm 1 webserver PHP cơ bản (từ PHP 5.4.0 thì PHP có built-in webserver tích hợp nên bước này có thể bỏ qua), Composer, Mcrypt, thiết lập Virtual host,...</p>
 <p>Thông thường trên các hệ điều hành *NIX (Linux, MacOS). Bạn có thể dễ dàng cài đặt chúng qua</p>
 <p><a href="http://laragon.org">Laragon</a> ra đời nhằm mục đích khắc phục điều đó. Và theo video trên trang chủ thì bạn chỉ mất 1 phút để cài đặt xong Laragon.</p>
-<p><div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" id="ytplayer" type="text/html" width="640" height="390" src="//www.youtube.com/embed/XuYkGdrXmKg" frameborder="0"></iframe></div></p>
+<p>@<a href="XuYkGdrXmKg">youtube</a></p>
 <p><em>một điều thú vị là tác giả Laragon hình như là 1 người Việt (Le Ngoc Khoa) - chưa có thông tin chính xác</em></p>
-<h1 id="Tinh-nang-Laragon"><a class="markdownIt-Anchor" href="#Tinh-nang-Laragon">#</a> Tính năng Laragon</h1>
+<h1 id="tính-năng-laragon"><a href="#t%C3%ADnh-n%C4%83ng-laragon" class="phenomic-HeadingAnchor">#</a>Tính năng Laragon</h1>
 <p>Laragon đi kèm với các phần mềm sau (theo thông tin tại thời điểm viết bài này) :</p>
 <ul>
 <li>Laravel 5 và 4.2</li>
@@ -1055,7 +1078,7 @@ Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng
 </ul>
 <p>Điều mình thích nhất là khả năng tự động tạo virtual host mỗi khi tạo project mới. Không còn lần mò, copy/paste file host tự động nữa.</p>
 <p><strong>Isolated Enviroment :</strong> Laragon không ảnh hưởng tới hệ điều hành. Bạn có thể dễ dàng copy nó qua folder khác thì nó vẫn hoạt động bình thường. (dạng như là portable software)</p>
-<h1 id="Cai-dat"><a class="markdownIt-Anchor" href="#Cai-dat">#</a> Cài đặt</h1>
+<h1 id="cài-đặt"><a href="#c%C3%A0i-%C4%91%E1%BA%B7t" class="phenomic-HeadingAnchor">#</a>Cài đặt</h1>
 <p>Laragon tương thích với các phiên bản Windows sau :</p>
 <ul>
 <li>Windows 7</li>
@@ -1066,7 +1089,7 @@ Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng
 </ul>
 <p>Download và cài đặt Laragon như một phần mềm bình thường:</p>
 <p><a href="http://sourceforge.net/projects/laragon/">http://sourceforge.net/projects/laragon/</a></p>
-<h1 id="Thiet-lap"><a class="markdownIt-Anchor" href="#Thiet-lap">#</a> Thiết lập</h1>
+<h1 id="thiết-lập"><a href="#thi%E1%BA%BFt-l%E1%BA%ADp" class="phenomic-HeadingAnchor">#</a>Thiết lập</h1>
 <p>Mở Laragon sau khi cài đặt và giao diện chính sẽ xuất hiện :</p>
 <p><img src="http://laragon.org/themes/multi/assets/images/screenshot/laragon-main-interface.png" alt="Giao diện chính Laragon"></p>
 <p>Các bạn có thể bấm</p>
@@ -1075,40 +1098,40 @@ Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng
 <li>Database để truy cập phpmyadmin (user: root, không có mật khẩu).</li>
 <li>Shell để kích hoạt Cmder (một command line với giao diện thân thiện hơn Command Prompt mặc định của Windows)</li>
 </ul>
-<h1 id="Cai-dat-Laravel"><a class="markdownIt-Anchor" href="#Cai-dat-Laravel">#</a> Cài đặt Laravel</h1>
+<h1 id="cài-đặt-laravel"><a href="#c%C3%A0i-%C4%91%E1%BA%B7t-laravel" class="phenomic-HeadingAnchor">#</a>Cài đặt Laravel</h1>
 <p><img src="http://laragon.org/themes/multi/assets/images/screenshot/laragon-laravel-windows.png" alt="Cài đặt Laravel với Laragon"></p>
-<p>Bấm chuột phải vào biểu tượng Laragon ở thanh công cụ (gần đồng hồ). &gt;&gt; Laravel &gt;&gt; Create project &gt;&gt; Laravel 5/4.2</p>
+<p>Bấm chuột phải vào biểu tượng Laragon ở thanh công cụ (gần đồng hồ). >> Laravel >> Create project >> Laravel 5/4.2</p>
 <p>Gõ tên project của bạn vào (ví dụ khoanguyen). Chờ một chút , Laragon sẽ tạo 1 project mới trong thư mục con www của Laragon (mặc định là C:/lamp/www). Nếu ần đầu tiên cài Laravel thì sẽ hơi lâu, composer sẽ phải tải tất cả dependency về, các lần sau sẽ nhanh hơn nhiều do đã có sẵn trong máy (cached).</p>
 <p>Sau khi Laragon cài đặt xong, thử mở trình duyệt lên, truy cập vào địa chỉ :</p>
-<pre><code class="language-noob"><span class="hljs-symbol">http:</span><span class="hljs-comment">//tên-project.dev</span></code></pre>
+<pre><code class="hljs language-noob"><span class="hljs-symbol">http:</span><span class="hljs-comment">//tên-project.dev</span></code></pre>
 <p>(mình đặt tên project là khoanguyen thì sẽ truy cập vào <a href="http://khoanguyen.dev">http://khoanguyen.dev</a> )</p>
 <p>Và một cách thần kì, giao diện Laravel chào mừng của Laravel ngay lập tức xuất hiện:</p>
 <p>Laravel 5
 <img src="https://wiki.bitnami.com/@api/deki/files/1143/=laravel5-welcome.png" alt="Laravel 5" title="Laravel 5"></p>
-<p>hay Laravel 4.2</p>
+<p> hay Laravel 4.2</p>
 <p><img src="/images/2015/01/laravel-welcome.png" alt="Laravel 4.2" title="Laravel 5"></p>
 <blockquote>
 <p>Sự thần kì này có được là do tính năng Auto Virtual Hosts</p>
 </blockquote>
 <p>Laragon sẽ tự động tạo virtual host với tên miền là tên folder trong thư mục www của bạn.</p>
-<h1 id="Ket-luan"><a class="markdownIt-Anchor" href="#Ket-luan">#</a> Kết luận</h1>
+<h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Laragon giúp tiết kiệm rất nhiều thời gian khi làm quen, viết code PHP và Laravel. Hãy trải nghiệm Laragon và chia sẽ với bạn bè nhé.</p>
-]]></description><link>https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</link><guid isPermaLink="true">https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</guid><pubDate>Wed, 11 Mar 2015 20:00:00 GMT</pubDate></item><item><title><![CDATA[Tạo menu cho Discourse]]></title><description><![CDATA[<h1 id="Gioi-thieu"><a class="markdownIt-Anchor" href="#Gioi-thieu">#</a> Giới thiệu</h1>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</guid><pubDate>Wed, 11 Mar 2015 20:00:00 GMT</pubDate></item><item><title><![CDATA[Tạo menu cho Discourse]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
 <p>Có nhiều bạn hỏi mình về cái menu Discourse của mình. Hôm nay mình sẽ chia sẽ code với các bạn.
 Menu sẽ tự động ản khi bạn trượt xuống nên yên tâm là sẽ không tốn quá nhiều diện tích.
 Demo : <a href="http://ask.hoidapyhoc.com">Hỏi Đáp Y Học</a></p>
-<h1 id="Tien-hanh"><a class="markdownIt-Anchor" href="#Tien-hanh">#</a> Tiến hành</h1>
+<h1 id="tiến-hành"><a href="#ti%E1%BA%BFn-h%C3%A0nh" class="phenomic-HeadingAnchor">#</a>Tiến hành</h1>
 <p>Với công cụ tích hợp của Discourse thì việc sửa/ thêm style trở nên rất đơn giản.</p>
 <ol>
 <li>Vào Admin Dashboard</li>
-<li>Customize &gt; CSS/HTML</li>
+<li>Customize > CSS/HTML</li>
 <li>Tạo 1 Style mới (ví dụ Toolbar)</li>
 </ol>
 <p><img src="/images/2015/01/toolba.jpg" alt="toolbar"></p>
 <ol start="4">
 <li>Ở CSS và CSS Mobile</li>
 </ol>
-<pre><code class="language-css"><span class="hljs-selector-tag">ul</span><span class="hljs-selector-id">#top-navbar-links</span> {
+<pre><code class="hljs language-css"><span class="hljs-selector-tag">ul</span><span class="hljs-selector-id">#top-navbar-links</span> {
   <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
   <span class="hljs-attribute">float</span>: right
@@ -1141,84 +1164,11 @@ Demo : <a href="http://ask.hoidapyhoc.com">Hỏi Đáp Y Học</a></p>
 }</code></pre>
 <p>Ở <code>Header</code> và <code>Header Mobile</code>
 Các bạn nhớ chỉnh lại link cho phù hợp. Muốn dụng icon các bạn có thể xem <a href="http://fortawesome.github.io/Font-Awesome/icons/">Font AweSome</a> (tích hợp sẵn trong Discourse)</p>
-<pre><code class="language-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"top-navbar"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>&gt;</span>
-<span class="hljs-tag">&lt;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"top-navbar-links"</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://hoidapyhoc.com/"</span>&gt;</span>Trang chủ<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://hoidapyhoc.com/quiz"</span>&gt;</span>Quiz - Kho đề trắc nghiệm<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-  <span class="hljs-tag">&lt;<span class="hljs-name">li</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.facebook.com/hoidapyhoc"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-facebook-square"</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">i</span>&gt;</span> Fanpage<span class="hljs-tag">&lt;/<span class="hljs-name">a</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">li</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">ul</span>&gt;</span>
-<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></code></pre>
-]]></description><link>https://khoanguyen.me/tao-menu-cho-discourse/</link><guid isPermaLink="true">https://khoanguyen.me/tao-menu-cho-discourse/</guid><pubDate>Fri, 09 Jan 2015 00:10:59 GMT</pubDate></item><item><title><![CDATA[Chuyển đổi Blog từ Wordpress sang Ghost]]></title><description><![CDATA[<p>Hôm nay mình đã hoàn thành việc chuyển đổi và chính thức sử dụng Ghost cho Blog của mình</p>
-<blockquote>
-<p>Ghost : [<a href="http://ghost.org">http://ghost.org</a>]</p>
-</blockquote>
-<p>Một số lí do mình sử dụng Ghost</p>
-<ul>
-<li>Trình soạn thảo Markdown thích hợp cho việc viết các blog về code (Wordpress phải chuyển qua chuyển lại giữa Text và Code rất mất thời gian. Discourse, Github là những trang tiêu biểu dùng Markdown</li>
-<li>Chỉnh sửa giao diện đơn giản, nhanh chóng với Handlebars</li>
-<li>Quan trọng nhất là tốc độ cực kì nhanh. Blog cũ Wordpress mình đã cố gắng tối ưu hóa theo mọi cách có thể nhưng vẫn không cải thiện được gì nhiều</li>
-</ul>
-<p>Hy vọng các bạn vẫn tiếp tục ủng hộ cho mình</p>
-]]></description><link>https://khoanguyen.me/chuyen-doi-blog-tu-wordpress-sang-ghost/</link><guid isPermaLink="true">https://khoanguyen.me/chuyen-doi-blog-tu-wordpress-sang-ghost/</guid><pubDate>Wed, 07 Jan 2015 13:48:54 GMT</pubDate></item><item><title><![CDATA[Facebook Comment Responsive]]></title><description><![CDATA[<p>Mặc định thì Facebook Comment không hỗ trợ responsive, tuy nhiên với 1 ít hack với CSS và HTML5, Facebook Comment ngay lập tức sẽ hỗ trợ responsive.</p>
-<h1 id="Lay-code-Facebook-Comments"><a class="markdownIt-Anchor" href="#Lay-code-Facebook-Comments">#</a> Lấy code Facebook Comments</h1>
-<p>Truy cập vào Facebook Developers tại : [<a href="https://developers.facebook.com/docs/plugins/comments?locale=vi_VN">https://developers.facebook.com/docs/plugins/comments?locale=vi_VN</a>]</p>
-<p>Giao diện chính xuất hiện:
-<img src="/images/2015/01/facebookcomment.jpg" alt="Facebook Comment"></p>
-<p>Ở đây có 4 nhưng chúng ta chỉ quan tâm đến :</p>
-<ul>
-<li>Number of Posts: Số comment được hiển thị mặc định (Càng nhỏ thì web càng ít tốn thời gian load)</li>
-<li>Color Scheme: Màu sắc. Có 2 loại là <strong>light</strong> và <strong>Dark</strong></li>
-</ul>
-<p>Kéo xuống dưới và nhấn <strong>Get Code</strong>
-Facebook sẽ cung cấp cho chúng ta 2 đoạn code riêng biệt.</p>
-<h1 id="Chen-code-vao-Website"><a class="markdownIt-Anchor" href="#Chen-code-vao-Website">#</a> Chèn code vào Website</h1>
-<p>Đầu tiên là chèn đoạn code này ngay sau tag <code>&lt;body&gt;</code></p>
-<pre><code class="language-javascript">&lt;div id=<span class="hljs-string">"fb-root"</span>&gt;<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span>
-&lt;script&gt;(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">d, s, id</span>) </span>{
-  <span class="hljs-keyword">var</span> js, fjs = d.getElementsByTagName(s)[<span class="hljs-number">0</span>];
-  <span class="hljs-keyword">if</span> (d.getElementById(id)) <span class="hljs-keyword">return</span>;
-  js = d.createElement(s); js.id = id;
-  js.src = <span class="hljs-string">"//connect.facebook.net/vi_VN/sdk.js#xfbml=1&amp;appId=383096061852800&amp;version=v2.0"</span>;
-  fjs.parentNode.insertBefore(js, fjs);
-}(<span class="hljs-built_in">document</span>, <span class="hljs-string">'script'</span>, <span class="hljs-string">'facebook-jssdk'</span>));<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span></span></code></pre>
-<p>Đoạn code còn lại, sẽ có dạng thế này :</p>
-<pre><code class="language-javascript">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"fb-comments"</span>
-  data-href=<span class="hljs-string">"http://developers.facebook.com/docs/plugins/comments/"</span>
-  data-numposts=<span class="hljs-string">"5"</span>
-  data-colorscheme=<span class="hljs-string">"dark"</span>&gt;
-<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre>
-<p>Chúng ta sẽ sửa thành:</p>
-<pre><code class="language-javascript">&lt;div <span class="hljs-class"><span class="hljs-keyword">class</span></span>=<span class="hljs-string">"fb-comments"</span>
-  data-href=<span class="hljs-string">"http://developers.facebook.com/docs/plugins/comments/"</span>
-  data-numposts=<span class="hljs-string">"5"</span>
-  data-colorscheme=<span class="hljs-string">"dark"</span>
-  data-width=<span class="hljs-string">"100%"</span>&gt;
-<span class="xml"><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span></span></code></pre>
-<p>Các bạn nhớ thay đoạn <code>data-href</code> thành URL của trang hiện tại (có thể thay bằng Javascript hoặc in ra bằng backend như PHP, Ruby…)</p>
-<p>Chèn đoạn code đã sửa vào vị trí mong muốn trong website.</p>
-<p>Cuối cùng là thêm vào CSS:</p>
-<pre><code class="language-css"><span class="hljs-comment">/*Facebook comment*/</span>
-<span class="hljs-selector-class">.fb_iframe_widget</span>,
-<span class="hljs-selector-class">.fb_iframe_widget</span> <span class="hljs-selector-tag">span</span>,
-<span class="hljs-selector-class">.fb_iframe_widget</span> <span class="hljs-selector-tag">span</span> <span class="hljs-selector-tag">iframe</span><span class="hljs-selector-attr">[style]</span> {
-  <span class="hljs-attribute">min-width</span>: <span class="hljs-number">100%</span> <span class="hljs-meta">!important</span>;
-  <span class="hljs-attribute">width</span>: <span class="hljs-number">100%</span> <span class="hljs-meta">!important</span>;
-}</code></pre>
-<p>Mở ngay trình duyệt và thử nghiệm Facebook Comment Responsive thôi nào. :D</p>
-]]></description><link>https://khoanguyen.me/facebook-comment-responsive/</link><guid isPermaLink="true">https://khoanguyen.me/facebook-comment-responsive/</guid><pubDate>Wed, 07 Jan 2015 10:16:10 GMT</pubDate></item><item><title><![CDATA[Giới thiệu Series Discourse cơ bản]]></title><description><![CDATA[<p>Discourse là một dự án mã nguồn mở để xây dựng một nền tảng thảo luận online có thể dùng với các mục đích sau :</p>
-<ul>
-<li>Danh sách gửi mail</li>
-<li>Một diễn đàn thảo luận</li>
-<li>Một chat room</li>
-</ul>
-<p>Mục tiêu của Discourse là trở thành Wordpress trong thế giới mã nguồn Forum.</p>
-<h1 id="Gioi-thieu-Series"><a class="markdownIt-Anchor" href="#Gioi-thieu-Series">#</a> Giới thiệu Series</h1>
-<p>Trong series này, mình sẽ hướng dẫn các bạn những phần cơ bản nhất để có một Forum chạy Discourse như cài đặt, cấu hình, các plugin cần thiết,…</p>
-<h1 id="Cac-bai-viet-co-trong-Series"><a class="markdownIt-Anchor" href="#Cac-bai-viet-co-trong-Series">#</a> Các bài viết có trong Series:</h1>
-<ol>
-<li><a href="/gioi-thieu-discourse/">Giới thiệu Discourse</a></li>
-<li>Cài đặt Discourse</li>
-<li>Cấu hình cần thiết sau khi cài đặt</li>
-<li>Một số plugin</li>
-</ol>
-]]></description><link>https://khoanguyen.me/gioi-thieu-series-discourse-co-ban/</link><guid isPermaLink="true">https://khoanguyen.me/gioi-thieu-series-discourse-co-ban/</guid><pubDate>Wed, 07 Jan 2015 08:30:20 GMT</pubDate></item></channel></rss>
+<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"top-navbar"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>></span>
+<span class="hljs-tag">&#x3C;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"top-navbar-links"</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://hoidapyhoc.com/"</span>></span>Trang chủ<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://hoidapyhoc.com/quiz"</span>></span>Quiz - Kho đề trắc nghiệm<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.facebook.com/hoidapyhoc"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-facebook-square"</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">i</span>></span> Fanpage<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
+<span class="hljs-tag">&#x3C;/<span class="hljs-name">ul</span>></span>
+<span class="hljs-tag">&#x3C;/<span class="hljs-name">div</span>></span></code></pre>
+]]></description><link>https://phenomic-theme-type.khoanguyen.me/tao-menu-cho-discourse/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/tao-menu-cho-discourse/</guid><pubDate>Fri, 09 Jan 2015 00:10:59 GMT</pubDate></item></channel></rss>
