@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[khoa-nguyen-blog]]></title><description><![CDATA[khoa-nguyen-blog]]></description><link>https://phenomic-theme-type.khoanguyen.me</link><generator>RSS for Node</generator><lastBuildDate>Fri, 16 Sep 2016 09:40:40 GMT</lastBuildDate><atom:link href="https://phenomic-theme-type.khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Squash tất cả commit trong một branch nhanh chóng]]></title><description><![CDATA[<p>Bình thường:</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[khoa-nguyen-blog]]></title><description><![CDATA[khoa-nguyen-blog]]></description><link>https://khoanguyen.me</link><generator>RSS for Node</generator><lastBuildDate>Fri, 16 Sep 2016 09:45:28 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Squash tất cả commit trong một branch nhanh chóng]]></title><description><![CDATA[<p>Bình thường:</p>
 <pre><code class="hljs language-sh">git rebase -i master</code></pre>
 <p>Chọn <code>r</code> (rename) để đặt lại tên cho commit đầu
 Chọn <code>f</code> (fixup) hoặc <code>s</code> (squash) trên từng commit</p>
@@ -7,7 +7,7 @@ Chọn <code>f</code> (fixup) hoặc <code>s</code> (squash) trên từng commit
 <pre><code class="hljs language-sh">git reset --soft master
 git add .
 git commit -am <span class="hljs-string">"Tên cho commit đầu ở đây"</span></code></pre>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/til/squash-tat-ca-commit-trong-mot-branch-nhanh-chong/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/til/squash-tat-ca-commit-trong-mot-branch-nhanh-chong/</guid><pubDate>Fri, 16 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Thiết kế trang web phục vụ hàng chục nghìn truy cập mỗi tháng với $0.0002]]></title><description><![CDATA[<p>Nếu bạn là thành viên của <a href="http://daynhauhoc.com">Dạy Nhau Học (DNH)</a> thì các bạn có
+]]></description><link>https://khoanguyen.me/til/squash-tat-ca-commit-trong-mot-branch-nhanh-chong/</link><guid isPermaLink="true">https://khoanguyen.me/til/squash-tat-ca-commit-trong-mot-branch-nhanh-chong/</guid><pubDate>Fri, 16 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Thiết kế trang web phục vụ hàng chục nghìn truy cập mỗi tháng với $0.0002]]></title><description><![CDATA[<p>Nếu bạn là thành viên của <a href="http://daynhauhoc.com">Dạy Nhau Học (DNH)</a> thì các bạn có
 thể đã biết đến khóa học của <a href="http://daynhauhoc.com/users/ltd/activity">anh Đạt admin (@ltd)</a></p>
 <p>Khóa học này (có phí) gồm các <a href="https://www.udemy.com/c-co-ban-danh-cho-nguoi-moi-hoc-lap-trinh/">video được đăng trên Udemy</a> kèm với
 đó là <a href="http://cpp.daynhauhoc.com">trang web đăng tải các bài học miễn phí</a>.</p>
@@ -122,7 +122,7 @@ $0.0002/tháng. <a href="https://gist.github.com/thangngoc89/7775c62a93d69800010
 <p>Web tĩnh là một xu hướng hiện nay, dùng đúng công cụ và dịch vụ, các bạn có thể
 tạo ra một trang web hoàn toàn miễn phí sẵn sàng phục vụ cho hàng triệu lượt
 truy cập mỗi tháng.</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</guid><pubDate>Sun, 11 Sep 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[Cách flush DNS trên Ubuntu]]></title><description><![CDATA[<p>Trên Windows mọi phiên bản thì đơn giản là dòng lệnh thế này:</p>
+]]></description><link>https://khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</link><guid isPermaLink="true">https://khoanguyen.me/thiet-ke-trang-web-hoc-cpp-day-nhau-hoc/</guid><pubDate>Sun, 11 Sep 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[Cách flush DNS trên Ubuntu]]></title><description><![CDATA[<p>Trên Windows mọi phiên bản thì đơn giản là dòng lệnh thế này:</p>
 <pre><code class="hljs language-sh">ipconfig /flushdns</code></pre>
 <p>Ubuntu 14.04 - 16.10.1</p>
 <pre><code class="hljs language-sh">sudo /etc/init.d/dns-clean restart
@@ -130,13 +130,13 @@ sudo /etc/init.d/networking force-reload</code></pre>
 <p>Ubuntu 12.04 trở xuống</p>
 <pre><code class="hljs language-sh">sudo /etc/init.d/nscd restart
 sudo /etc/init.d/dnsmasq restart</code></pre>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/til/cach-flush-dns-ubuntu/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/til/cach-flush-dns-ubuntu/</guid><pubDate>Sat, 10 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Cài đặt nhanh babel preset với npm]]></title><description><![CDATA[<p>Thay vì phải gõ dài dòng thế này:</p>
+]]></description><link>https://khoanguyen.me/til/cach-flush-dns-ubuntu/</link><guid isPermaLink="true">https://khoanguyen.me/til/cach-flush-dns-ubuntu/</guid><pubDate>Sat, 10 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Cài đặt nhanh babel preset với npm]]></title><description><![CDATA[<p>Thay vì phải gõ dài dòng thế này:</p>
 <pre><code>npm install --save-dev babel-preset-es2015 babel-preset-react
 </code></pre>
 <p>bạn có thể thay thế bằng</p>
 <pre><code>npm install -D babel-preset-{es2015,react}
 </code></pre>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/til/cai-dat-nhanh-babel-preset-voi-npm/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/til/cai-dat-nhanh-babel-preset-voi-npm/</guid><pubDate>Tue, 26 Jul 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, ... cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
+]]></description><link>https://khoanguyen.me/til/cai-dat-nhanh-babel-preset-voi-npm/</link><guid isPermaLink="true">https://khoanguyen.me/til/cai-dat-nhanh-babel-preset-voi-npm/</guid><pubDate>Tue, 26 Jul 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[npm: Tăng tốc và sử dụng offline]]></title><description><![CDATA[<p>Chắc chắn là ai đã từng làm việc với npm thì đều biết một điều rằng npm nó siêu chậm. Vì vậy mình hay hạn chế chạy <code>npm install</code> đến mức tối thiểu và thường không nhận được patch update, ... cũng như nhiều vấn đề khác phát sinh. Trong bài viết này mình sẽ giới thiệu với các bạn một package không những giúp tăng tốc npm mà còn cho phép bạn cài đặt package offline.</p>
 <h1 id="local-npm"><a href="#local-npm" class="phenomic-HeadingAnchor">#</a><a href="https://github.com/nolanlawson/local-npm">local-npm</a></h1>
 <p><a href="https://github.com/nolanlawson/local-npm">local-npm</a> sẽ tạo ra 1 replicate cho toàn bộ database của npm (chỉ hơn 1GB một tí thôi) cũng như là cache các package đã tải về. Vì vậy bạn sẽ không bao giờ tải một file 2 lần.</p>
 <h2 id="sử-dụng"><a href="#s%E1%BB%AD-d%E1%BB%A5ng" class="phenomic-HeadingAnchor">#</a>Sử dụng</h2>
@@ -180,7 +180,7 @@ sudo /etc/init.d/dnsmasq restart</code></pre>
 </ul>
 <p><img src="./settings.png" alt="startup setup"></p>
 <p>Done. npm is not a jerk anymore. :D</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/tang-toc-npm/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/tang-toc-npm/</guid><pubDate>Tue, 12 Apr 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[Tìm hiểu định dạng .mdd và .mdx của MDict]]></title><description><![CDATA[<p><a href="http://www.octopus-studio.com/index.en.htm">MDict</a> là một phần mềm đọc tự điển cho định dạng MDD và MDX (cũng do MDict tạo ra) với khả năng tra những danh mục từ điển hàng nghìn từ một cách siêu nhanh và đã rất nổi tiếng từ thời Window Mobile 5.0.</p>
+]]></description><link>https://khoanguyen.me/tang-toc-npm/</link><guid isPermaLink="true">https://khoanguyen.me/tang-toc-npm/</guid><pubDate>Tue, 12 Apr 2016 17:00:00 GMT</pubDate></item><item><title><![CDATA[Tìm hiểu định dạng .mdd và .mdx của MDict]]></title><description><![CDATA[<p><a href="http://www.octopus-studio.com/index.en.htm">MDict</a> là một phần mềm đọc tự điển cho định dạng MDD và MDX (cũng do MDict tạo ra) với khả năng tra những danh mục từ điển hàng nghìn từ một cách siêu nhanh và đã rất nổi tiếng từ thời Window Mobile 5.0.</p>
 <p>Từ lâu mình thắc mắc tại sao MDict có thể làm điều đó trong một điều kiện bộ nhớ chật hẹp của thiết bị di động. Đáng buồn là tuy phần mềm MDict là freeware nhưng định dạng MDD và MDX lại là close source. Tuy nhiên cộng đồng open source đã reversed engineer nó và cho ra một bản mô tả (có thể coi gần như là đầy đủ) cho 2 định dạng này. Bây giờ note lại ở đây cho dễ tìm kiếm sau này.</p>
 <ul>
 <li>
@@ -201,7 +201,7 @@ sudo /etc/init.d/dnsmasq restart</code></pre>
 <p>Bước tiếp theo của mình: Viết một cái app bằng React Native đơn giản có thể đọc định dạng này kèm với bookmark vì mấy phần mềm có sẵn trên Android một là quá lởm, hai là quảng cáo mà lại yêu cầu gửi tiền qua Paypal sẽ nhận được code kích hoạt bản pro (wtf thời nào rồi mà không dùng Google Play Payment)</p>
 <p>Mình không có development environment của React Native cho iOS nên anh em nào có hứng thú mình có thể làm chung.</p>
 <p>P/S: Nếu còn hứng thú thì port nó thành cross-platform desktop app chạy trên Electron (vì mình có thể :)) )</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/tim-hieu-dinh-dang-mdict/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/tim-hieu-dinh-dang-mdict/</guid><pubDate>Tue, 05 Apr 2016 07:00:00 GMT</pubDate></item><item><title><![CDATA[React how to]]></title><description><![CDATA[<blockquote>
+]]></description><link>https://khoanguyen.me/tim-hieu-dinh-dang-mdict/</link><guid isPermaLink="true">https://khoanguyen.me/tim-hieu-dinh-dang-mdict/</guid><pubDate>Tue, 05 Apr 2016 07:00:00 GMT</pubDate></item><item><title><![CDATA[React how to]]></title><description><![CDATA[<blockquote>
 <p>From <a href="https://github.com/petehunt/react-howto">react-howto by @petehunt</a></p>
 <p>Vietnamese translated by <a href="https://github.com/petehouston">@petehouston</a></p>
 </blockquote>
@@ -271,7 +271,7 @@ sudo /etc/init.d/dnsmasq restart</code></pre>
 <p><a href="https://facebook.github.io/immutable-js/">Immutable.js</a> cung cấp một tập hợp cấu trúc dữ liệu có thể hỗ trợ giải quyết các vấn đề về tối ưu hoá khi xây dựng ứng dụng React. Đấy là một thư viện tuyệt vời, và bạn chắc hẳn sẽ sử dụng khá nhiều khi xây dựng ứng dụng về sau. Tuy nhiên thì nó lại không cần thiết cho tới khi bạn quan tâm tới tối ưu hoá.</p>
 <h2 id="tìm-hiểu-về-relay-falcor-etc"><a href="#t%C3%ACm-hi%E1%BB%83u-v%E1%BB%81-relay-falcor-etc" class="phenomic-HeadingAnchor">#</a>Tìm hiểu về Relay, Falcor etc</h2>
 <p>Đây là những công nghệ giúp bạn giảm số lượng AJAX requests. Những kĩ thuật này vẫn còn khá là mới mẻ, vì vậy, nếu bạn không có vấn đề với quá nhiều AJAX requests thì bạn không cần tới Relay hay Falcor.</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/react-howto/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/react-howto/</guid><pubDate>Sat, 20 Feb 2016 10:00:00 GMT</pubDate></item><item><title><![CDATA[json ⊄ js]]></title><description><![CDATA[<p>Mọi người thường nói rằng JSON là một phần nhỏ (subset) của Javascript.</p>
+]]></description><link>https://khoanguyen.me/react-howto/</link><guid isPermaLink="true">https://khoanguyen.me/react-howto/</guid><pubDate>Sat, 20 Feb 2016 10:00:00 GMT</pubDate></item><item><title><![CDATA[json ⊄ js]]></title><description><![CDATA[<p>Mọi người thường nói rằng JSON là một phần nhỏ (subset) của Javascript.</p>
 <p>Vấn đề là nó không phải như vậy.</p>
 <p>Dựa vào <a href="http://www.json.org/">spec</a> của JSON, một chuỗi có thể chứa bất cứ kí tự unicode nào ngoại trừ <code>"</code> hoặc <code>/</code> hoặc kí tự điều khiển.</p>
 <p>Điều là có nghĩa là chuỗi dưới đây hoàn toàn hợp lệ với JSON:</p>
@@ -308,7 +308,7 @@ sudo /etc/init.d/dnsmasq restart</code></pre>
  .replace(<span class="hljs-regexp">/\u2028/g</span>, <span class="hljs-string">'\\u2028'</span>)
  .replace(<span class="hljs-regexp">/\u2029/g</span>, <span class="hljs-string">'\\u2029'</span>);
 }</code></pre>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/json-js/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/json-js/</guid><pubDate>Fri, 19 Feb 2016 23:22:00 GMT</pubDate></item><item><title><![CDATA[React.Component với React.createClass]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
+]]></description><link>https://khoanguyen.me/json-js/</link><guid isPermaLink="true">https://khoanguyen.me/json-js/</guid><pubDate>Fri, 19 Feb 2016 23:22:00 GMT</pubDate></item><item><title><![CDATA[React.Component với React.createClass]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
 <p>React hỗ trợ 2 cách để tạo Component.
 Bạn có thể kế thừa từ class <code>React.Component</code> hoặc là
 dùng cú pháp cũ <code>React.createClass</code> đã có từ khi React ra đời.
@@ -455,7 +455,7 @@ thay vì <code>createClass</code>, Javascript cần nhiều hơn là một <code
 Mình chọn viết component bằng ES6 class vì nó nhìn gọn hơn,
 không cần đặt dấu phẩy và sau mỗi hàm, và những điều hạn chế
 kể trên với cú pháp này không ảnh hướng nhiều đến mình.</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/react-component-voi-react-create-class/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/react-component-voi-react-create-class/</guid><pubDate>Fri, 19 Feb 2016 00:39:00 GMT</pubDate></item><item><title><![CDATA[Câu lệnh Bash bạn hay sử dụng]]></title><description><![CDATA[<p>Nếu bạn muốn xem các câu lệnh bash được sử dụng nhiều nhất
+]]></description><link>https://khoanguyen.me/react-component-voi-react-create-class/</link><guid isPermaLink="true">https://khoanguyen.me/react-component-voi-react-create-class/</guid><pubDate>Fri, 19 Feb 2016 00:39:00 GMT</pubDate></item><item><title><![CDATA[Câu lệnh Bash bạn hay sử dụng]]></title><description><![CDATA[<p>Nếu bạn muốn xem các câu lệnh bash được sử dụng nhiều nhất
 hãy gõ lệnh sau vào Terminal (Linux và MacOSX đều chạy):</p>
 <pre><code class="hljs language-shell">history | <span class="hljs-type">awk</span> '{print $<span class="hljs-number">2</span>}' | <span class="hljs-type">sort</span> | <span class="hljs-type">uniq</span> -c | <span class="hljs-type">sort</span> -rn | <span class="hljs-type">head</span></code></pre>
 <p>Đây là danh sách những câu lệnh được dùng nhiều nhất của mình (Linux Mint)</p>
@@ -470,7 +470,7 @@ hãy gõ lệnh sau vào Terminal (Linux và MacOSX đều chạy):</p>
  <span class="hljs-number">30</span> nah
  <span class="hljs-number">14</span> rm</code></pre>
 <p>Của bạn thì sao ? Hãy gửi dưới phần bình luận nhé</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</guid><pubDate>Tue, 26 Jan 2016 07:00:00 GMT</pubDate></item><item><title><![CDATA[@each với Laravel Blade]]></title><description><![CDATA[<p>Làm việc với Laravel, khi bạn gửi 1 collection ra view thì có 2 trường hợp xảy ra</p>
+]]></description><link>https://khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</link><guid isPermaLink="true">https://khoanguyen.me/cau-lenh-bash-duoc-ban-dung-nhieu-nhat/</guid><pubDate>Tue, 26 Jan 2016 07:00:00 GMT</pubDate></item><item><title><![CDATA[@each với Laravel Blade]]></title><description><![CDATA[<p>Làm việc với Laravel, khi bạn gửi 1 collection ra view thì có 2 trường hợp xảy ra</p>
 <ol>
 <li>Loop qua collection và hiển thị kết quả</li>
 <li>Nếu collection trả về kết quả là <code>null</code> thì
@@ -498,7 +498,7 @@ nhưng mình sẽ giới thiệu một cấu trúc khác, không <strong>rối</
 &#x3C;<span class="hljs-keyword">li</span>>Không có kết <span class="hljs-keyword">qu</span>ả <span class="hljs-keyword">n</span>ào&#x3C;/<span class="hljs-keyword">li</span>></code></pre>
 <p>Bạn thấy đấy, từ 1 cấu trúc nested với <code>if .. esle</code> bạn có thể viết lại nó chỉ trong 1 dòng với <code>@each</code></p>
 <p>Nguồn: <a href="https://laravel-news.com/2014/09/laravel-blade/">laravel-news</a></p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/each-voi-laravel-blade/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/each-voi-laravel-blade/</guid><pubDate>Mon, 16 Mar 2015 10:00:00 GMT</pubDate></item><item><title><![CDATA[Xóa tất cả table trong database MySQL]]></title><description><![CDATA[<p>Nếu bạn đang dùng mysql command line để quản lí database (nhất là khi sử dụng VPS...) thì bạn sẽ biết rằng MySQL không hỗ trợ việc xóa tất cả table. Cách thường được dùng đó là xóa hẳn database và tạo database mới. Việc này khá tốn thời gian và cần dùng đến 3 câu query dài để thực hiện (gồm xóa, tạo database, cấp quyền cho user).</p>
+]]></description><link>https://khoanguyen.me/each-voi-laravel-blade/</link><guid isPermaLink="true">https://khoanguyen.me/each-voi-laravel-blade/</guid><pubDate>Mon, 16 Mar 2015 10:00:00 GMT</pubDate></item><item><title><![CDATA[Xóa tất cả table trong database MySQL]]></title><description><![CDATA[<p>Nếu bạn đang dùng mysql command line để quản lí database (nhất là khi sử dụng VPS...) thì bạn sẽ biết rằng MySQL không hỗ trợ việc xóa tất cả table. Cách thường được dùng đó là xóa hẳn database và tạo database mới. Việc này khá tốn thời gian và cần dùng đến 3 câu query dài để thực hiện (gồm xóa, tạo database, cấp quyền cho user).</p>
 <p>Mình có tìm được đoạn code ngắn này mời các bạn tham khảo:</p>
 <pre><code class="hljs language-mysql">DELIMITER $$
 
@@ -532,13 +532,13 @@ DELIMITER ;</code></pre>
 <pre><code class="hljs language-mysql"><span class="hljs-keyword">CALL</span> drop_all_tables_from(<span class="hljs-string">"database_name"</span>);</code></pre>
 <p><strong>Lưu ý:</strong> Lệnh trên sẽ xóa mọi table trong database mà không hề có bất cứ cảnh báo hay xác nhận nào. Sử dụng cẩn thận.</p>
 <p>Nguồn: <a href="http://dor.ky/mysql-procedure-drop-all-tables-in-database/">dor.ky</a></p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/xoa-tat-ca-cac-table-mysql/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/xoa-tat-ca-cac-table-mysql/</guid><pubDate>Sun, 15 Mar 2015 08:00:00 GMT</pubDate></item><item><title><![CDATA[Blog mình thường đọc]]></title><description><![CDATA[<p>Không có gì đặc biệt ở đây. Chỉ là 1 list những blog của dev mình hay đọc thôi. Để lên đây để chia sẽ cùng với mọi người.</p>
+]]></description><link>https://khoanguyen.me/xoa-tat-ca-cac-table-mysql/</link><guid isPermaLink="true">https://khoanguyen.me/xoa-tat-ca-cac-table-mysql/</guid><pubDate>Sun, 15 Mar 2015 08:00:00 GMT</pubDate></item><item><title><![CDATA[Blog mình thường đọc]]></title><description><![CDATA[<p>Không có gì đặc biệt ở đây. Chỉ là 1 list những blog của dev mình hay đọc thôi. Để lên đây để chia sẽ cùng với mọi người.</p>
 <ol>
 <li><a href="http://dor.ky/">Dor.ky - Scott Wilcox</a> : Laravel, PHP, Js</li>
 <li><a href="http://culttt.com/">Culttt.com - Philip Brown</a>: Laravel, Inspiration design (không thích đọc mục này lắm)</li>
 </ol>
 <p>Mọi người thích đọc blog nào? Cùng chia sẽ với mình nhé :D</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/blog-minh-thuong-doc/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/blog-minh-thuong-doc/</guid><pubDate>Sun, 15 Mar 2015 06:00:00 GMT</pubDate></item><item><title><![CDATA[Database Seeder - Tạo dummy data - Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết thứ 4 trong series <a href="/gioi-thieu-series-larask-gist/">Laravel Gist</a> .</p>
+]]></description><link>https://khoanguyen.me/blog-minh-thuong-doc/</link><guid isPermaLink="true">https://khoanguyen.me/blog-minh-thuong-doc/</guid><pubDate>Sun, 15 Mar 2015 06:00:00 GMT</pubDate></item><item><title><![CDATA[Database Seeder - Tạo dummy data - Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết thứ 4 trong series <a href="/gioi-thieu-series-larask-gist/">Laravel Gist</a> .</p>
 <p>Các bạn có thể xem code của project tại <a href="http://github.com/larask/gist">Github</a>.</p>
 <hr>
 <h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
@@ -681,7 +681,7 @@ DB::statement(<span class="hljs-string">'TRUNCATE TABLE gists'</span>);</code></
 <h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Qua bài này, các bạn đã biết được cách dùng <code>TestDummy</code> kết hợp với <code>Faker</code> để tạo dummy data phục vụ cho việc develop và testing.</p>
 <p>Mình và anh <a href="http://blog.luuhoangnam.com/">Nam</a> đã push vài commit để hiển thị các database này ra ngoài dưới dạng json. Các bạn có thể clone về, cài đặt như bình thường (xem file readme) và truy cập vào route <code>/trending</code> để xem thử.</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/database-seeder-larask-gist/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/database-seeder-larask-gist/</guid><pubDate>Fri, 13 Mar 2015 17:00:00 GMT</pubDate></item><item><title><![CDATA[Detour - Giới thiệu và sử dụng UUID]]></title><description><![CDATA[<blockquote>
+]]></description><link>https://khoanguyen.me/database-seeder-larask-gist/</link><guid isPermaLink="true">https://khoanguyen.me/database-seeder-larask-gist/</guid><pubDate>Fri, 13 Mar 2015 17:00:00 GMT</pubDate></item><item><title><![CDATA[Detour - Giới thiệu và sử dụng UUID]]></title><description><![CDATA[<blockquote>
 <p>Đây là bài viết thứ 3 trong series <a href="/gioi-thieu-series-larask-gist/">Laravel Gist</a>.
 Các bạn có thể xem code của project tại <a href="http://github.com/larask/gist">Github</a>.</p>
 </blockquote>
@@ -807,7 +807,7 @@ Các bạn có thể xem code của project tại <a href="http://github.com/lar
 <p><em>Lưu ý: <code>public $incrementing = false;</code> có thể đặt tại <code>app/UuidModel.php</code> nhưng vì li do nào đó mà nó làm fail PHPUnit nên mình tạm thời đặt nó ở đây. Sẽ refactor tiếp khi cần thiết</em></p>
 <h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Qua bài này, chúng ta đã biết được cách sử dụng Uuid với Eloquent Model. Chúng ta đã sửa và thêm vào không quá 20 dòng code. Tất cả đều nhờ vào sự "thần kì" của Laravel.</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/</guid><pubDate>Fri, 13 Mar 2015 10:00:00 GMT</pubDate></item><item><title><![CDATA[Migration và Model trong Laravel 5 - Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết thứ hai trong series <a href="/gioi-thieu-series-larask-gist/">Larask Gist</a> .</p>
+]]></description><link>https://khoanguyen.me/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/</link><guid isPermaLink="true">https://khoanguyen.me/detour-gioi-thieu-va-su-dung-uuid-voi-larask-gist/</guid><pubDate>Fri, 13 Mar 2015 10:00:00 GMT</pubDate></item><item><title><![CDATA[Migration và Model trong Laravel 5 - Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết thứ hai trong series <a href="/gioi-thieu-series-larask-gist/">Larask Gist</a> .</p>
 <p>Các bạn có thể xem code của toàn bộ bài viết tại <a href="https://github.com/Larask/gist/tree/d3e5e96139fce98e028834035bb41759fd49b62e">github</a></p>
 <h1 id="model"><a href="#model" class="phenomic-HeadingAnchor">#</a>Model</h1>
 <p>Trong <a href="/tim-hieu-mo-hinh-mvc-la-gi/">mô hình MVC</a> thì Model đóng vai trò giao tiếp với database. Laravel đi kèm với Eloquent, một <a href="http://yhoc.co/orm-eloquent">ORM</a>  với Active Record Pattern. <a href="http://yhoc.co/active-record-data-mapper">(xem chi tiết về các pattern ORM)</a> . Trong Active Record Pattern thì mỗi object sẽ đại diện cho một dòng trong table. Điều này làm cho việc tương tác với database dễ hơn bao giờ hết.</p>
@@ -938,7 +938,7 @@ Vì vậy, cứ để cho nó null sau này sẽ tính sau.</p>
 <p>Kiểm tra lại trong database. Toàn bộ cấu trúc đã biến mất (trừ table <code>migrations</code> ). Yay me.</p>
 <h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Bằng việc sử dụng, kết hợp model và migration trong Laravel, việc lập trình của bạn sẽ dễ dàng hơn bao giờ hết. Nếu bạn làm việc theo team. Mọi thay đổi về cấu trúc database của được cập nhật đến mọi thành viên của nhóm một cách nhanh chóng.</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/model-va-migration-trong-laravel-5-gist/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/model-va-migration-trong-laravel-5-gist/</guid><pubDate>Thu, 12 Mar 2015 19:00:00 GMT</pubDate></item><item><title><![CDATA[Cài đặt và thiết lập cơ bản cho Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết trong <a href="/gioi-thieu-series-larask-gist/">series Larask Gist</a>.
+]]></description><link>https://khoanguyen.me/model-va-migration-trong-laravel-5-gist/</link><guid isPermaLink="true">https://khoanguyen.me/model-va-migration-trong-laravel-5-gist/</guid><pubDate>Thu, 12 Mar 2015 19:00:00 GMT</pubDate></item><item><title><![CDATA[Cài đặt và thiết lập cơ bản cho Larask Gist]]></title><description><![CDATA[<p>Đây là bài viết trong <a href="/gioi-thieu-series-larask-gist/">series Larask Gist</a>.
 Toàn bộ source code của bài viết này bạn có thể xem tại đây: <a href="https://github.com/Larask/gist/">Larask Gist</a></p>
 <h1 id="cài-đặt"><a href="#c%C3%A0i-%C4%91%E1%BA%B7t" class="phenomic-HeadingAnchor">#</a>Cài đặt</h1>
 <p>Trong series này mình sẽ dùng Laragon để hướng dẫn. Vì vậy nếu bạn nào chưa cài đặt Laragon hãy <a href="/laragon-cai-dat-laravel-trong-mot-phut/">cài đặt ngay theo hướng dẫn</a>. (nếu máy bạn đủ khả năng ảo hóa, hãy sử dụng Homestead thay thế)</p>
@@ -1026,7 +1026,7 @@ Hãy để Composer làm điểu đó cho bạn.</p>
 <p>Cuối cùng là add file <code>_ide_helper.php</code> vào cuối file <code>.gitignore</code>  để cho git không theo dõi file này, tránh các rắc rối về commit/merge về sau.</p>
 <h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Nếu bạn đọc được đến đây thì bạn đã sẵn sàng để chinh phục Laravel rồi đấy.</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/larask-gist-cai-dat-va-cau-hinh-co-ban/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/larask-gist-cai-dat-va-cau-hinh-co-ban/</guid><pubDate>Thu, 12 Mar 2015 18:00:00 GMT</pubDate></item><item><title><![CDATA[Giới thiệu series Larask Gist]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
+]]></description><link>https://khoanguyen.me/larask-gist-cai-dat-va-cau-hinh-co-ban/</link><guid isPermaLink="true">https://khoanguyen.me/larask-gist-cai-dat-va-cau-hinh-co-ban/</guid><pubDate>Thu, 12 Mar 2015 18:00:00 GMT</pubDate></item><item><title><![CDATA[Giới thiệu series Larask Gist]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
 <p>Học lập trình/framework thì không gì tốt hơn là học trực tiếp qua code. Ứng dụng vào một ứng dụng thực tế.</p>
 <p>Hôm nay mình xin được giới thiệu với các bạn series Larask Gist.
 Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng Laravel 5.</p>
@@ -1059,7 +1059,7 @@ Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng
 <li>Routing - Controller</li>
 <li>View</li>
 </ol>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/gioi-thieu-series-larask-gist/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/gioi-thieu-series-larask-gist/</guid><pubDate>Thu, 12 Mar 2015 13:00:00 GMT</pubDate></item><item><title><![CDATA[Laragon - Cài đặt Laravel trong 1 phút]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
+]]></description><link>https://khoanguyen.me/gioi-thieu-series-larask-gist/</link><guid isPermaLink="true">https://khoanguyen.me/gioi-thieu-series-larask-gist/</guid><pubDate>Thu, 12 Mar 2015 13:00:00 GMT</pubDate></item><item><title><![CDATA[Laragon - Cài đặt Laravel trong 1 phút]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
 <p>Laravel là một framework mạnh mẽ, giúp cho việc viết code trở nên "thú vị" hơn cũng như ít code hơn. Nhưng đối với các bạn mới bắt đầu tìm hiểu về Laravel từ nền tảng PHP cơ bản hay từ các framework khác chuyển qua thì việc cài đặt Laravel là cả 1 vấn đề. Bao gồm 1 webserver PHP cơ bản (từ PHP 5.4.0 thì PHP có built-in webserver tích hợp nên bước này có thể bỏ qua), Composer, Mcrypt, thiết lập Virtual host,...</p>
 <p>Thông thường trên các hệ điều hành *NIX (Linux, MacOS). Bạn có thể dễ dàng cài đặt chúng qua</p>
 <p><a href="http://laragon.org">Laragon</a> ra đời nhằm mục đích khắc phục điều đó. Và theo video trên trang chủ thì bạn chỉ mất 1 phút để cài đặt xong Laragon.</p>
@@ -1116,7 +1116,7 @@ Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng
 <p>Laragon sẽ tự động tạo virtual host với tên miền là tên folder trong thư mục www của bạn.</p>
 <h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Laragon giúp tiết kiệm rất nhiều thời gian khi làm quen, viết code PHP và Laravel. Hãy trải nghiệm Laragon và chia sẽ với bạn bè nhé.</p>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</guid><pubDate>Wed, 11 Mar 2015 20:00:00 GMT</pubDate></item><item><title><![CDATA[Tạo menu cho Discourse]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
+]]></description><link>https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</link><guid isPermaLink="true">https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</guid><pubDate>Wed, 11 Mar 2015 20:00:00 GMT</pubDate></item><item><title><![CDATA[Tạo menu cho Discourse]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
 <p>Có nhiều bạn hỏi mình về cái menu Discourse của mình. Hôm nay mình sẽ chia sẽ code với các bạn.
 Menu sẽ tự động ản khi bạn trượt xuống nên yên tâm là sẽ không tốn quá nhiều diện tích.
 Demo : <a href="http://ask.hoidapyhoc.com">Hỏi Đáp Y Học</a></p>
@@ -1171,4 +1171,4 @@ Các bạn nhớ chỉnh lại link cho phù hợp. Muốn dụng icon các bạ
   <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.facebook.com/hoidapyhoc"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-facebook-square"</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">i</span>></span> Fanpage<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
 <span class="hljs-tag">&#x3C;/<span class="hljs-name">ul</span>></span>
 <span class="hljs-tag">&#x3C;/<span class="hljs-name">div</span>></span></code></pre>
-]]></description><link>https://phenomic-theme-type.khoanguyen.me/tao-menu-cho-discourse/</link><guid isPermaLink="true">https://phenomic-theme-type.khoanguyen.me/tao-menu-cho-discourse/</guid><pubDate>Fri, 09 Jan 2015 00:10:59 GMT</pubDate></item></channel></rss>
+]]></description><link>https://khoanguyen.me/tao-menu-cho-discourse/</link><guid isPermaLink="true">https://khoanguyen.me/tao-menu-cho-discourse/</guid><pubDate>Fri, 09 Jan 2015 00:10:59 GMT</pubDate></item></channel></rss>
