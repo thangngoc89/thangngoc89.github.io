@@ -1,6 +1,6 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[khoa-nguyen-blog]]></title><description><![CDATA[khoa-nguyen-blog]]></description><link>https://khoanguyen.me</link><generator>RSS for Node</generator><lastBuildDate>Mon, 19 Sep 2016 12:42:51 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Xóa tất cả các git branch trừ master]]></title><description><![CDATA[<p>Mình thường tạo ra rất nhiều branch khi làm việc với git. Nhiều khi vài chục
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[khoa-nguyen-blog]]></title><description><![CDATA[khoa-nguyen-blog]]></description><link>https://khoanguyen.me</link><generator>RSS for Node</generator><lastBuildDate>Mon, 19 Sep 2016 12:45:42 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Xóa tất cả các git branch trừ master]]></title><description><![CDATA[<p>Mình thường tạo ra rất nhiều branch khi làm việc với git. Nhiều khi vài chục
 branch cùng một lúc.</p>
-<p><img src="git-branch-mess.jpg"></p>
+<p><img src="git-branch-mess.png"></p>
 <p>Nếu các bạn muốn xóa nhanh tất cả các branch và chỉ chừa lại branch master,
 câu lệnh dưới đây dành cho bạn:</p>
 <pre><code class="hljs language-sh">git checkout master &#x26;&#x26; git branch -D `git branch | grep -v master`</code></pre>
