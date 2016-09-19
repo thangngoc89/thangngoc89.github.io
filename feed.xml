@@ -1,4 +1,11 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[khoa-nguyen-blog]]></title><description><![CDATA[khoa-nguyen-blog]]></description><link>https://khoanguyen.me</link><generator>RSS for Node</generator><lastBuildDate>Fri, 16 Sep 2016 09:50:35 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Squash tất cả commit trong một branch nhanh chóng]]></title><description><![CDATA[<p>Bình thường:</p>
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[khoa-nguyen-blog]]></title><description><![CDATA[khoa-nguyen-blog]]></description><link>https://khoanguyen.me</link><generator>RSS for Node</generator><lastBuildDate>Mon, 19 Sep 2016 12:41:42 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Xóa tất cả các git branch trừ master]]></title><description><![CDATA[<p>Mình thường tạo ra rất nhiều branch khi làm việc với git. Nhiều khi vài chục
+branch cùng một lúc.</p>
+<p><img src="git-branch-mess.jpg"></p>
+<p>Nếu các bạn muốn xóa nhanh tất cả các branch và chỉ chừa lại branch master,
+câu lệnh dưới đây dành cho bạn:</p>
+<pre><code class="hljs language-sh">git checkout master &#x26;&#x26; git branch -D `git branch | grep -v master`</code></pre>
+<p><strong>!! Câu lệnh trên chạy mà không có bất cứ cảnh báo nào</strong></p>
+]]></description><link>https://khoanguyen.me/til/xoa-tat-ca-git-branch-tru-master/</link><guid isPermaLink="true">https://khoanguyen.me/til/xoa-tat-ca-git-branch-tru-master/</guid><pubDate>Mon, 19 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Squash tất cả commit trong một branch nhanh chóng]]></title><description><![CDATA[<p>Bình thường:</p>
 <pre><code class="hljs language-sh">git rebase -i master</code></pre>
 <p>Chọn <code>r</code> (rename) để đặt lại tên cho commit đầu</p>
 <p>Chọn <code>f</code> (fixup) hoặc <code>s</code> (squash) trên từng commit</p>
@@ -1116,59 +1123,4 @@ Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng
 <p>Laragon sẽ tự động tạo virtual host với tên miền là tên folder trong thư mục www của bạn.</p>
 <h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
 <p>Laragon giúp tiết kiệm rất nhiều thời gian khi làm quen, viết code PHP và Laravel. Hãy trải nghiệm Laragon và chia sẽ với bạn bè nhé.</p>
-]]></description><link>https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</link><guid isPermaLink="true">https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</guid><pubDate>Wed, 11 Mar 2015 20:00:00 GMT</pubDate></item><item><title><![CDATA[Tạo menu cho Discourse]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
-<p>Có nhiều bạn hỏi mình về cái menu Discourse của mình. Hôm nay mình sẽ chia sẽ code với các bạn.
-Menu sẽ tự động ản khi bạn trượt xuống nên yên tâm là sẽ không tốn quá nhiều diện tích.
-Demo : <a href="http://ask.hoidapyhoc.com">Hỏi Đáp Y Học</a></p>
-<h1 id="tiến-hành"><a href="#ti%E1%BA%BFn-h%C3%A0nh" class="phenomic-HeadingAnchor">#</a>Tiến hành</h1>
-<p>Với công cụ tích hợp của Discourse thì việc sửa/ thêm style trở nên rất đơn giản.</p>
-<ol>
-<li>Vào Admin Dashboard</li>
-<li>Customize > CSS/HTML</li>
-<li>Tạo 1 Style mới (ví dụ Toolbar)</li>
-</ol>
-<p><img src="/images/2015/01/toolba.jpg" alt="toolbar"></p>
-<ol start="4">
-<li>Ở CSS và CSS Mobile</li>
-</ol>
-<pre><code class="hljs language-css"><span class="hljs-selector-tag">ul</span><span class="hljs-selector-id">#top-navbar-links</span> {
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
-  <span class="hljs-attribute">float</span>: right
-}
-<span class="hljs-selector-id">#top-navbar-links</span> <span class="hljs-selector-tag">li</span> {
-  <span class="hljs-attribute">list-style</span>: none;
-  <span class="hljs-attribute">display</span>: inline;
-  <span class="hljs-attribute">margin</span>: <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">0</span> <span class="hljs-number">20px</span>;
-  <span class="hljs-attribute">padding</span>: <span class="hljs-number">0</span>;
-}
-
-<span class="hljs-selector-id">#top-navbar-links</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> {
-  <span class="hljs-attribute">font-size</span>: <span class="hljs-number">12px</span>;
-  <span class="hljs-attribute">line-height</span>: <span class="hljs-number">40px</span>;
-  <span class="hljs-attribute">font-family</span>: <span class="hljs-string">"Helvetica Neue"</span>, helvetica, arial, sans-serif;
-  <span class="hljs-attribute">text-transform</span>: uppercase;
-  <span class="hljs-attribute">font-weight</span>: bold;
-  <span class="hljs-attribute">color</span>: <span class="hljs-number">#FF4742</span>;
-  <span class="hljs-attribute">display</span>: inline-block;
-}
-
-<span class="hljs-selector-id">#top-navbar-links</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:hover</span>,
-<span class="hljs-selector-id">#top-navbar-links</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span><span class="hljs-selector-pseudo">:focus</span> {
-    <span class="hljs-attribute">color</span>: <span class="hljs-number">#FF4742</span>
-}
-
-<span class="hljs-selector-id">#top-navbar-links</span> <span class="hljs-selector-tag">li</span> <span class="hljs-selector-tag">a</span> <span class="hljs-selector-class">.fa</span> {
-    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">20px</span>;
-    <span class="hljs-attribute">vertical-align</span>: -<span class="hljs-number">2px</span>;
-}</code></pre>
-<p>Ở <code>Header</code> và <code>Header Mobile</code>
-Các bạn nhớ chỉnh lại link cho phù hợp. Muốn dụng icon các bạn có thể xem <a href="http://fortawesome.github.io/Font-Awesome/icons/">Font AweSome</a> (tích hợp sẵn trong Discourse)</p>
-<pre><code class="hljs language-html"><span class="hljs-tag">&#x3C;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"top-navbar"</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"container"</span>></span>
-<span class="hljs-tag">&#x3C;<span class="hljs-name">ul</span> <span class="hljs-attr">id</span>=<span class="hljs-string">"top-navbar-links"</span>></span>
-  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://hoidapyhoc.com/"</span>></span>Trang chủ<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
-  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"http://hoidapyhoc.com/quiz"</span>></span>Quiz - Kho đề trắc nghiệm<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
-  <span class="hljs-tag">&#x3C;<span class="hljs-name">li</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">a</span> <span class="hljs-attr">href</span>=<span class="hljs-string">"https://www.facebook.com/hoidapyhoc"</span> <span class="hljs-attr">target</span>=<span class="hljs-string">"_blank"</span>></span><span class="hljs-tag">&#x3C;<span class="hljs-name">i</span> <span class="hljs-attr">class</span>=<span class="hljs-string">"fa fa-facebook-square"</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">i</span>></span> Fanpage<span class="hljs-tag">&#x3C;/<span class="hljs-name">a</span>></span><span class="hljs-tag">&#x3C;/<span class="hljs-name">li</span>></span>
-<span class="hljs-tag">&#x3C;/<span class="hljs-name">ul</span>></span>
-<span class="hljs-tag">&#x3C;/<span class="hljs-name">div</span>></span></code></pre>
-]]></description><link>https://khoanguyen.me/tao-menu-cho-discourse/</link><guid isPermaLink="true">https://khoanguyen.me/tao-menu-cho-discourse/</guid><pubDate>Fri, 09 Jan 2015 00:10:59 GMT</pubDate></item></channel></rss>
+]]></description><link>https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</link><guid isPermaLink="true">https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</guid><pubDate>Wed, 11 Mar 2015 20:00:00 GMT</pubDate></item></channel></rss>
