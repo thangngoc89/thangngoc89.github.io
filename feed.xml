@@ -1,4 +1,103 @@
-<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[khoa-nguyen-blog]]></title><description><![CDATA[khoa-nguyen-blog]]></description><link>https://khoanguyen.me</link><generator>RSS for Node</generator><lastBuildDate>Fri, 23 Sep 2016 17:57:22 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Xóa tất cả các git branch trừ master]]></title><description><![CDATA[<p>Mình thường tạo ra rất nhiều branch khi làm việc với git. Nhiều khi vài chục
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0"><channel><title><![CDATA[khoa-nguyen-blog]]></title><description><![CDATA[khoa-nguyen-blog]]></description><link>https://khoanguyen.me</link><generator>RSS for Node</generator><lastBuildDate>Mon, 26 Sep 2016 16:41:23 GMT</lastBuildDate><atom:link href="https://khoanguyen.me/feed.xml" rel="self" type="application/rss+xml"/><item><title><![CDATA[Học Flux bằng truyện tranh]]></title><description><![CDATA[<p><em>Bài viết được dịch từ <a href="https://code-cartoons.com/a-cartoon-guide-to-flux-6157355ab207">A cartoon guide to Flux của tác giả Lin Clark</a></em></p>
+<hr>
+<p>Flux là một trong những chủ đề nóng hổi cũng như khó hiểu trong phát triển web hiện tại.
+Bài viết này sẽ cố gắng để giải thích Flux theo cách đơn giản nhất.</p>
+<h2 id="vấn-đề"><a href="#v%E1%BA%A5n-%C4%91%E1%BB%81" class="phenomic-HeadingAnchor">#</a>Vấn đề</h2>
+<p>Đầu tiên, mình sẽ giải thích vấn đề mà Flux sinh ra để giải quyết. Flux là một mô hình để xử lí dữ liệu trong ứng dụng của bạn. Flux và React cùng được phát triển tại Facebook. Nhiều lập trình viên thường dùng chúng chung với nhau nhưng các bạn có thể dùng chúng riêng lẻ. Flux và React được phát triển để giải quyết một số vấn đề mà Facebook gặp phải.</p>
+<p>Trong số những vấn đề đó thì điển hình nhất là lỗi của thanh thông báo. Bạn đăng nhập vào Facebook, bạn sẽ thấy thông báo trên biểu tượng chat.</p>
+<p><img src="1-notification.jpg" alt="Thanh thông báo của Facebook"></p>
+<p>Kì lạ thay, bạn nhấn vào biểu tượng chat thì không có tin nhắn nào cả. Sau khi lướt news feed vài phút thì thông báo xuất hiện lại. Bạn nhấn vào biểu tượng chat lần nữa ... vẫn không có bất kì tin nhắn nào. Vấn đề này cứ tiếp diễn thành một vòng lặp.</p>
+<p><img src="2.jpg"></p>
+<p>Vấn đề nêu trên khi chỉ là vòng lặp cho người dùng mà nó cũng là vòng lặp cho các kĩ sư Facebook. Họ sửa bug này, mọi thứ hoạt động bình thường rồi lỗi này lại xuất hiện. Các kĩ sư tiếp tục sửa lỗi, rồi nó cứ xuất hiện trở lại.</p>
+<h2 id="vấn-đề-cốt-lõi"><a href="#v%E1%BA%A5n-%C4%91%E1%BB%81-c%E1%BB%91t-l%C3%B5i" class="phenomic-HeadingAnchor">#</a>Vấn đề cốt lõi</h2>
+<p>Vấn đề cốt lõi được các kĩ sư xác định là do cách mà dữ liệu được truyền đi trong ứng dụng.</p>
+<p><img src="3-model-view.png">
+<em>Model truyền dữ liệu với View</em></p>
+<p>Họ có model để lưu dữ liệu, sau đó truyền dữ liệu đến view để render. Bởi vì người dùng tương tác thông qua view, nên view cần phải cập nhật model dựa trên tương tác của người dùng. Model thì nhiều khi lại cần cập nhất model khác.</p>
+<p>Thêm vào đó, một thay đổi có thể kích hoạt một loạt các thay đổi dây chuyền. Hãy tưởng tượng bạn đang chơi trò Pong, bạn sẽ không thể nào biết được quả bóng sẽ chạm vào đâu (hoặc là rơi ra khỏi màn hình).</p>
+<p><img src="4.png">
+<em>View cập nhật model. Model cập nhật model khác. Nó giống như quả bóng khi chơi Pong</em></p>
+<p>Bỏ qua sự thật hiển nhên là những thay đổi này có thể xảy ra không đồng bộ (async). Một thay đổi có thể kích hoạt nhiều thay đổi khác. Tưởng tượng việc này giống như đổ hẳn một túi bóng vào màn hình trong trò Pong. Các quả bóng này sẽ chạy tứ tung loạn xạ.</p>
+<p>Tóm lại thì mô hình trên làm cho việc debug luồng đi của dữ liệu trở nên cực kì khó khăn.</p>
+<h2 id="giải-pháp-luồng-dữ-liệu-một-chiều"><a href="#gi%E1%BA%A3i-ph%C3%A1p-lu%E1%BB%93ng-d%E1%BB%AF-li%E1%BB%87u-m%E1%BB%99t-chi%E1%BB%81u" class="phenomic-HeadingAnchor">#</a>Giải pháp: luồng dữ liệu một chiều</h2>
+<p>Vì các lí do đã giải thích ở trên, Facebook đã thử nghiệm một mô hình, mà dữ liệu di chuyển theo một chiều - chỉ một chiều - và khi bạn cần thêm dữ liệu mới vào, quá trình bắt đầu tại điểm xuất phát. Họ gọi nó là mô hình Flux.</p>
+<p><img src="assets/index-cc610.png">
+<em>Sơ đồ từ tài liệu về Flux của Facebook. Nó tuyệt vời hơn bạn tường</em></p>
+<p>Flux thực sự rất tuyệt vời ... nhưng bạn không thể biết chỉ bằng việc nhìn vào sơ đồ trên.</p>
+<p>Một khi bạn đã hiểu Flux, sơ đồ trên trở nên rất rõ ràng. Vấn đề là khi bạn tìm hiểu về Flux thông qua tài liệu chính thức, mình không nghĩ là sơ đồ trên sẽ giúp ích được bạn. Nhiệm vụ của một sơ đồ là cho bạn cái nhìn toàn cảnh về hệ thống trước khi bắt đầu nghiên cứu sâu về nó.</p>
+<p>Mình hiểu về Flux không phải nhờ sơ đồ kiểu này, mà là suy nghĩ về hệ thống thông qua các nhân vật cùng làm việc để đạt được mục tiêu. Hôm nay, mình sẽ giới thiệu với các bạn phần diễn xuất của các nhân vật do mình tự nghĩ ra.</p>
+<h2 id="giới-thiệu-nhân-vật"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u-nh%C3%A2n-v%E1%BA%ADt" class="phenomic-HeadingAnchor">#</a>Giới thiệu nhân vật</h2>
+<p>Mình sẽ giới thiệu nhân về các nhân vật trước khi giải thích sự tương tác giữa các nhân vật này.</p>
+<h3 id="action-creator-người-tạo-hành-động"><a href="#action-creator-ng%C6%B0%E1%BB%9Di-t%E1%BA%A1o-h%C3%A0nh-%C4%91%E1%BB%99ng" class="phenomic-HeadingAnchor">#</a>Action creator (người tạo hành động)</h3>
+<blockquote>
+<p>Lưu ý: Trong bài này mình sẽ không dịch các thuật ngữ liên quan trực tiếp đến Flux.</p>
+</blockquote>
+<p>Nhân vật đầu tiên chính là action creator. Nó có nhiệm vụ tạo hành động. Hành động là cách thức mà mọi thay đổi và tương tác xảy ra. Mỗi khi bạn muốn thay đổi trạng thái app hay render một view khác hoàn toàn, bạn sẽ tạo ra một hành động.</p>
+<p>Mình ví action creator như là một nhân viên tiếp tân của tổng đài điện thoại. Bạn gửi những thông tin bạn cần truyền đi đến action creator, sau đó action creator sẽ định dạng thông tin theo cách mà toàn bộ hệ thống có thể hiểu được.</p>
+<p><img src="assets/index-ebc86.png"></p>
+<p>Action creator tạo ra một hành động với một kiểu hành động (action's type) và nội dung hành động (action's payload). Mỗi kiểu hành động sẽ là một trong những kiểu hành động bạn đã định nghĩa sẵn trong hệ thống (thường là một danh sách các hằng - constant). <code>MESSAGE_CREATE</code> và <code>MESSAGE_READ</code> là các ví dụ cụ thể của hành động.</p>
+<p>Khi hệ thống biết được tất cả các hành động có thể xảy ra, một hệ quả tất yếu là một lập trình viến mới tiếp cận với dự án, mở file định nghĩa action creator và có thể xem được toàn bộ API, biết được toàn bộ các thay đổi có thể xảy ra trong hệ thống cùa bạn.</p>
+<p>Một khi action creator tạo ra một hành động, nó sẽ truyền hành động này tới dispatcher.</p>
+<h3 id="dispatcher-người-truyền-tin"><a href="#dispatcher-ng%C6%B0%E1%BB%9Di-truy%E1%BB%81n-tin" class="phenomic-HeadingAnchor">#</a>Dispatcher (người truyền tin)</h3>
+<p>Về cơ bản, dispatcher là một danh bạ lớn. Nó như là một nhân viên tổng đài điện thoại làm việc ở bảng điều khiển. Nó sẽ giữ một dành sách lớn các store cần nhận hành động. Mỗi khi hành động đến từ action creator, nó sẽ truyền hành động này đến các store khác nhau.</p>
+<p>Dispatcher thực hiện việc truyền tin của mình một tuần tự cho từng store. Việc này giúp giải quyết vấn để nhiều quả bóng cùng lúc trong trò Pong mà mình đã nói ở trên. Bạn có thể thiết lập để một store nhận cập nhật trước một store khác thông qua <code>waitFor()</code>.</p>
+<p><img src="assets/index-0d906.png"></p>
+<p>Người truyền tin của Flux khác với người truyền tin trong các mô mình khác. Hành động sẽ được truyền tới tất cả các store đã được đăng kí với người truyền tin mà không phân biệt kiểu hành động. Hay nói cách khác, các store không chỉ lắng nghe (subscribe) các hành cụ thể mà chúng sẽ lắng nghe tất cả các hành động rồi lọc ra các hành động mà nó quan tâm để tiếp tục xử lí.</p>
+<h3 id="store"><a href="#store" class="phenomic-HeadingAnchor">#</a>Store</h3>
+<p>Tiếp theo là store. Store sẽ giữ tất cả các thông tin về trạng thái ứng dụng và tất cả logic để thay đổi trạng thái nằm trong store.</p>
+<p>Mình tưởng tượng store là một vị công chức lạm quyền. Mọi thay đổi trạng thái phải được thông qua bởi vị này. Và bạn không thể trực tiếp yêu cầu store thay đổi state, vì store không có setter. Để thực hiện một thay đổi đối với state, bạn chỉ có thể thực hiện bằng một phương thức duy nhất đó là thông qua action creator và dispatcher.</p>
+<p>Như mình đã nói ở trên thì nếu một store được kết nối với dispatcher thì nó sẽ nhận được tất cả mọi hành động. Trong mỗi store thường sẽ có một câu lệnh <code>switch</code> để phân loại kiểu hành động. Nếu đây đúng là hành động mà store quan tâm, nó sẽ thực hiện những thay đổi cần thiết và cập nhật state.</p>
+<p>Một khi store đã áp dụng các thay đổi cho state, nó sẽ phát ra tín hiệu báo cho controller view về sự thay đổi này.</p>
+<h3 id="controller-view-và-view"><a href="#controller-view-v%C3%A0-view" class="phenomic-HeadingAnchor">#</a>Controller view và view</h3>
+<p>View có trách nhiệm nhận thông tin từ state và render giao diện và tiếp nhận tương tác của người dùng.</p>
+<p>View chỉ là người đại diện, nó không có bất kì ý thức gì về logic của ứng dụng. Nó chỉ nhận dữ liệu, định dạng và xuất ra thành HTML markup.</p>
+<p>Controller view đóng vai trò như là một người quản lí trung gian giữa store và view. Store sẽ báo controller view mỗi khi có sự thay đổi từ state. Nó sẽ nhận state mới và truyền tới tất cả các view mà nó quản lí.</p>
+<h2 id="tương-tác-giữa-các-nhân-vật"><a href="#t%C6%B0%C6%A1ng-t%C3%A1c-gi%E1%BB%AFa-c%C3%A1c-nh%C3%A2n-v%E1%BA%ADt" class="phenomic-HeadingAnchor">#</a>Tương tác giữa các nhân vật</h2>
+<h3 id="thiết-lập"><a href="#thi%E1%BA%BFt-l%E1%BA%ADp" class="phenomic-HeadingAnchor">#</a>Thiết lập</h3>
+<p>Có một bước thiết lập nhỏ để các nhân vật có thể tương tác với nhau. Ứng dụng chỉ cần làm việc này duy nhất vào lúc khởi động.</p>
+<ol>
+<li>Store sẽ báo cho dispatcher biết nó muốn được thông báo khi có action.</li>
+</ol>
+<p><img src="assets/index-792ca.png"></p>
+<ol start="2">
+<li>Sau đó controller view sẽ nhận state mới nhất từ store.</li>
+<li>Khi controller view nhận được state từ store thì chúng sẽ gửi các state này tới các view chịu sự quản lí của chúng để render.</li>
+</ol>
+<p><img src="assets/index-238ee.png"></p>
+<ol start="4">
+<li>Controller view cũng yêu cầu store thông báo khi state được cập nhật.</li>
+</ol>
+<p><img src="assets/index-95280.png"></p>
+<h3 id="luồng-dữ-liệu"><a href="#lu%E1%BB%93ng-d%E1%BB%AF-li%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Luồng dữ liệu</h3>
+<p>Một khi quá trình thiết lập hoàn tất, ứng dụng đã sẵn sàng để nhận tương tác của người dùng. Chúng ta sẽ bắt đầu bằng việc kích hoạt một action thông qua thay đổi từ phía người dùng.</p>
+<p><img src="assets/index-ce6af.png"></p>
+<ol>
+<li>Một khi có tương tác của người dùng, view sẽ báo cho action creator chuẩn bị một hành động mới.</li>
+</ol>
+<p><img src="assets/index-24d0f.png"></p>
+<ol start="2">
+<li>Action creator định dạng hành động và gửi nó tới dispatcher.</li>
+</ol>
+<p><img src="assets/index-c3aa5.png" alt="action creator gửi hành động tới dispatcher"></p>
+<ol start="3">
+<li>Dispatcher sẽ gửi hành động này tới các store theo tuần tự. Mỗi store sẽ được thông báo về tất cả các hành động. Sau đó, store sẽ quyết định xem nó có nên xử lí hành động này hay không, nếu có thì cập nhật state cho phù hợp.</li>
+</ol>
+<p><img src="assets/index-29626.png" alt="store nhận action từ dispatcher và thay đổi state"></p>
+<ol start="4">
+<li>
+<p>Khi store đã hoàn thành thay đổi state, nó sẽ báo cho các controller view đã liên kết biết.</p>
+</li>
+<li>
+<p>Các controller view sẽ yêu cầu store gửi chúng những cập nhật mới về state.</p>
+</li>
+</ol>
+<p><img src="assets/index-3abc8.png" alt="controller view nhận thông báo mới về state"></p>
+<ol start="6">
+<li>Sau khi đã nhận được state, controller view sẽ báo cho các view do nó quản lí render dựa trên state mới.</li>
+</ol>
+<p><img src="assets/index-4a835.png" alt="view render dựa trên state"></p>
+<p>Đó là cách mà mình suy nghĩ về Flux. Hy vọng nó giúp ích cho bạn!</p>
+]]></description><link>https://khoanguyen.me/hoc-flux-bang-truyen-tranh/</link><guid isPermaLink="true">https://khoanguyen.me/hoc-flux-bang-truyen-tranh/</guid><pubDate>Mon, 26 Sep 2016 00:00:00 GMT</pubDate></item><item><title><![CDATA[Xóa tất cả các git branch trừ master]]></title><description><![CDATA[<p>Mình thường tạo ra rất nhiều branch khi làm việc với git. Nhiều khi vài chục
 branch cùng một lúc.</p>
 <p><img src="git-branch-mess.png"></p>
 <p>Nếu các bạn muốn xóa nhanh tất cả các branch và chỉ chừa lại branch master,
@@ -1066,61 +1165,4 @@ Giúp bạn có thể tạo được một ứng dụng Github Gist Clone bằng
 <li>Routing - Controller</li>
 <li>View</li>
 </ol>
-]]></description><link>https://khoanguyen.me/gioi-thieu-series-larask-gist/</link><guid isPermaLink="true">https://khoanguyen.me/gioi-thieu-series-larask-gist/</guid><pubDate>Thu, 12 Mar 2015 13:00:00 GMT</pubDate></item><item><title><![CDATA[Laragon - Cài đặt Laravel trong 1 phút]]></title><description><![CDATA[<h1 id="giới-thiệu"><a href="#gi%E1%BB%9Bi-thi%E1%BB%87u" class="phenomic-HeadingAnchor">#</a>Giới thiệu</h1>
-<p>Laravel là một framework mạnh mẽ, giúp cho việc viết code trở nên "thú vị" hơn cũng như ít code hơn. Nhưng đối với các bạn mới bắt đầu tìm hiểu về Laravel từ nền tảng PHP cơ bản hay từ các framework khác chuyển qua thì việc cài đặt Laravel là cả 1 vấn đề. Bao gồm 1 webserver PHP cơ bản (từ PHP 5.4.0 thì PHP có built-in webserver tích hợp nên bước này có thể bỏ qua), Composer, Mcrypt, thiết lập Virtual host,...</p>
-<p>Thông thường trên các hệ điều hành *NIX (Linux, MacOS). Bạn có thể dễ dàng cài đặt chúng qua</p>
-<p><a href="http://laragon.org">Laragon</a> ra đời nhằm mục đích khắc phục điều đó. Và theo video trên trang chủ thì bạn chỉ mất 1 phút để cài đặt xong Laragon.</p>
-<p>@<a href="XuYkGdrXmKg">youtube</a></p>
-<p><em>một điều thú vị là tác giả Laragon hình như là 1 người Việt (Le Ngoc Khoa) - chưa có thông tin chính xác</em></p>
-<h1 id="tính-năng-laragon"><a href="#t%C3%ADnh-n%C4%83ng-laragon" class="phenomic-HeadingAnchor">#</a>Tính năng Laragon</h1>
-<p>Laragon đi kèm với các phần mềm sau (theo thông tin tại thời điểm viết bài này) :</p>
-<ul>
-<li>Laravel 5 và 4.2</li>
-<li>Apache 2.4.10</li>
-<li>MySQL (MariaDB 10.0.15)</li>
-<li>PHP 5.6.5</li>
-<li>Memcached 1.4.5</li>
-<li>Redis 2.8.17</li>
-<li>Composer</li>
-</ul>
-<p>Điều mình thích nhất là khả năng tự động tạo virtual host mỗi khi tạo project mới. Không còn lần mò, copy/paste file host tự động nữa.</p>
-<p><strong>Isolated Enviroment :</strong> Laragon không ảnh hưởng tới hệ điều hành. Bạn có thể dễ dàng copy nó qua folder khác thì nó vẫn hoạt động bình thường. (dạng như là portable software)</p>
-<h1 id="cài-đặt"><a href="#c%C3%A0i-%C4%91%E1%BA%B7t" class="phenomic-HeadingAnchor">#</a>Cài đặt</h1>
-<p>Laragon tương thích với các phiên bản Windows sau :</p>
-<ul>
-<li>Windows 7</li>
-<li>Windows 8</li>
-<li>Windows 8.1</li>
-<li>Windows 10
-(hỗ trợ cả 32-bits và 64-bits)</li>
-</ul>
-<p>Download và cài đặt Laragon như một phần mềm bình thường:</p>
-<p><a href="http://sourceforge.net/projects/laragon/">http://sourceforge.net/projects/laragon/</a></p>
-<h1 id="thiết-lập"><a href="#thi%E1%BA%BFt-l%E1%BA%ADp" class="phenomic-HeadingAnchor">#</a>Thiết lập</h1>
-<p>Mở Laragon sau khi cài đặt và giao diện chính sẽ xuất hiện :</p>
-<p><img src="http://laragon.org/themes/multi/assets/images/screenshot/laragon-main-interface.png" alt="Giao diện chính Laragon"></p>
-<p>Các bạn có thể bấm</p>
-<ul>
-<li>Web để truy cập vào webserver</li>
-<li>Database để truy cập phpmyadmin (user: root, không có mật khẩu).</li>
-<li>Shell để kích hoạt Cmder (một command line với giao diện thân thiện hơn Command Prompt mặc định của Windows)</li>
-</ul>
-<h1 id="cài-đặt-laravel"><a href="#c%C3%A0i-%C4%91%E1%BA%B7t-laravel" class="phenomic-HeadingAnchor">#</a>Cài đặt Laravel</h1>
-<p><img src="http://laragon.org/themes/multi/assets/images/screenshot/laragon-laravel-windows.png" alt="Cài đặt Laravel với Laragon"></p>
-<p>Bấm chuột phải vào biểu tượng Laragon ở thanh công cụ (gần đồng hồ). >> Laravel >> Create project >> Laravel 5/4.2</p>
-<p>Gõ tên project của bạn vào (ví dụ khoanguyen). Chờ một chút , Laragon sẽ tạo 1 project mới trong thư mục con www của Laragon (mặc định là C:/lamp/www). Nếu ần đầu tiên cài Laravel thì sẽ hơi lâu, composer sẽ phải tải tất cả dependency về, các lần sau sẽ nhanh hơn nhiều do đã có sẵn trong máy (cached).</p>
-<p>Sau khi Laragon cài đặt xong, thử mở trình duyệt lên, truy cập vào địa chỉ :</p>
-<pre><code class="hljs language-noob"><span class="hljs-symbol">http:</span><span class="hljs-comment">//tên-project.dev</span></code></pre>
-<p>(mình đặt tên project là khoanguyen thì sẽ truy cập vào <a href="http://khoanguyen.dev">http://khoanguyen.dev</a> )</p>
-<p>Và một cách thần kì, giao diện Laravel chào mừng của Laravel ngay lập tức xuất hiện:</p>
-<p>Laravel 5
-<img src="https://wiki.bitnami.com/@api/deki/files/1143/=laravel5-welcome.png" alt="Laravel 5" title="Laravel 5"></p>
-<p> hay Laravel 4.2</p>
-<p><img src="/images/2015/01/laravel-welcome.png" alt="Laravel 4.2" title="Laravel 5"></p>
-<blockquote>
-<p>Sự thần kì này có được là do tính năng Auto Virtual Hosts</p>
-</blockquote>
-<p>Laragon sẽ tự động tạo virtual host với tên miền là tên folder trong thư mục www của bạn.</p>
-<h1 id="kết-luận"><a href="#k%E1%BA%BFt-lu%E1%BA%ADn" class="phenomic-HeadingAnchor">#</a>Kết luận</h1>
-<p>Laragon giúp tiết kiệm rất nhiều thời gian khi làm quen, viết code PHP và Laravel. Hãy trải nghiệm Laragon và chia sẽ với bạn bè nhé.</p>
-]]></description><link>https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</link><guid isPermaLink="true">https://khoanguyen.me/laragon-cai-dat-laravel-trong-mot-phut/</guid><pubDate>Wed, 11 Mar 2015 20:00:00 GMT</pubDate></item></channel></rss>
+]]></description><link>https://khoanguyen.me/gioi-thieu-series-larask-gist/</link><guid isPermaLink="true">https://khoanguyen.me/gioi-thieu-series-larask-gist/</guid><pubDate>Thu, 12 Mar 2015 13:00:00 GMT</pubDate></item></channel></rss>
